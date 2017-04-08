@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports = function (game) {
-  var cursors = game.input.keyboard.createCursorKeys();
   var Player = require('../objects/player')(game);
   var background;
   var player;
@@ -13,7 +12,7 @@ module.exports = function (game) {
     },
     update: function() {
       background.tilePosition.y += 4;
-      Player.update(player, cursors);
+      Player.update(player);
     }
   };
 };

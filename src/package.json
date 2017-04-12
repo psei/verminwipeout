@@ -1,8 +1,7 @@
-lol
 {
   "name": "verminwipeout",
   "version": "0.0.1",
-  "description": "",
+  "description": "Vermin Wipeout - An Intergalactic Space Shooter",
   "scripts": {
     "start": "npm-run-all -p build:* -s lint -p watch:*",
     "test": "echo \"Error: no test specified\" && exit 1",

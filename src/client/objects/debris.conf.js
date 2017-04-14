@@ -1,12 +1,25 @@
 'use strict';
 
 var config = require('../baseConfig');
+
 module.exports = config({
-  images: {
-    debris1: '/images/debris/debris-1/debris-1-fly-1.png',
-    debris2: '/images/debris/debris-2/debris-2-fly-1.png'
+  sprites: {
+    debris: {
+      animationName: 'debris-0-fly',
+      imageSrc: '/images/debris/debris-0-fly-small.png',
+      frames: [1, 2, 3, 4, 5, 6],
+      width: 40,
+      height: 40,
+      frameRate: 15
+    },
+    debrisInverted: {
+      animationName: 'debris-0-fly-inverted',
+      imageSrc: '/images/debris/debris-0-fly-small.png',
+      frames: [6, 5, 4, 3, 2, 1],
+      width: 40,
+      height: 40,
+      frameRate: 5
+    }
   },
-  width: 600,
-  height: 600,
-  speed: 2
+  speeds: [1.2, 1.5, 1.8]
 });

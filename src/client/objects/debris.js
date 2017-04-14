@@ -2,8 +2,15 @@
 
 var config = require('./debris.conf');
 
-function Debris(game) {
-  var debris = game.add.sprite(game.world.width / 2, -config.height, config.images.debris);
+var sample = require('lodash/sample');
+
+function Debris(game, pos) {
+  var spriteName = sample([
+    config.images.debris1,
+    config.images.debris2
+  ]);
+
+  var debris = game.add.sprite(pos.x, pos.y, spriteName);
   game.physics.enable(debris, window.Phaser.Physics.ARCADE);
   debris.anchor.setTo(0.5, 0.5);
   debris.destroysItselfOnHit = true;
@@ -22,7 +29,7 @@ function Debris(game) {
 }
 
 module.exports = {
-  create: function (game) {
-    return new Debris(game);
+  create: function (game, pos) {
+    return new Debris(game, pos);
   }
 };

@@ -8,6 +8,11 @@ module.exports = function (game) {
   var background;
   var player;
   var debris;
+
+  function checkCollisions() {
+    game.physics.arcade.overlap(debris, player, Player.onEnemyHitsPlayer(debris), polygonHitCheck, this);
+  }
+
   return {
     create: function() {
       background = game.add.tileSprite(0, 0, 2000, 4992, 'background');
@@ -18,7 +23,7 @@ module.exports = function (game) {
       background.tilePosition.y += 4;
       Player.update(player);
       Debris.update();
-      game.physics.arcade.overlap(debris, player, Player.onEnemyHitsPlayer(debris), polygonHitCheck, this);
+      checkCollisions();
     }
   };
 };

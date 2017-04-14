@@ -7,7 +7,6 @@ module.exports = function (game) {
       game.load.image('weapon-bullet', '/images/Shots/shot_0_0.png');
     },
     create: function () {
-      console.log('boot.create');
       game.stage.backgroundColor = '#F0F0F0';
       game.state.clearCurrentState();
       game.state.start('play');

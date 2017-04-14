@@ -9,8 +9,6 @@ domready(function () {
       game.load.image('weapon1-bullet1', '/images/Shots/shot_0_0.png');
     },
     create: function () {
-      game.physics.startSystem(Phaser.Physics.P2JS);
-
       game.state.add('boot', require('./states/boot.js')(game));
       game.state.add('play', require('./states/play.js')(game));
       game.state.start('boot');

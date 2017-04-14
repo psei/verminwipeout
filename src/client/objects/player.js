@@ -5,7 +5,7 @@ var config = require('./player.conf');
 
 function createPlayer(game) {
   return function () {
-    player = game.add.sprite(1280 / 2, 700 - config.height, config.images.ship);
+    player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
     game.physics.enable(player, window.Phaser.Physics.ARCADE);
     player.anchor.setTo(0.5, 0.5);
     player.body.collideWorldBounds = true;

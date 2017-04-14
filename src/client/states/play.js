@@ -7,7 +7,6 @@ module.exports = function (game) {
   return {
     create: function() {
       background = game.add.tileSprite(0, 0, 2000, 4992, 'background');
-      game.world.setBounds(0, 0, 1280, 720);
       player = Player.create();
     },
     update: function() {

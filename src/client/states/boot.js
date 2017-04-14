@@ -4,7 +4,8 @@ var invokeMap = require('lodash/invokeMap');
 
 var configs = [
   require('../objects/player.conf'),
-  require('../objects/debris.conf')
+  require('../objects/debris.conf'),
+  require('../level1.conf.js')
 ];
 
 module.exports = function (game) {

@@ -1,28 +1,25 @@
 'use strict';
 
+var Player = require('../objects/player');
+var Debris = require('../objects/debris');
 function polygonHitCheck() {}
 
 module.exports = function (game) {
-  var Player = require('../objects/player')(game);
-  var Debris = require('../objects/debris')(game);
-  var background;
-  var player;
-  var debris;
+  var player = Player.create(game);
+  var debris = Debris.create(game);
 
   function checkCollisions() {
-    game.physics.arcade.overlap(debris, player, Player.onEnemyHitsPlayer(debris), polygonHitCheck, this);
+    game.physics.arcade.overlap(debris, player, player.onEnemyHitsPlayer(debris), polygonHitCheck, this);
   }
 
   return {
     create: function() {
-      background = game.add.tileSprite(0, 0, 2000, 4992, 'background');
-      player = Player.create();
-      debris = Debris.create();
+      player = Player.create(game);
+      debris = Debris.create(game);
     },
     update: function() {
-      background.tilePosition.y += 4;
-      Player.update(player);
-      Debris.update();
+      player.update();
+      debris.update();
       checkCollisions();
     }
   };

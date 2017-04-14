@@ -1,27 +1,21 @@
 'use strict';
 
-var player;
 var config = require('./player.conf');
 
-function createPlayer(game) {
-  return function () {
-    player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
-    game.physics.enable(player, window.Phaser.Physics.ARCADE);
-    player.anchor.setTo(0.5, 0.5);
-    player.body.collideWorldBounds = true;
-    player.weapon = require('./weapon')(game, player);
-    return player;
-  }
-}
+function Player(game) {
+  var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
+  game.physics.enable(player, window.Phaser.Physics.ARCADE);
+  player.anchor.setTo(0.5, 0.5);
+  player.body.collideWorldBounds = true;
+  player.weapon = require('./weapon')(game, player);
 
-var previousDirection = {
-  forward: false,
-  right: false,
-  backward: false,
-  left: false
-};
+  var previousDirection = {
+    forward: false,
+    right: false,
+    backward: false,
+    left: false
+  };
 
-module.exports = function (game) {
   var cursors = game.input.keyboard.createCursorKeys();
   var fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
@@ -65,18 +59,24 @@ module.exports = function (game) {
     }
   }
 
-  return {
-    create: createPlayer(game),
-    update: function () {
-      move();
-      fireWeapon()
-    },
-    onEnemyHitsPlayer: function (enemy) {
-      return function () {
-        if (enemy.destroysItselfOnHit) {
-          enemy.kill();
-        }
-      };
-    }
+  player.update = function () {
+    move();
+    fireWeapon();
   };
+
+  player.onEnemyHitsPlayer = function (enemy) {
+    return function () {
+      if (enemy.destroysItselfOnHit) {
+        enemy.kill();
+      }
+    };
+  };
+
+  return player;
+}
+
+module.exports = {
+  create: function (game) {
+    return new Player(game);
+  }
 };

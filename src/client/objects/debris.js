@@ -8,6 +8,8 @@ function create(game) {
     debris = game.add.sprite(game.world.width / 2, -config.height, config.images.debris);
     game.physics.enable(debris, window.Phaser.Physics.ARCADE);
     debris.anchor.setTo(0.5, 0.5);
+
+    debris.destroysItselfOnHit = true;
     return debris;
   }
 }
@@ -20,7 +22,9 @@ module.exports = function (game) {
   return {
     create: create(game),
     update: function () {
-      move();
+      if (debris.alive) {
+        move();
+      }
     }
   };
 };

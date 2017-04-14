@@ -70,6 +70,13 @@ module.exports = function (game) {
     update: function () {
       move();
       fireWeapon()
+    },
+    onEnemyHitsPlayer: function (enemy) {
+      return function () {
+        if (enemy.destroysItselfOnHit) {
+          enemy.kill();
+        }
+      };
     }
   };
 };

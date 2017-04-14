@@ -1,5 +1,7 @@
 'use strict';
 
+function polygonHitCheck() {}
+
 module.exports = function (game) {
   var Player = require('../objects/player')(game);
   var Debris = require('../objects/debris')(game);
@@ -16,6 +18,7 @@ module.exports = function (game) {
       background.tilePosition.y += 4;
       Player.update(player);
       Debris.update();
+      game.physics.arcade.overlap(debris, player, Player.onEnemyHitsPlayer(debris), polygonHitCheck, this);
     }
   };
 };

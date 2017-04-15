@@ -4,14 +4,9 @@
   "description": "Vermin Wipeout - Intergalactic uber critter extermination for fun and profit",
   "scripts": {
     "start": "npm-run-all -p build:* -s lint -p watch:*",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf public && mkdir public && mkdir public/js && mkdir public/js/vendor",
+    "clean": "node tasks/resetPublicFolder",
     "prebuild": "npm run clean",
-    "build:html": "cp client/index.html public/index.html",
-    "build:vendor": "cp node_modules/phaser/build/phaser.js public/js/vendor/phaser.js",
     "build:js": "browserifyinc client/game.js > public/js/game.js -v -d",
-    "prebuild:images": "rm -rf public/images && mkdir public/images",
-    "build:images": "cp -r ../game/images/ public/images",
     "lint": "esw client/*.js",
     "watch:js": "onchange 'client/**/*.js' -v -- npm run build:js",
     "watch:server": "nodemon --watch server server/index.js"
@@ -25,6 +20,7 @@
     "eslint": "3.19.0",
     "eslint-watch": "3.0.1",
     "express": "4.15.2",
+    "fs-extra": "2.1.2",
     "http-server": "0.9.0",
     "lodash": "4.17.4",
     "nodemon": "1.11.0",

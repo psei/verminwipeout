@@ -1,6 +1,10 @@
 {
   // http://eslint.org/docs/rules/
 
+  "globals": {
+    "Phaser": true
+  },
+
   "env": {
     "es6": true,
     "browser": true,

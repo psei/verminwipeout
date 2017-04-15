@@ -3,14 +3,13 @@
 var domready = require('domready');
 
 domready(function () {
-  var game = new Phaser.Game(1280, 720, Phaser.AUTO, 'Vermin-Wipeout', {
-    preload: function ( ) {
-      game.load.image('background', '/images/background_v1_2000x4992_repeatable_y.jpg');
+  var gameConfig = require('./game.conf');
+  var game = new Phaser.Game(gameConfig.width, gameConfig.height, Phaser.AUTO, gameConfig.name, {
+    preload: function () {
       game.load.image('weapon1-bullet1', '/images/Shots/shot_0_0.png');
     },
     create: function () {
-      game.physics.startSystem(Phaser.Physics.P2JS);
-
+      game.world.setBounds(0, 0, gameConfig.width, gameConfig.height);
       game.state.add('boot', require('./states/boot.js')(game));
       game.state.add('play', require('./states/play.js')(game));
       game.state.start('boot');

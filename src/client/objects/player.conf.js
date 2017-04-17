@@ -7,7 +7,7 @@ module.exports = config({
     shipLeft: '/images/ship/ship-left.png',
     shipRight: '/images/ship/ship-right.png'
   },
-  width: 240,
-  height: 277,
-  speed: 8
+  width: 112,
+  height: 129,
+  speed: 11
 });

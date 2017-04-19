@@ -1,10 +1,15 @@
 'use strict';
 
 var Debris = require('./objects/debris');
+var Enemy = require('./objects/enemy');
 
 function createEnemiesFromWave(game, wave) {
   return wave.objects.map(function (waveObj) {
-    return Debris.create(game, waveObj);
+    var ClassNames = {
+      'debris': Debris,
+      'enemy': Enemy
+    };
+    return ClassNames[wave.type].create(game, waveObj);
   });
 }
 

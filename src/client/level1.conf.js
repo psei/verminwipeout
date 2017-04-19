@@ -10,6 +10,15 @@ module.exports = config({
   backgroundSpeed: 4,
 
   waves: [{
+    type: 'enemy',
+    spawnAt: 50,
+    objects: [
+      { x: 240, y: -100 },
+      { x: 340, y: -120 },
+      { x: 440, y: -140 },
+      { x: 540, y: -160 }
+    ]
+  }, {
     type: 'debris',
     spawnAt: 400,
     objects: [

@@ -4,16 +4,6 @@ var sample = require('lodash/sample');
 
 var config = require('./debris.conf');
 
-function createByFlyAnimation(game, pos, spriteConfig) {
-  var flyAnimationName = spriteConfig.animationName;
-  var flyAnimationFrames = spriteConfig.frames;
-  var debris = game.add.sprite(pos.x, pos.y, flyAnimationName);
-  debris.animations.add(flyAnimationName, flyAnimationFrames, spriteConfig.frameRate, true);
-  debris.frame = sample(flyAnimationFrames);
-  debris.animations.play(flyAnimationName);
-  return debris;
-}
-
 function Debris(game, pos) {
   var spriteConfig = sample([
     config.sprites.debris,
@@ -21,9 +11,14 @@ function Debris(game, pos) {
   ]);
 
   var speed = sample(config.speeds);
-  var debris = createByFlyAnimation(game, pos, spriteConfig);
+  var debris = game.add.sprite(pos.x, pos.y, spriteConfig.animationName);
   game.physics.enable(debris, window.Phaser.Physics.ARCADE);
   debris.anchor.setTo(0.5, 0.5);
+
+  debris.animations.add(spriteConfig.animationName, spriteConfig.frames);
+  debris.frame = sample(spriteConfig.frames);
+  debris.animations.play(spriteConfig.animationName, spriteConfig.frameRate, true);
+
   debris.destroysItselfOnHit = true;
 
   function move() {
@@ -34,6 +29,19 @@ function Debris(game, pos) {
     if (debris.alive) {
       move();
     }
+  };
+
+  debris.playDeathAnimation = function () {
+    var explosion = game.add.sprite(debris.body.x, debris.body.y, config.sprites.explode.animationName);
+    explosion.anchor.setTo(0.5, 0.5);
+    explosion.animations.add(
+      config.sprites.explode.animationName);
+    explosion.frame = 1;
+    explosion.animations.play(config.sprites.explode.animationName,
+      config.sprites.explode.frameRate,
+      false,
+      true);
+    debris.kill();
   };
 
   return debris;

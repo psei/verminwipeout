@@ -1,13 +1,14 @@
 'use strict';
 
 var config = require('./player.conf');
+var weaponConfig = require('./weapon1.conf');
 
 function Player(game) {
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
   game.physics.enable(player, window.Phaser.Physics.ARCADE);
   player.anchor.setTo(0.5, 0.5);
   player.body.collideWorldBounds = true;
-  player.weapon = require('./weapon')(game, player);
+  player.weapon = require('./weapon')(game, player, weaponConfig);
 
   var previousDirection = {
     forward: false,

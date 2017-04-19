@@ -2,11 +2,10 @@
 
 var config = require('./enemy.conf');
 
-function Enemy(game, pos) {
+function Enemy(game, spawnInfo) {
   var spriteConfig = config.sprites.enemy;
 
-  var speed = config.speed;
-  var enemy = game.add.sprite(pos.x, pos.y, spriteConfig.animationName);
+  var enemy = game.add.sprite(spawnInfo.x[0], spawnInfo.y[0], spriteConfig.animationName);
   game.physics.enable(enemy, window.Phaser.Physics.ARCADE);
   enemy.anchor.setTo(0.5, 0.5);
 
@@ -14,8 +13,23 @@ function Enemy(game, pos) {
   enemy.frame = 1;
   enemy.animations.play(spriteConfig.animationName, spriteConfig.frameRate, true);
 
+  var timeToFlyMotionPath = spawnInfo.time;
+  var paths = { x: spawnInfo.x, y: spawnInfo.y };
+  var spawnTime = game.time.time;
+
   function move() {
-    enemy.y += speed;
+    var timePassed = game.time.time - spawnTime;
+    var step = 0;
+    if (timePassed) {
+      step = timePassed / timeToFlyMotionPath;
+    }
+    if (step > 1) {
+      enemy.destroy();
+    }
+    var newX = game.math.catmullRomInterpolation(paths.x, step);
+    var newY = game.math.catmullRomInterpolation(paths.y, step);
+    enemy.x = newX;
+    enemy.y = newY;
   }
 
   enemy.update = function () {

@@ -20,6 +20,5 @@ module.exports = config({
       height: 721,
       frameRate: 12
     }
-  },
-  speed: 2
+  }
 });

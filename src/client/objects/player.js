@@ -1,14 +1,43 @@
 'use strict';
 
+var isEqual = require('lodash/isEqual');
+
 var config = require('./player.conf');
-var weaponConfig = require('./weapon1.conf');
+var Weapon = require('./weapon');
+
+var weaponConfigs = [
+  require('./weapon1.conf'),
+  require('./weapon3.conf'),
+  require('./weapon3.conf')
+];
+
+function addWeaponSwitchKeyBindings(game, player) {
+  var keyCodes = [
+    Phaser.Keyboard.ONE,
+    Phaser.Keyboard.TWO,
+    Phaser.Keyboard.THREE
+  ];
+
+  keyCodes.map(function (keyCode, i) {
+    var key = game.input.keyboard.addKey(keyCode);
+    key.onDown.add(player.switchWeapon(i), player);
+  });
+}
 
 function Player(game) {
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
   game.physics.enable(player, window.Phaser.Physics.ARCADE);
   player.anchor.setTo(0.5, 0.5);
   player.body.collideWorldBounds = true;
-  player.weapon = require('./weapon')(game, player, weaponConfig);
+
+  function setWeapon(weaponConfig) {
+    if (isEqual(weaponConfig, player.currentWeaponConfig)) {
+      return;
+    }
+    player.currentWeaponConfig = weaponConfig;
+    player.weapon = Weapon.create(game, player, weaponConfig);
+  }
+  setWeapon(weaponConfigs[0]);
 
   var previousDirection = {
     forward: false,
@@ -16,10 +45,6 @@ function Player(game) {
     backward: false,
     left: false
   };
-
-  var cursors = game.input.keyboard.createCursorKeys();
-  var fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-
   function move() {
     if (cursors.left.isDown) {
       player.x -= config.speed;
@@ -72,6 +97,16 @@ function Player(game) {
       }
     };
   };
+
+  player.switchWeapon = function (index) {
+    return function () {
+      setWeapon(weaponConfigs[index]);
+    };
+  };
+
+  var cursors = game.input.keyboard.createCursorKeys();
+  var fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  addWeaponSwitchKeyBindings(game, player);
 
   return player;
 }

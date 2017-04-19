@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (game, player, config) {
+function Weapon(game, player, config) {
   var isAnimated = !!config.sprites;
   var graphicKey = isAnimated ? config.sprites.bullet.animationName : config.images.bullet;
 
@@ -28,4 +28,10 @@ module.exports = function (game, player, config) {
   weapon.fireRate = config.reloadTime;
   weapon.trackSprite(player, 0, 0, false);
   return weapon;
+}
+
+module.exports = {
+  create: function (game, player, weapon) {
+    return new Weapon(game, player, weapon);
+  }
 };

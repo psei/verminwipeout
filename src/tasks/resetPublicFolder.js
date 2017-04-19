@@ -41,7 +41,7 @@ function copy(dirOrFile, target) {
 }
 
 function copyImages() {
-  return copy(`../game/images`, `${publicDir}/images`);
+  return copy(`./assets/images`, `${publicDir}/images`);
 }
 
 function copyHtml() {

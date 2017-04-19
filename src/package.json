@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm-run-all -p build:* -s lint -p watch:*",
     "clean": "node tasks/resetPublicFolder",
-    "prebuild": "npm run clean",
+    "prebuild:js": "npm run clean",
     "build:js": "browserifyinc client/game.js > public/js/game.js -v -d",
     "lint": "esw client/*.js",
     "watch:js": "onchange 'client/**/*.js' -v -- npm run build:js",

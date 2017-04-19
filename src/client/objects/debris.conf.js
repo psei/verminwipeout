@@ -19,6 +19,14 @@ module.exports = config({
       width: 40,
       height: 40,
       frameRate: 5
+    },
+    explode: {
+      animationName: 'debris-explode',
+      imageSrc: '/images/debris/debris-0-death.png',
+      frames: [1, 2, 3, 4, 5],
+      width: 180,
+      height: 200,
+      frameRate: 12
     }
   },
   speeds: [1.2, 1.5, 1.8]

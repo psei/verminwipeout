@@ -5,13 +5,13 @@ var invokeMap = require('lodash/invokeMap');
 var configs = [
   require('../objects/player.conf'),
   require('../objects/debris.conf'),
-  require('../level1.conf.js')
+  require('../level1.conf.js'),
+  require('../objects/weapon1.conf.js')
 ];
 
 module.exports = function (game) {
   return {
     preload: function () {
-      game.load.image('weapon-bullet', '/images/Shots/shot_0_0.png');
       invokeMap(configs, 'loadImages', game);
     },
     create: function () {

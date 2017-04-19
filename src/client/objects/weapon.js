@@ -1,27 +1,14 @@
 'use strict';
 
-var bulletTime = 0;
+var config = require('./weapon1.conf');
 
 module.exports = function (game, player) {
-  var bullets = game.add.group();
-  bullets.enableBody = true;
-  bullets.physicsBodyType = Phaser.Physics.ARCADE;
-  bullets.createMultiple(30, 'weapon-bullet');
-  bullets.setAll('anchor.x', 0.5);
-  bullets.setAll('anchor.y', 0);
-  bullets.setAll('outOfBoundsKill', true);
-  bullets.setAll('checkWorldBounds', true);
+  var weapon = game.add.weapon(config.fireLimit, config.images.bullet);
 
-  return {
-    fire: function () {
-      if (game.time.now > bulletTime) {
-        var bullet = bullets.getFirstExists(false);
-        if (bullet) {
-          bullet.reset(player.x, player.y - 362);
-          bullet.body.velocity.y = -720;
-          bulletTime = game.time.now + 200;
-        }
-      }
-    }
-  };
+  weapon.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+  weapon.bulletSpeed = config.bulletSpeed;
+  weapon.bulletAngleOffset = 90;
+  weapon.fireRate = config.reloadTime;
+  weapon.trackSprite(player, 0, 0, false);
+  return weapon;
 };

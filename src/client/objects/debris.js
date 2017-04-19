@@ -2,9 +2,13 @@
 
 var sample = require('lodash/sample');
 
-var config = require('./debris.conf');
+var configs = [
+  require('./debris1.conf'),
+  require('./debris2.conf')
+];
 
 function Debris(game, pos) {
+  var config = sample(configs);
   var spriteConfig = sample([
     config.sprites.debris,
     config.sprites.debrisInverted

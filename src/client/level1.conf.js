@@ -3,7 +3,7 @@
 var config = require('./baseConfig');
 module.exports = config({
   images: {
-    background: '/images/background/background.jpg'
+    background: '/images/backgrounds/background.jpg'
   },
   backgroundWidth: 2000,
   backgroundHeight: 4992,

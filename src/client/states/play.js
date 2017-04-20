@@ -11,6 +11,10 @@ module.exports = function (game) {
   var player;
   var enemies;
 
+  function toggleSounds() {
+    game.sound.mute = !game.sound.mute;
+  }
+
   function playMusic() {
     var musicIntro = game.add.audio('music-1-intro');
     var musicLoop = game.add.audio('music-1-loop');
@@ -39,6 +43,9 @@ module.exports = function (game) {
       player = Player.create(game);
       enemies = game.add.group();
       playMusic();
+
+      game.input.keyboard.addKey(Phaser.Keyboard.M)
+        .onDown.add(toggleSounds);
     },
     update: function() {
       level.update();

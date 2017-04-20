@@ -30,6 +30,20 @@ function Player(game) {
   player.anchor.setTo(0.5, 0.5);
   player.body.collideWorldBounds = true;
 
+  var shield = game.add.sprite(player.body.x, player.body.y, config.sprites.shield.animationName);
+  shield.anchor.setTo(0.5, 0.5);
+  shield.animations.add(config.sprites.shield.animationName);
+  shield.visible = false;
+
+  function playShieldAnimation() {
+    shield.frame = 1;
+    shield.visible = true;
+    shield.animations.play(config.sprites.shield.animationName,
+      config.sprites.shield.frameRate,
+      false,
+      false);
+  }
+
   function setWeapon(weaponConfig) {
     if (isEqual(weaponConfig, player.currentWeaponConfig)) {
       return;
@@ -77,6 +91,8 @@ function Player(game) {
         previousDirection.forward = true;
       }
     }
+    shield.x = player.x;
+    shield.y = player.y;
   }
 
   function fireWeapon() {
@@ -92,6 +108,7 @@ function Player(game) {
 
   player.onEnemyHitsPlayer = function (enemy) {
     return function () {
+      playShieldAnimation();
       if (enemy.destroysItselfOnHit) {
         enemy.kill();
       }

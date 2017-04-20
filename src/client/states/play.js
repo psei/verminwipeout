@@ -1,7 +1,5 @@
 'use strict';
 
-var invokeMap = require('lodash/invokeMap');
-
 var Player = require('../objects/player');
 var Level = require('../level');
 

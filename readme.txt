@@ -24,6 +24,4 @@ VERMIN WIPEOUT COLLABORATION
 2. git pull 
 3. git commit -m "comment"
 
-4. git pull
-
-5. git push
+4. git push

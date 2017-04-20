@@ -33,12 +33,11 @@ module.exports = function (game) {
   function checkCollisions() {
     game.physics.arcade.overlap(player.weapon.bullets, enemies, hitEnemy, polygonHitCheck, this);
     enemies.forEach(function (enemy) {
-      if (!enemy.weapon) {
-        return;
-      }
-      game.physics.arcade.overlap(enemy.weapon.bullets, player, player.onEnemyHitsPlayer(enemy), polygonHitCheck, this);
       if (enemy.alive) {
         game.physics.arcade.overlap(enemy, player, player.onEnemyHitsPlayer(enemy), polygonHitCheck, this);
+      }
+      if (enemy.weapon) {
+        game.physics.arcade.overlap(enemy.weapon.bullets, player, player.onEnemyHitsPlayer(enemy), polygonHitCheck, this);
       }
     });
   }

@@ -1,6 +1,7 @@
 'use strict';
 
 var config = require('./enemy.conf');
+var Weapon = require('./weapon');
 
 function Enemy(game, spawnInfo) {
   var spriteConfig = config.sprites.enemy;
@@ -8,6 +9,9 @@ function Enemy(game, spawnInfo) {
   var enemy = game.add.sprite(spawnInfo.x[0], spawnInfo.y[0], spriteConfig.animationName);
   game.physics.enable(enemy, window.Phaser.Physics.ARCADE);
   enemy.anchor.setTo(0.5, 0.5);
+
+  enemy.weapon = Weapon.create(game, enemy, require('./weapon1.conf'));
+  enemy.weapon.fireAngle = 90;
 
   enemy.animations.add(spriteConfig.animationName);
   enemy.frame = 1;
@@ -35,6 +39,10 @@ function Enemy(game, spawnInfo) {
   enemy.update = function () {
     if (enemy.alive) {
       move();
+
+      if (game.random.rollForChancePerSecond(config.chanceToShootPerSecondInPercent)) {
+        enemy.weapon.fire();
+      }
     }
   };
 

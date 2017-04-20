@@ -20,5 +20,6 @@ module.exports = config({
       height: 300,
       frameRate: 12
     }
-  }
+  },
+  chanceToShootPerSecondInPercent: 40
 });

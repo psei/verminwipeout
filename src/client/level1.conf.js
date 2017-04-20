@@ -8,7 +8,7 @@ module.exports = config({
   },
   backgroundWidth: 800,
   backgroundHeight: 1997,
-  backgroundSpeed: 4,
+  backgroundSpeed: 2,
 
   waves: [{
     type: 'enemy',

@@ -17,10 +17,10 @@ function Enemy(game, spawnInfo) {
 
   var timeToFlyMotionPath = spawnInfo.time;
   var paths = { x: spawnInfo.x, y: spawnInfo.y };
-  var spawnTime = game.time.time;
+  var spawnTime = game.time.physicsElapsedTotalMS;
 
   function move() {
-    var timePassed = game.time.time - spawnTime;
+    var timePassed = game.time.physicsElapsedTotalMS - spawnTime;
     var step = 0;
     if (timePassed) {
       step = timePassed / timeToFlyMotionPath;

@@ -51,8 +51,11 @@ module.exports = function (game) {
 
       game.input.keyboard.addKey(Phaser.Keyboard.M)
         .onDown.add(toggleSounds);
+
+      game.time.physicsElapsedTotalMS = 0;
     },
     update: function() {
+      game.time.physicsElapsedTotalMS += game.time.physicsElapsedMS;
       level.update();
       enemies.addMultiple(level.spawnEnemies(game));
       player.update();

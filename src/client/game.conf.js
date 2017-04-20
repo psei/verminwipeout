@@ -2,6 +2,6 @@
 
 module.exports = {
   name: 'Vermin-Wipeout',
-  width: 1280,
-  height: 720
+  width: 800,
+  height: 1024
 };

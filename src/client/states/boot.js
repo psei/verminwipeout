@@ -9,6 +9,7 @@ var configs = [
   require('../objects/enemy.conf'),
   require('../level1.conf.js'),
   require('../objects/weapon1.conf.js'),
+  require('../objects/weapon2.conf.js'),
   require('../objects/weapon3.conf.js')
 ];
 

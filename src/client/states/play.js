@@ -47,8 +47,8 @@ module.exports = function (game) {
       level = Level.init(game, currentLevel);
       player = Player.create(game);
       enemies = game.add.group();
-      playMusic();
 
+      playMusic();
       game.input.keyboard.addKey(Phaser.Keyboard.M)
         .onDown.add(toggleSounds);
 

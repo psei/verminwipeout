@@ -27,6 +27,12 @@ function Weapon(game, player, config) {
   weapon.bulletAngleOffset = 90;
   weapon.fireRate = config.reloadTime;
   weapon.trackSprite(player, 0, 0, false);
+  if (config.sound) {
+    var fireSound = game.add.audio(config.sound);
+    weapon.onFire.add(function () {
+      fireSound.play();
+    });
+  }
   return weapon;
 }
 

@@ -16,7 +16,7 @@ var configs = [
 module.exports = function (game) {
   return {
     preload: function () {
-      invokeMap(configs, 'loadImages', game);
+      invokeMap(configs, 'loadMedia', game);
       game.load.audio('music-1-intro', '/audio/music/music-1-intro.wav');
       game.load.audio('music-1-loop', '/audio/music/music-1-loop.wav');
       game.load.audio('boss-intro', '/audio/music/boss-intro.wav');

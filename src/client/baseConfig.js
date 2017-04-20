@@ -14,10 +14,18 @@ function loadSprites(game) {
   };
 }
 
+function loadSounds(config, game) {
+  if (!config.sound) {
+    return;
+  }
+  game.load.audio(config.sound, config.sound);
+}
+
 module.exports = function (config) {
-  config.loadImages = function (game) {
+  config.loadMedia = function (game) {
     each(config.images, loadImages(game));
     each(config.sprites, loadSprites(game));
+    loadSounds(config, game);
   };
   return config;
 };

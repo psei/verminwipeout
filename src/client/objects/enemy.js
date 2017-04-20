@@ -46,7 +46,7 @@ function Enemy(game, spawnInfo) {
     }
   };
 
-  var attackConfig = config.sprites.death;
+  var attackConfig = config.sprites.attack;
   var attackSprite = game.add.sprite(enemy.body.x, enemy.body.y, attackConfig.animationName);
   attackSprite.anchor.setTo(0.5, 0.5);
   attackSprite.visible = false;

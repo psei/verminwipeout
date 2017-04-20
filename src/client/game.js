@@ -7,7 +7,10 @@ domready(function () {
   var game = new Phaser.Game(gameConfig.width, gameConfig.height, Phaser.AUTO, gameConfig.name, {
     preload: function () {},
     create: function () {
-      game.random = new Phaser.RandomDataGenerator();
+      game.random = new Phaser.RandomDataGenerator(gameConfig.seeds);
+      game.random.sample = function (array) {
+        return array[game.random.between(0, array.length - 1)];
+      };
       game.random.rollForChancePerSecond = function (percentage) {
         if (game.random.between(1, 100) > percentage) {
           return false;

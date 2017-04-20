@@ -1,26 +1,24 @@
 'use strict';
 
-var sample = require('lodash/sample');
-
 var configs = [
   require('./debris1.conf'),
   require('./debris2.conf')
 ];
 
 function Debris(game, pos) {
-  var config = sample(configs);
-  var spriteConfig = sample([
+  var config = game.random.sample(configs);
+  var spriteConfig = game.random.sample([
     config.sprites.debris,
     config.sprites.debrisInverted
   ]);
 
-  var speed = sample(config.speeds);
+  var speed = game.random.sample(config.speeds);
   var debris = game.add.sprite(pos.x, pos.y, spriteConfig.animationName);
   game.physics.enable(debris, window.Phaser.Physics.ARCADE);
   debris.anchor.setTo(0.5, 0.5);
 
   debris.animations.add(spriteConfig.animationName, spriteConfig.frames);
-  debris.frame = sample(spriteConfig.frames);
+  debris.frame = game.random.sample(spriteConfig.frames);
   debris.animations.play(spriteConfig.animationName, spriteConfig.frameRate, true);
 
   debris.destroysItselfOnHit = true;

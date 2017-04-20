@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Vermin Wipeout - Intergalactic uber critter extermination for fun and profit",
   "scripts": {
+    "postinstall": "npm start",
     "start": "npm-run-all -p build:* -s lint -p watch:*",
     "clean": "node tasks/resetPublicFolder",
     "prebuild:js": "npm run clean",

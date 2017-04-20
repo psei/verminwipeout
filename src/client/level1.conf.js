@@ -6,8 +6,8 @@ module.exports = config({
   images: {
     background: '/images/backgrounds/background.jpg'
   },
-  backgroundWidth: 2000,
-  backgroundHeight: 4992,
+  backgroundWidth: 800,
+  backgroundHeight: 1997,
   backgroundSpeed: 4,
 
   waves: [{

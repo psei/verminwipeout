@@ -26,6 +26,10 @@ function createDir(dir) {
   });
 }
 
+function createAudioTargetDirectory() {
+  return createDir(`${publicDir}/audio`);
+}
+
 function createImagesTargetDirectory() {
   return createDir(`${publicDir}/images`);
 }
@@ -38,6 +42,10 @@ function copy(dirOrFile, target) {
   return new Promise(function (resolve, reject) {
     fse.copy(dirOrFile, target, handleCallback(resolve, reject));
   })
+}
+
+function copyAudio() {
+  return copy(`./assets/audio`, `${publicDir}/audio`);
 }
 
 function copyImages() {
@@ -55,6 +63,7 @@ function copyVendor() {
 return cleanPublic()
   .then(function () {
     return Promise.all([
+      createAudioTargetDirectory().then(copyAudio),
       createImagesTargetDirectory().then(copyImages),
       createJSTargetDirectories(),
       copyHtml(),

@@ -7,7 +7,7 @@ var Weapon = require('./weapon');
 
 var weaponConfigs = [
   require('./weapon1.conf'),
-  require('./weapon3.conf'),
+  require('./weapon2.conf'),
   require('./weapon3.conf')
 ];
 

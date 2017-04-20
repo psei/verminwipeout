@@ -13,6 +13,16 @@ module.exports = function (game) {
   var player;
   var enemies;
 
+  function playMusic() {
+    var musicIntro = game.add.audio('music-1-intro');
+    var musicLoop = game.add.audio('music-1-loop');
+    musicLoop.loop = true;
+    musicIntro.onStop.add(function () {
+      musicLoop.play();
+    });
+    musicIntro.play();
+  }
+
   function hitEnemy(bullet, enemy) {
     enemy.kill();
     bullet.kill();
@@ -30,6 +40,7 @@ module.exports = function (game) {
       level = Level.init(game, currentLevel);
       player = Player.create(game);
       enemies = game.add.group();
+      playMusic();
     },
     update: function() {
       level.update();

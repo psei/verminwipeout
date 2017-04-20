@@ -17,6 +17,10 @@ module.exports = function (game) {
   return {
     preload: function () {
       invokeMap(configs, 'loadImages', game);
+      game.load.audio('music-1-intro', '/audio/music/music-1-intro.wav');
+      game.load.audio('music-1-loop', '/audio/music/music-1-loop.wav');
+      game.load.audio('boss-intro', '/audio/music/boss-intro.wav');
+      game.load.audio('boss-loop', '/audio/music/boss-loop.wav');
     },
     create: function () {
       game.stage.backgroundColor = '#F0F0F0';

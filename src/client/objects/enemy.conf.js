@@ -19,6 +19,14 @@ module.exports = config({
       width: 410,
       height: 300,
       frameRate: 12
+    },
+    attack: {
+      animationName: 'enemy-1-attack',
+      imageSrc: '/images/enemies/enemy-1-attack.png',
+      frames: [1, 2],
+      width: 80,
+      height: 100,
+      frameRate: 3
     }
   },
   chanceToShootPerSecondInPercent: 40

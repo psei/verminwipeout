@@ -6,7 +6,6 @@ var Enemy = require('./objects/enemy');
 function createEnemiesFromWave(game, wave) {
   return wave.objects.map(function (waveObj) {
     var ClassNames = {
-      'debris': Debris,
       'enemy': Enemy
     };
     return ClassNames[wave.type].create(game, waveObj);
@@ -37,6 +36,13 @@ Level.prototype.spawnEnemies = function (game) {
       enemiesToSpawn = createEnemiesFromWave(game, this.waves.shift());
       lastWaveSpawnTime = game.time.physicsElapsedTotalMS;
     }
+  }
+  if (game.random.rollForChancePerSecond(this.config.debrisSpawnRatio)) {
+    var debris = Debris.create(game, {
+      x: game.random.between(0, game.world.width),
+      y: -80
+    });
+    enemiesToSpawn.push(debris);
   }
   return enemiesToSpawn;
 };

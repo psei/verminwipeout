@@ -67,6 +67,8 @@ module.exports = config({
   backgroundHeight: 1997,
   backgroundSpeed: 2,
 
+  debrisSpawnRatio: 5,
+
   waves: [
     createEnemyWave({
       type: 'enemy',

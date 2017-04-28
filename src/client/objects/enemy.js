@@ -73,6 +73,10 @@ function Enemy(game, spawnInfo) {
       deathConfig.frameRate,
       false,
       true);
+    attackSprite.destroy();
+    enemy.animations.currentAnim.onComplete.add(function () {
+      enemy.destroy();
+    });
   }
 
   enemy.events.onKilled.add(playDeathAnimation);

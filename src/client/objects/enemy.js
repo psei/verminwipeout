@@ -38,11 +38,10 @@ function Enemy(game, spawnInfo) {
 
   enemy.update = function () {
     if (enemy.alive) {
-      move();
-
       if (game.random.rollForChancePerSecond(config.chanceToShootPerSecondInPercent)) {
         enemy.attack();
       }
+      move();
     }
   };
 

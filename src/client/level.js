@@ -17,15 +17,11 @@ var levelConfigs = [
   require('./level1.conf.js')
 ];
 
-function bySpawnAt(a, b) {
-  return a.spawnAt - b.spawnAt;
-}
-
 function Level(game, levelIndex) {
   var world = game.world;
 
   this.config = levelConfigs[levelIndex];
-  this.waves = this.config.waves.sort(bySpawnAt);
+  this.waves = this.config.waves;
   this.background = game.add.tileSprite(0, 0, world.width, world.height, this.config.images.background);
 }
 
@@ -33,11 +29,14 @@ Level.prototype.update = function () {
   this.background.tilePosition.y += this.config.backgroundSpeed;
 };
 
+var lastWaveSpawnTime = 0;
 Level.prototype.spawnEnemies = function (game) {
   var enemiesToSpawn = [];
-  var nextWaveSpawnY = this.waves.length ? this.waves[0].spawnAt : Infinity;
-  if (this.background.tilePosition.y >= nextWaveSpawnY) {
-    enemiesToSpawn = createEnemiesFromWave(game, this.waves.shift());
+  if (this.waves.length) {
+    if (lastWaveSpawnTime + this.waves[0].spawnTime <= game.time.physicsElapsedTotalMS) {
+      enemiesToSpawn = createEnemiesFromWave(game, this.waves.shift());
+      lastWaveSpawnTime = game.time.physicsElapsedTotalMS;
+    }
   }
   return enemiesToSpawn;
 };

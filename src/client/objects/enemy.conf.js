@@ -29,5 +29,5 @@ module.exports = config({
       frameRate: 3
     }
   },
-  chanceToShootPerSecondInPercent: 40
+  chanceToShootPerSecondInPercent: 0
 });

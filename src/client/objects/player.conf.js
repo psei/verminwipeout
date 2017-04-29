@@ -19,5 +19,5 @@ module.exports = config({
   },
   width: 78,
   height: 90,
-  speed: 10
+  speed: 6
 });

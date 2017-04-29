@@ -7,7 +7,7 @@ module.exports = config({
   images: {
     bullet: '/images/shots/shot-1.png'
   },
-  reloadTime: 200,
-  fireLimit: 30,
-  bulletSpeed: 720
+  reloadTime: 90,
+  fireLimit: 70,
+  bulletSpeed: 800
 });

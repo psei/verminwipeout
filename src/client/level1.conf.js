@@ -67,91 +67,25 @@ module.exports = config({
   backgroundHeight: 1997,
   backgroundSpeed: 2,
 
-  debrisSpawnRatio: 5,
+  debrisSpawnRatio: 500,
 
   waves: [
+    
     createEnemyWave({
       type: 'enemy',
-      spawnTime: 550,
-      durationToReachNextWayPoint: 1300,
-      creatureCount: 5,
-      neighborDistance: 80 * 1.2,
-      xOffset: col(1, 5),
-      wayPoints: wayPoints.zickZack(4)
-    }),
-
-    createEnemyWave({
-      type: 'enemy',
-      spawnTime: 450,
-      durationToReachNextWayPoint: 1300,
-      creatureCount: 5,
-      neighborDistance: 80 * 1.2,
-      xOffset: col(2, 5),
-      wayPoints: wayPoints.zickZack(4)
-    }),
-
-    createEnemyWave({
-      type: 'enemy',
-      spawnTime: 450,
-      durationToReachNextWayPoint: 1300,
-      creatureCount: 5,
-      neighborDistance: 80 * 1.2,
-      xOffset: col(3, 5),
-      wayPoints: wayPoints.zickZack(4)
-    }),
-
-    createEnemyWave({
-      type: 'enemy',
-      spawnTime: 4450,
-      durationToReachNextWayPoint: 900,
-      creatureCount: 10,
-      neighborDistance: 80 * 1.2,
-      xOffset: 0,
-      wayPoints: wayPoints.straight(6)
-    }),
-    createEnemyWave({
-      type: 'enemy',
-      spawnTime: 350,
-      durationToReachNextWayPoint: 900,
-      creatureCount: 10,
-      neighborDistance: 80 * 1.2,
-      xOffset: 80,
-      wayPoints: wayPoints.straight(6)
-    }),
-    createEnemyWave({
-      type: 'enemy',
-      spawnTime: 350,
-      durationToReachNextWayPoint: 900,
-      creatureCount: 10,
-      neighborDistance: 80 * 1.2,
-      xOffset: 0,
-      wayPoints: wayPoints.straight(6)
-    }),
-    createEnemyWave({
-      type: 'enemy',
-      spawnTime: 350,
-      durationToReachNextWayPoint: 900,
-      creatureCount: 10,
-      neighborDistance: 80 * 1.2,
-      xOffset: 80,
-      wayPoints: wayPoints.straight(6)
-    }),
-
-    createEnemyWave({
-      type: 'enemy',
-      spawnTime: 1800,
-      durationToReachNextWayPoint: 2300,
-      creatureCount: 4,
-      neighborDistance: 180 * 1.2,
-      xOffset: col(2, 5),
-      wayPoints: wayPoints.straight(12)
-    }),
-
-    createEnemyWave({
-      type: 'enemy',
-      spawnTime: 2200,
+      spawnTime: 1,
       durationToReachNextWayPoint: 800,
-      creatureCount: 5,
+      creatureCount: 3,
+      neighborDistance: 80 * 3.2,
+      xOffset: col(2, 5),
+      wayPoints: wayPoints.straight(4)
+    }),
+
+    createEnemyWave({
+      type: 'enemy',
+      spawnTime: 1000,
+      durationToReachNextWayPoint: 1000,
+      creatureCount: 4,
       neighborDistance: 80 * 1.2,
       xOffset: col(3, 5),
       wayPoints: wayPoints.zickZack(4)
@@ -159,11 +93,31 @@ module.exports = config({
 
     createEnemyWave({
       type: 'enemy',
-      spawnTime: 1600,
-      durationToReachNextWayPoint: 1400,
-      creatureCount: 8,
-      neighborDistance: 80 * 1.2,
+      spawnTime: 1500,
+      durationToReachNextWayPoint: 800,
+      creatureCount: 3,
+      neighborDistance: 60,
       xOffset: col(2, 5),
+      wayPoints: wayPoints.straight(4)
+    }),
+
+    createEnemyWave({
+      type: 'enemy',
+      spawnTime: 2000,
+      durationToReachNextWayPoint: 800,
+      creatureCount: 3,
+      neighborDistance: 60,
+      xOffset: col(4, 5),
+      wayPoints: wayPoints.straight(4)
+    }),
+
+    createEnemyWave({
+      type: 'enemy',
+      spawnTime: 2050,
+      durationToReachNextWayPoint: 800,
+      creatureCount: 3,
+      neighborDistance: 80,
+      xOffset: col(4, 5),
       wayPoints: wayPoints.straight(4)
     })
   ]

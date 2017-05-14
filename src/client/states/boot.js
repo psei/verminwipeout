@@ -6,7 +6,7 @@ var configs = [
   require('../objects/player.conf'),
   require('../objects/debris1.conf'),
   require('../objects/debris2.conf'),
-  require('../objects/enemy.conf'),
+  require('../objects/cutterfly.conf'),
   require('../level1.conf.js'),
   require('../objects/weapon1.conf.js'),
   require('../objects/weapon2.conf.js'),

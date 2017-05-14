@@ -1,9 +1,12 @@
 'use strict';
 
-var config = require('./enemy.conf');
+var configsByType = {
+  cutterfly: require('./cutterfly.conf')
+};
+
 var Weapon = require('./weapon');
 
-function Enemy(game, spawnInfo) {
+function Enemy(game, config, spawnInfo) {
   var flySpriteConfig = config.sprites.enemy;
 
   var enemy = game.add.sprite(spawnInfo.x[0], spawnInfo.y[0], flySpriteConfig.animationName);
@@ -85,7 +88,7 @@ function Enemy(game, spawnInfo) {
 }
 
 module.exports = {
-  create: function (game, pos) {
-    return new Enemy(game, pos);
+  create: function (game, type, pos) {
+    return new Enemy(game, configsByType[type], pos);
   }
 };

@@ -70,9 +70,9 @@ module.exports = config({
   debrisSpawnRatio: 500,
 
   waves: [
-    
+
     createEnemyWave({
-      type: 'enemy',
+      type: 'cutterfly',
       spawnTime: 1,
       durationToReachNextWayPoint: 800,
       creatureCount: 3,
@@ -82,7 +82,7 @@ module.exports = config({
     }),
 
     createEnemyWave({
-      type: 'enemy',
+      type: 'cutterfly',
       spawnTime: 1000,
       durationToReachNextWayPoint: 1000,
       creatureCount: 4,
@@ -92,7 +92,7 @@ module.exports = config({
     }),
 
     createEnemyWave({
-      type: 'enemy',
+      type: 'cutterfly',
       spawnTime: 1500,
       durationToReachNextWayPoint: 800,
       creatureCount: 3,
@@ -102,7 +102,7 @@ module.exports = config({
     }),
 
     createEnemyWave({
-      type: 'enemy',
+      type: 'cutterfly',
       spawnTime: 2000,
       durationToReachNextWayPoint: 800,
       creatureCount: 3,
@@ -112,7 +112,7 @@ module.exports = config({
     }),
 
     createEnemyWave({
-      type: 'enemy',
+      type: 'cutterfly',
       spawnTime: 2050,
       durationToReachNextWayPoint: 800,
       creatureCount: 3,

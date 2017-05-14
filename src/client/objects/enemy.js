@@ -1,14 +1,15 @@
 'use strict';
 
 var configsByType = {
-  cutterfly: require('./cutterfly.conf')
+  cutterfly: require('./cutterfly.conf'),
+  jizzler: require('./jizzler.conf')
 };
 
 var Weapon = require('./weapon');
 
 function Enemy(game, config, spawnInfo) {
   var flySpriteConfig = config.sprites.enemy;
-
+  var isCurrentlyFiring = false;
   var enemy = game.add.sprite(spawnInfo.x[0], spawnInfo.y[0], flySpriteConfig.animationName);
   game.physics.enable(enemy, window.Phaser.Physics.ARCADE);
   enemy.anchor.setTo(0.5, 0.5);
@@ -41,7 +42,7 @@ function Enemy(game, config, spawnInfo) {
 
   enemy.update = function () {
     if (enemy.alive) {
-      if (game.random.rollForChancePerSecond(config.chanceToShootPerSecondInPercent)) {
+      if (!isCurrentlyFiring && game.random.rollForChancePerSecond(config.chanceToShootPerSecondInPercent)) {
         enemy.attack();
       }
       move();
@@ -57,9 +58,11 @@ function Enemy(game, config, spawnInfo) {
   enemy.attack = function () {
     attackSprite.frame = 1;
     attackSprite.visible = true;
+    isCurrentlyFiring = true;
     enemy.animations.play(attackConfig.animationName, attackConfig.frameRate);
     enemy.animations.currentAnim.onComplete.add(function () {
       attackSprite.visible = false;
+      isCurrentlyFiring = false;
       enemy.weapon.fire();
       enemy.frame = 1;
       enemy.animations.play(flySpriteConfig.animationName, flySpriteConfig.frameRate, true);

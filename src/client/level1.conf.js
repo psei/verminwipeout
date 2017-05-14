@@ -72,6 +72,16 @@ module.exports = config({
   waves: [
 
     createEnemyWave({
+      type: 'jizzler',
+      spawnTime: 1,
+      durationToReachNextWayPoint: 4400,
+      creatureCount: 4,
+      neighborDistance: 100 * 3.2,
+      xOffset: col(1, 5),
+      wayPoints: wayPoints.zickZack(4)
+    }),
+
+    createEnemyWave({
       type: 'cutterfly',
       spawnTime: 1,
       durationToReachNextWayPoint: 800,

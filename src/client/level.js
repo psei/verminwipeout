@@ -6,7 +6,8 @@ var Enemy = require('./objects/enemy');
 function createEnemiesFromWave(game, wave) {
   return wave.objects.map(function (waveObj) {
     var ClassNames = {
-      'cutterfly': Enemy
+      'cutterfly': Enemy,
+      'jizzler': Enemy
     };
     return ClassNames[wave.type].create(game, wave.type, waveObj);
   });

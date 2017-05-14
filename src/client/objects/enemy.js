@@ -66,7 +66,7 @@ function Enemy(game, config, spawnInfo) {
       enemy.weapon.fire();
       enemy.frame = 1;
       enemy.animations.play(flySpriteConfig.animationName, flySpriteConfig.frameRate, true);
-    });
+    }, this);
   };
 
   function playDeathAnimation() {
@@ -82,7 +82,7 @@ function Enemy(game, config, spawnInfo) {
     attackSprite.destroy();
     enemy.animations.currentAnim.onComplete.add(function () {
       enemy.destroy();
-    });
+    }, this);
   }
 
   enemy.events.onKilled.add(playDeathAnimation);

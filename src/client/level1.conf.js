@@ -8,10 +8,10 @@ function yWayPoints(count) {
   return function (startPosition) {
     return times(count, function (i) {
       if (i === 0) {
-        return -80;
+        return -500 + startPosition.y;
       }
       if (i === count-1) {
-        return gameConfig.height + 80;
+        return gameConfig.height + 500 + startPosition.y;
       }
       return startPosition.y + row(i, count-2);
     });

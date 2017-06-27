@@ -42,6 +42,17 @@ var wayPoints = {
 };
 
 var formations = {
+  v: function (xOffset, xDistance, yDistance) {
+    return function (count) {
+      var centerIndex = Math.floor(count / 2);
+      return times(count, function (i) {
+        return {
+          x: xOffset + i * xDistance,
+          y: -Math.abs(centerIndex - i) * yDistance
+        };
+      });
+    }
+  },
   horizontal: function (xOffset, xDistance) {
     return function (count) {
       return times(count, function (i) {
@@ -119,8 +130,8 @@ module.exports = config({
       type: 'cutterfly',
       spawnTime: 1000,
       durationToReachNextWayPoint: 1000,
-      formation: formations.horizontal(col(3, 5), 80 * 1.2),
-      creatureCount: 4,
+      formation: formations.v(col(3, 5), 40, 120),
+      creatureCount: 7,
       wayPoints: wayPoints.zickZack(4)
     }),
 

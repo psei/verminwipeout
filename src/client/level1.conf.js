@@ -109,48 +109,12 @@ module.exports = config({
   waves: [
 
     createEnemyWave({
-      type: 'jizzler',
-      spawnTime: 1,
-      durationToReachNextWayPoint: 4400,
-      formation: formations.horizontal(col(1, 5), 100 * 3.2),
-      creatureCount: 3,
-      wayPoints: wayPoints.zickZack(4)
-    }),
-
-    createEnemyWave({
-      type: 'cutterfly',
-      spawnTime: 1,
-      durationToReachNextWayPoint: 800,
-      formation: formations.vertical(col(2, 5), 80 * 3.2),
-      creatureCount: 3,
-      wayPoints: wayPoints.straight(4)
-    }),
-
-    createEnemyWave({
-      type: 'cutterfly',
-      spawnTime: 1000,
-      durationToReachNextWayPoint: 1000,
-      formation: formations.v(col(3, 5), 40, 120),
-      creatureCount: 7,
-      wayPoints: wayPoints.zickZack(4)
-    }),
-
-    createEnemyWave({
-      type: 'cutterfly',
-      spawnTime: 1500,
-      durationToReachNextWayPoint: 800,
-      formation: formations.horizontal(col(2, 5), 60),
-      creatureCount: 3,
-      wayPoints: wayPoints.straight(4)
-    }),
-
-    createEnemyWave({
       type: 'cutterfly',
       spawnTime: 2000,
       durationToReachNextWayPoint: 800,
-      formation: formations.horizontal(col(4, 5), 60),
+      formation: formations.horizontal(100, 60),
       creatureCount: 3,
-      wayPoints: wayPoints.straight(4)
+      wayPoints: wayPoints.straight(22)
     }),
 
     createEnemyWave({

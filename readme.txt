@@ -25,3 +25,8 @@ VERMIN WIPEOUT COLLABORATION
 3. git commit -m "comment"
 
 4. git push
+
+
+Um eigene Änderungen zu verwerfen: git clean -f
+
+Um den neuesten Stuff zu holen: git stash

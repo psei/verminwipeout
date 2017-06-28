@@ -108,22 +108,76 @@ module.exports = config({
 
   waves: [
 
-    createEnemyWave({
-      type: 'cutterfly',
-      spawnTime: 2000,
-      durationToReachNextWayPoint: 800,
-      formation: formations.horizontal(100, 60),
-      creatureCount: 3,
-      wayPoints: wayPoints.straight(22)
-    }),
+      createEnemyWave({
+        type: 'cutterfly',
+        spawnTime: 500,
+        durationToReachNextWayPoint: 800,
+        formation: formations.vertical(50, 150),
+        creatureCount: 5,
+        wayPoints: wayPoints.straight(6)
+      }),
 
-    createEnemyWave({
-      type: 'cutterfly',
-      spawnTime: 2050,
-      durationToReachNextWayPoint: 800,
-      formation: formations.horizontal(col(4, 5), 80),
-      creatureCount: 3,
-      wayPoints: wayPoints.straight(4)
+      createEnemyWave({
+        type: 'cutterfly',
+        spawnTime: 501,
+        durationToReachNextWayPoint: 800,
+        formation: formations.vertical(200, 150),
+        creatureCount: 5,
+        wayPoints: wayPoints.straight(6)
+      }),
+
+      createEnemyWave({
+        type: 'cutterfly',
+        spawnTime: 1200,
+        durationToReachNextWayPoint: 800,
+        formation: formations.vertical(350, 150),
+        creatureCount: 3,
+        wayPoints: wayPoints.straight(6)
+      }),
+
+      createEnemyWave({
+        type: 'cutterfly',
+        spawnTime: 1400,
+        durationToReachNextWayPoint: 800,
+        formation: formations.vertical(500, 150),
+        creatureCount: 3,
+        wayPoints: wayPoints.straight(6)
+      }),
+
+      createEnemyWave({
+        type: 'cutterfly',
+        spawnTime: 1600,
+        durationToReachNextWayPoint: 800,
+        formation: formations.vertical(650, 150),
+        creatureCount: 3,
+        wayPoints: wayPoints.straight(6)
+      }),
+
+      createEnemyWave({
+        type: 'cutterfly',
+        spawnTime: 3000,
+        durationToReachNextWayPoint: 800,
+        formation: formations.horizontal(50, 50),
+        creatureCount: 8,
+        wayPoints: wayPoints.straight(6)
+      }),
+
+      createEnemyWave({
+        type: 'jizzler',
+        spawnTime: 3300,
+        durationToReachNextWayPoint: 800,
+        formation: formations.horizontal(50, 50),
+        creatureCount: 7,
+        wayPoints: wayPoints.straight(6)
+      }),
+
+      createEnemyWave({
+        type: 'jizzler',
+        spawnTime: 33000,
+        durationToReachNextWayPoint: 800,
+        formation: formations.vertical(650, 150),
+        creatureCount: 7,
+        wayPoints: wayPoints.straight(6)
     })
   ]
 });

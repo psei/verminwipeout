@@ -90,6 +90,7 @@ function Player(game) {
     backward: false,
     left: false
   };
+
   function moveLeft() {
     player.x -= config.speed;
     previousDirection.right = false;
@@ -173,6 +174,12 @@ function Player(game) {
     }
   }
 
+  function wipeStuff() {
+    if (wipeButton.isDown) {
+      player.wipeSplatter();
+    }
+  }
+
   function healthStuff() {
     if (player.health < 0 && player.alive) {
       var deathMessages = [
@@ -192,6 +199,7 @@ function Player(game) {
       ];
       var selectedMessage = Phaser.ArrayUtils.getRandomItem(deathMessages);
       game.add.tileSprite(0, game.world.height / 2, game.world.width, 111, selectedMessage);
+      player.update = () => {};
       player.kill();
     }
 
@@ -207,7 +215,10 @@ function Player(game) {
     move();
     fireWeapon();
     healthStuff();
+    wipeStuff();
   };
+
+  var splatterOnScreen = [];
 
   player.onEnemyHitsPlayer = function (enemy) {
     return function () {
@@ -218,8 +229,31 @@ function Player(game) {
       if (enemy.getHitPoints() > 0 && enemy.hasHitPlayerOnce !== true) {
         player.setHealth(player.health - enemy.getHitPoints());
         enemy.hasHitPlayerOnce = true;
+
+        // splatter
+        if (Math.abs(enemy.position.y - player.position.y) < enemy.height) {
+          const splatterImages = [
+            config.images.splatter1,
+            config.images.splatter2,
+            config.images.splatter3,
+            config.images.splatter4,
+            config.images.splatter5,
+          ];
+          const selectedImage = Phaser.ArrayUtils.getRandomItem(splatterImages);
+
+          splatterOnScreen.push(
+              game.add.tileSprite(0, 0, game.world.width, game.world.height, selectedImage)
+          );
+        }
       }
     };
+  };
+
+  player.wipeSplatter = function() {
+    splatterOnScreen.map((item) => item.destroy());
+    splatterOnScreen = [];
+    // wipe animation
+
   };
 
   player.switchWeapon = function (index) {
@@ -232,6 +266,7 @@ function Player(game) {
   var isPermanentFire = false;
   var cursors = game.input.keyboard.createCursorKeys();
   var fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  var wipeButton = game.input.keyboard.addKey(Phaser.Keyboard.V);
   addWeaponSwitchKeyBindings(game, player);
 
   return player;

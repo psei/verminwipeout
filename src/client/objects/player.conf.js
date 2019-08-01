@@ -23,6 +23,12 @@ module.exports = config({
     deathMessage11: 'images/titles/death-message-11.png',
     deathMessage12: 'images/titles/death-message-12.png',
     deathMessage13: 'images/titles/death-message-13.png',
+
+    splatter1: 'images/splatter/splatter-1.png',
+    splatter2: 'images/splatter/splatter-2.png',
+    splatter3: 'images/splatter/splatter-3.png',
+    splatter4: 'images/splatter/splatter-4.png',
+    splatter5: 'images/splatter/splatter-5.png',
   },
   sprites: {
     shield: {

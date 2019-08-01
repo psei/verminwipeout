@@ -54,6 +54,24 @@ module.exports = function (game) {
     game.paused = !game.paused;
   }
 
+  function resetCurrentLevel() {
+    if (!game.paused) {
+      return;
+    }
+
+    togglePause();
+
+    enemies.callAll('destroy');
+    enemies.removeAll(true, true);
+    level.destroy();
+    player.destroy();
+
+    level = Level.init(game, currentLevel);
+    player = Player.create(game);
+
+    game.time.physicsElapsedTotalMS = 0;
+  }
+
   return {
     create: function() {
       level = Level.init(game, currentLevel);
@@ -65,10 +83,10 @@ module.exports = function (game) {
       game.input.keyboard.addKey(Phaser.Keyboard.M).onDown.add(toggleSounds);
       game.input.keyboard.addKey(Phaser.Keyboard.F).onDown.add(toggleFullScreen);
       game.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(togglePause);
+      game.input.keyboard.addKey(Phaser.Keyboard.S).onDown.add(resetCurrentLevel, this);
 
       game.add.button(game.world.width - 55, 5, 'btn-mute', toggleSounds, this);
       game.add.button(5, 5, 'btn-pause', togglePause, this);
-
 
       game.time.physicsElapsedTotalMS = 0;
     },

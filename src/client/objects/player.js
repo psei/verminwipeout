@@ -25,7 +25,11 @@ function addWeaponSwitchKeyBindings(game, player) {
 }
 
 function Player(game) {
+  var ownedSprites = game.add.group();
+  var splatterOnScreen = game.add.group();
+
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
+  ownedSprites.add(player);
   player.hitArea = new Phaser.Polygon([
     new Phaser.Point(41, 90),
     new Phaser.Point(78, 65),
@@ -51,6 +55,7 @@ function Player(game) {
       game.world.height - config.healthPaddingY,
       config.images.healthAlert
   );
+  ownedSprites.add(healthAlert);
   healthAlert.visible = false;
 
   var healthBar = game.add.tileSprite(
@@ -60,8 +65,10 @@ function Player(game) {
       game.world.height - config.healthPaddingY,
       config.images.healthBar
   );
+  ownedSprites.add(healthBar);
 
   var shield = game.add.sprite(player.body.x, player.body.y, config.sprites.shield.animationName);
+  ownedSprites.add(shield);
   shield.anchor.setTo(0.5, 0.5);
   shield.animations.add(config.sprites.shield.animationName);
   shield.visible = false;
@@ -185,7 +192,7 @@ function Player(game) {
     if (isWiping) {
       wiper.angle += wiperAngleVelocity;
       if (wiperAngleVelocity === 2 && wiper.angle > -90) {
-        player.wipeSplatter();
+        splatterOnScreen.removeAll(true, true);
       }
       if (wiper.angle > 10) {
         wiperAngleVelocity = -2;
@@ -197,27 +204,37 @@ function Player(game) {
     }
   }
 
+  function emptyHealth() {
+    ownedSprites.removeAll(true, true);
+
+    var deathMessages = [
+      config.images.deathMessage1,
+      config.images.deathMessage2,
+      config.images.deathMessage3,
+      config.images.deathMessage4,
+      config.images.deathMessage5,
+      config.images.deathMessage6,
+      config.images.deathMessage7,
+      config.images.deathMessage8,
+      config.images.deathMessage9,
+      config.images.deathMessage10,
+      config.images.deathMessage11,
+      config.images.deathMessage12,
+      config.images.deathMessage13,
+    ];
+    var selectedMessage = Phaser.ArrayUtils.getRandomItem(deathMessages);
+    const gameOverScreen = game.add.tileSprite(-560, 0, 1920, 1080, config.images.gameOver);
+    ownedSprites.add(gameOverScreen);
+    const gameOverText = game.add.tileSprite(0, 0, game.world.width, 111, selectedMessage);
+    ownedSprites.add(gameOverText);
+    game.world.bringToTop(ownedSprites);
+
+    game.paused = true;
+  }
+
   function healthStuff() {
     if (player.health < 0 && player.alive) {
-      var deathMessages = [
-        config.images.deathMessage1,
-        config.images.deathMessage2,
-        config.images.deathMessage3,
-        config.images.deathMessage4,
-        config.images.deathMessage5,
-        config.images.deathMessage6,
-        config.images.deathMessage7,
-        config.images.deathMessage8,
-        config.images.deathMessage9,
-        config.images.deathMessage10,
-        config.images.deathMessage11,
-        config.images.deathMessage12,
-        config.images.deathMessage13,
-      ];
-      var selectedMessage = Phaser.ArrayUtils.getRandomItem(deathMessages);
-      game.add.tileSprite(0, game.world.height / 2, game.world.width, 111, selectedMessage);
-      player.update = () => {};
-      player.kill();
+      emptyHealth();
     }
 
     healthBar.y = config.healthPaddingY - (game.world.height - config.healthPaddingY) * (player.health - 100) / 100;
@@ -235,8 +252,12 @@ function Player(game) {
     wipeStuff();
   };
 
-  var splatterOnScreen = [];
+  player.destroy = function() {
+    ownedSprites.removeAll(true, true);
+  };
+
   var wiper = game.add.tileSprite(game.world.width / 2, game.world.height - 124, 800, 124, config.images.wiper);
+  ownedSprites.add(wiper);
 
   wiper.anchor.set(.5, .5);
   wiper.scale.x *= -1;
@@ -267,18 +288,12 @@ function Player(game) {
             config.images.splatter5,
           ];
           const selectedImage = Phaser.ArrayUtils.getRandomItem(splatterImages);
-
-          splatterOnScreen.push(
-              game.add.tileSprite(0, 0, game.world.width, game.world.height, selectedImage)
-          );
+          const splatter = game.add.tileSprite(0, 0, game.world.width, game.world.height, selectedImage);
+          splatterOnScreen.add(splatter);
+          ownedSprites.add(splatter);
         }
       }
     };
-  };
-
-  player.wipeSplatter = function() {
-    splatterOnScreen.map((item) => item.destroy());
-    splatterOnScreen = [];
   };
 
   player.switchWeapon = function (index) {

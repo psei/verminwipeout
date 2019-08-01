@@ -30,5 +30,5 @@ module.exports = config({
     }
   },
   chanceToShootPerSecondInPercent: 25,
-  hitPoints: 2,
+  hitPoints: 50,
 });

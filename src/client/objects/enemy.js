@@ -8,9 +8,11 @@ var configsByType = {
 var Weapon = require('./weapon');
 
 function Enemy(game, config, spawnInfo) {
+  var ownedSprites = game.add.group();
   var flySpriteConfig = config.sprites.enemy;
   var isCurrentlyFiring = false;
   var enemy = game.add.sprite(spawnInfo.x[0], spawnInfo.y[0], flySpriteConfig.animationName);
+  ownedSprites.add(enemy);
   game.physics.enable(enemy, window.Phaser.Physics.ARCADE);
   enemy.anchor.setTo(0.5, 0.5);
 
@@ -51,6 +53,7 @@ function Enemy(game, config, spawnInfo) {
 
   var attackConfig = config.sprites.attack;
   var attackSprite = game.add.sprite(enemy.body.x, enemy.body.y, attackConfig.animationName);
+  ownedSprites.add(attackSprite);
   attackSprite.anchor.setTo(0.5, 0.5);
   attackSprite.visible = false;
   enemy.animations.add(attackConfig.animationName);
@@ -73,9 +76,14 @@ function Enemy(game, config, spawnInfo) {
     }, this);
   };
 
+  enemy.destroy = function() {
+    ownedSprites.removeAll(true, true);
+  };
+
   function playDeathAnimation() {
     var deathConfig = config.sprites.death;
     var death = game.add.sprite(enemy.body.x, enemy.body.y, deathConfig.animationName);
+    ownedSprites.add(death);
     death.anchor.setTo(0.5, 0.5);
     death.animations.add(deathConfig.animationName);
     death.frame = 1;

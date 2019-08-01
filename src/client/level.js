@@ -20,7 +20,8 @@ var levelConfigs = [
 function Level(game, levelIndex) {
   var world = game.world;
 
-  this.config = levelConfigs[levelIndex];
+  // we need to copy the config for restarts with this Json trick
+  this.config = JSON.parse(JSON.stringify(levelConfigs[levelIndex]));
   this.waves = this.config.waves;
 
   this.healthBarBackground = game.add.tileSprite(
@@ -38,6 +39,12 @@ function Level(game, levelIndex) {
 
 Level.prototype.update = function () {
   this.background.tilePosition.y += this.config.backgroundSpeed;
+};
+
+Level.prototype.destroy = function () {
+  this.healthBarBackground.destroy();
+  this.background.destroy();
+  lastWaveSpawnTime = 0;
 };
 
 var lastWaveSpawnTime = 0;

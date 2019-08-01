@@ -10,6 +10,8 @@ module.exports = config({
     healthBar: 'images/interface/healthbar-static.png',
     healthAlert: 'images/interface/healthbar-alert.gif',
 
+    gameOver: 'images/interface/gameOver.jpg',
+
     deathMessage1: 'images/titles/death-message-1.png',
     deathMessage2: 'images/titles/death-message-2.png',
     deathMessage3: 'images/titles/death-message-3.png',

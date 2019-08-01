@@ -175,8 +175,25 @@ function Player(game) {
   }
 
   function wipeStuff() {
-    if (wipeButton.isDown) {
-      player.wipeSplatter();
+    if (wipeButton.isDown && !isWiping) {
+      wiper.angle = -180;
+      wiperAngleVelocity = 2;
+      wiper.visible = true;
+      isWiping = true;
+    }
+
+    if (isWiping) {
+      wiper.angle += wiperAngleVelocity;
+      if (wiperAngleVelocity === 2 && wiper.angle > -90) {
+        player.wipeSplatter();
+      }
+      if (wiper.angle > 10) {
+        wiperAngleVelocity = -2;
+      }
+      if (wiper.angle > 20) {
+        isWiping = false;
+        wiper.visible = false;
+      }
     }
   }
 
@@ -219,6 +236,16 @@ function Player(game) {
   };
 
   var splatterOnScreen = [];
+  var wiper = game.add.tileSprite(game.world.width / 2, game.world.height - 124, 800, 124, config.images.wiper);
+
+  wiper.anchor.set(.5, .5);
+  wiper.scale.x *= -1;
+
+  wiper.anchor.setTo(1.1, 1.1);
+
+  wiper.visible = false;
+  var isWiping = false;
+  var wiperAngleVelocity = 2;
 
   player.onEnemyHitsPlayer = function (enemy) {
     return function () {
@@ -252,8 +279,6 @@ function Player(game) {
   player.wipeSplatter = function() {
     splatterOnScreen.map((item) => item.destroy());
     splatterOnScreen = [];
-    // wipe animation
-
   };
 
   player.switchWeapon = function (index) {

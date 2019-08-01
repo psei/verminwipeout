@@ -57,6 +57,7 @@ module.exports = function (game) {
       game.load.image('btn-mute', 'images/interface/btn-mute.png');
       game.load.image('btn-pause', 'images/interface/btn-pause.png');
 
+      game.scale.fullScreenScaleMode = Phaser.ScaleManager.USER_SCALE;
       game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
       scaleGame(window.innerWidth, window.innerHeight);
       window.onresize = function (event) {

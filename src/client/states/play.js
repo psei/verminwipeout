@@ -63,7 +63,6 @@ module.exports = function (game) {
       playMusic();
       toggleSounds();
       game.input.keyboard.addKey(Phaser.Keyboard.M).onDown.add(toggleSounds);
-      game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
       game.input.keyboard.addKey(Phaser.Keyboard.F).onDown.add(toggleFullScreen);
       game.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(togglePause);
 

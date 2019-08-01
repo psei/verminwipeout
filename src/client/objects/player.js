@@ -26,6 +26,17 @@ function addWeaponSwitchKeyBindings(game, player) {
 
 function Player(game) {
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
+  player.hitArea = new Phaser.Polygon([
+    new Phaser.Point(41, 90),
+    new Phaser.Point(78, 65),
+    new Phaser.Point(78, 59),
+    new Phaser.Point(38, 15),
+    new Phaser.Point(28, 0),
+    new Phaser.Point(20, 35),
+    new Phaser.Point(0, 60),
+    new Phaser.Point(0, 65),
+  ]);
+
   game.physics.enable(player, window.Phaser.Physics.ARCADE);
   game.physics.arcade.setBounds(0, 0, game.world.width - config.interfaceWidth, game.world.height);
   player.anchor.setTo(0.5, 0.5);
@@ -33,7 +44,6 @@ function Player(game) {
 
   var lastHealthBlink = 0;
   player.health = 100;
-  player.isAlive = true;
   var healthAlert = game.add.tileSprite(
       game.world.width - 22,
       config.healthPaddingY,
@@ -80,50 +90,91 @@ function Player(game) {
     backward: false,
     left: false
   };
+  function moveLeft() {
+    player.x -= config.speed;
+    previousDirection.right = false;
+    if (!previousDirection.left) {
+      previousDirection.left = true;
+      player.loadTexture(config.images.shipLeft);
+    }
+  }
+
+  function moveRight() {
+    player.x += config.speed;
+    previousDirection.left = false;
+    if (!previousDirection.right) {
+      previousDirection.right = true;
+      player.loadTexture(config.images.shipRight);
+    }
+  }
+
+  function moveCenterX() {
+    player.loadTexture(config.images.ship);
+  }
+
+  function moveUp() {
+    player.y -= config.speed;
+    previousDirection.backward = false;
+    if (!previousDirection.forward) {
+      previousDirection.forward = true;
+    }
+  }
+
+  function moveDown() {
+    player.y += config.speed;
+    previousDirection.forward = false;
+    if (!previousDirection.backward) {
+      previousDirection.backward = true;
+    }
+  }
+
   function move() {
     if (cursors.left.isDown) {
-      player.x -= config.speed;
-      previousDirection.right = false;
-      if (!previousDirection.left) {
-        previousDirection.left = true;
-        player.loadTexture(config.images.shipLeft);
-      }
+      moveLeft();
     } else if (cursors.right.isDown) {
-      player.x += config.speed;
-      previousDirection.left = false;
-      if (!previousDirection.right) {
-        previousDirection.right = true;
-        player.loadTexture(config.images.shipRight);
-      }
+      moveRight();
     } else if (previousDirection.left || previousDirection.right) {
-      player.loadTexture(config.images.ship);
+      moveCenterX();
     }
 
     if (cursors.down.isDown) {
-      player.y += config.speed;
-      previousDirection.forward = false;
-      if (!previousDirection.backward) {
-        previousDirection.backward = true;
-      }
+      moveDown();
     } else if (cursors.up.isDown) {
-      player.y -= config.speed;
-      previousDirection.backward = false;
-      if (!previousDirection.forward) {
-        previousDirection.forward = true;
+      moveUp();
+    }
+
+    //touch
+    if (touchPointer1.isDown) {
+      isPermanentFire = true;
+
+      const touchX = touchPointer1.position.x;
+      const touchY = touchPointer1.position.y;
+
+      if (player.x > touchX) {
+        moveLeft();
+      } else {
+        moveRight();
+      }
+
+      if (player.y > touchY) {
+        moveUp();
+      } else {
+        moveDown();
       }
     }
+
     shield.x = player.x;
     shield.y = player.y;
   }
 
   function fireWeapon() {
-    if (fireButton.isDown) {
+    if (fireButton.isDown || isPermanentFire) {
       player.weapon.fire();
     }
   }
 
   function healthStuff() {
-    if (player.health < 0 && player.isAlive) {
+    if (player.health < 0 && player.alive) {
       var deathMessages = [
         config.images.deathMessage1,
         config.images.deathMessage2,
@@ -141,7 +192,6 @@ function Player(game) {
       ];
       var selectedMessage = Phaser.ArrayUtils.getRandomItem(deathMessages);
       game.add.tileSprite(0, game.world.height / 2, game.world.width, 111, selectedMessage);
-      player.isAlive = false;
       player.kill();
     }
 
@@ -178,6 +228,8 @@ function Player(game) {
     };
   };
 
+  var touchPointer1 = game.input.pointer1;
+  var isPermanentFire = false;
   var cursors = game.input.keyboard.createCursorKeys();
   var fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
   addWeaponSwitchKeyBindings(game, player);

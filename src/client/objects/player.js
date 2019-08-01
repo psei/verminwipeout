@@ -31,17 +31,29 @@ function Player(game) {
   player.anchor.setTo(0.5, 0.5);
   player.body.collideWorldBounds = true;
 
-  var cfg = config;
   var lastHealthBlink = 0;
   player.health = 100;
   player.isAlive = true;
-  var healthAlert = game.add.tileSprite(game.world.width - cfg.interfaceWidth + 10 + 1, cfg.healthYOffsetTop, 10, game.world.height, cfg.images.healthAlert)
+  var healthAlert = game.add.tileSprite(
+      game.world.width - 22,
+      config.healthPaddingY,
+      10,
+      game.world.height - config.healthPaddingY,
+      config.images.healthAlert
+  );
   healthAlert.visible = false;
-  var healthBar = game.add.tileSprite(game.world.width - cfg.interfaceWidth + 10 + 1, cfg.healthYOffsetTop, 10, game.world.height, cfg.images.healthBar);
 
-  var shield = game.add.sprite(player.body.x, player.body.y, cfg.sprites.shield.animationName);
+  var healthBar = game.add.tileSprite(
+      game.world.width - 22,
+      config.healthPaddingY,
+      10,
+      game.world.height - config.healthPaddingY,
+      config.images.healthBar
+  );
+
+  var shield = game.add.sprite(player.body.x, player.body.y, config.sprites.shield.animationName);
   shield.anchor.setTo(0.5, 0.5);
-  shield.animations.add(cfg.sprites.shield.animationName);
+  shield.animations.add(config.sprites.shield.animationName);
   shield.visible = false;
 
   function playShieldAnimation() {
@@ -74,14 +86,14 @@ function Player(game) {
       previousDirection.right = false;
       if (!previousDirection.left) {
         previousDirection.left = true;
-        player.loadTexture(config.images.shipLeft)
+        player.loadTexture(config.images.shipLeft);
       }
     } else if (cursors.right.isDown) {
       player.x += config.speed;
       previousDirection.left = false;
       if (!previousDirection.right) {
         previousDirection.right = true;
-        player.loadTexture(config.images.shipRight)
+        player.loadTexture(config.images.shipRight);
       }
     } else if (previousDirection.left || previousDirection.right) {
       player.loadTexture(config.images.ship);
@@ -133,7 +145,7 @@ function Player(game) {
       player.kill();
     }
 
-    healthBar.y = config.healthYOffsetTop - healthBar.height * (player.health - 100) / 100;
+    healthBar.y = config.healthPaddingY - (game.world.height - config.healthPaddingY) * (player.health - 100) / 100;
 
     if (player.health < 30 && game.time.physicsElapsedTotalMS - lastHealthBlink > 500) {
       healthAlert.visible = !healthAlert.visible;
@@ -153,8 +165,8 @@ function Player(game) {
       if (enemy.destroysItselfOnHit) {
         enemy.kill();
       }
-      if (enemy.hasHitPlayerOnce !== true) {
-        player.setHealth(player.health - 25);
+      if (enemy.getHitPoints() > 0 && enemy.hasHitPlayerOnce !== true) {
+        player.setHealth(player.health - enemy.getHitPoints());
         enemy.hasHitPlayerOnce = true;
       }
     };

@@ -11,6 +11,7 @@
     "postbuild:js": "node tasks/notify 'Vermin Wipeout is now ready to play'",
     "lint": "esw client/*.js",
     "watch:js": "onchange 'client/**/*.js' -v -- npm run build:js",
+    "watch:js-win": "onchange \"client/**/*.js\" -v -- npm run build:js",
     "watch:server": "nodemon --watch server server/index.js"
   },
   "author": "",

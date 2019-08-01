@@ -23,6 +23,10 @@ function Debris(game, pos) {
 
   debris.destroysItselfOnHit = true;
 
+  debris.getHitPoints = function() {
+    return 0;
+  };
+
   function move() {
     debris.y += speed;
   }

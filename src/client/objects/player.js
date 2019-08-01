@@ -86,14 +86,14 @@ function Player(game) {
       previousDirection.right = false;
       if (!previousDirection.left) {
         previousDirection.left = true;
-        player.loadTexture(config.images.shipLeft)
+        player.loadTexture(config.images.shipLeft);
       }
     } else if (cursors.right.isDown) {
       player.x += config.speed;
       previousDirection.left = false;
       if (!previousDirection.right) {
         previousDirection.right = true;
-        player.loadTexture(config.images.shipRight)
+        player.loadTexture(config.images.shipRight);
       }
     } else if (previousDirection.left || previousDirection.right) {
       player.loadTexture(config.images.ship);

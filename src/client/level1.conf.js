@@ -101,8 +101,6 @@ module.exports = config({
     background: '/images/backgrounds/background.jpg',
     healthBarBackground: '/images/interface/healthbar-background.png',
   },
-  backgroundWidth: 800,
-  backgroundHeight: 1997,
   backgroundSpeed: 2,
 
   healthBarWidth: 33,

@@ -15,6 +15,37 @@ var configs = [
 ];
 
 module.exports = function (game) {
+  function scaleGame(clientWidth, clientHeight) {
+    const originalWidth = 800; // keep in sync with game.conf.js width
+    const originalHeight = 1024; // keep in sync with game.conf.js height
+
+    const aspectRatio = originalWidth / originalHeight;
+
+    const widthA = clientWidth;
+    var heightA = clientWidth / aspectRatio;
+    heightA = heightA > clientHeight ? 0 : heightA;
+
+    var heightB = clientHeight;
+    const widthB = clientHeight * aspectRatio;
+    heightB = widthB > clientWidth ? 0 : heightB;
+
+    var newHeight;
+    var newWidth;
+
+    if (Math.max(heightA, heightB) > originalHeight || Math.max(heightA, heightB) === 0) {
+      newHeight = originalHeight;
+      newWidth = originalWidth;
+    } else if (heightA > heightB) {
+      newHeight = heightA;
+      newWidth = widthA;
+    } else {
+      newHeight = heightB;
+      newWidth = widthB;
+    }
+
+    game.scale.setUserScale(newWidth / game.width, newHeight / game.height);
+  }
+
   return {
     preload: function () {
       invokeMap(configs, 'loadMedia', game);
@@ -25,6 +56,12 @@ module.exports = function (game) {
 
       game.load.image('btn-mute', 'images/interface/btn-mute.png');
       game.load.image('btn-pause', 'images/interface/btn-pause.png');
+
+      game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
+      scaleGame(window.innerWidth, window.innerHeight);
+      window.onresize = function (event) {
+        scaleGame(event.target.innerWidth, event.target.innerHeight);
+      };
     },
     create: function () {
       game.stage.backgroundColor = '#F0F0F0';

@@ -23,7 +23,6 @@ module.exports = function (game) {
       game.load.audio('boss-intro', '/audio/music/boss-intro.wav');
       game.load.audio('boss-loop', '/audio/music/boss-loop.wav');
 
-      game.load.image('btn-fullscreen', 'images/interface/btn-fullscreen.png');
       game.load.image('btn-mute', 'images/interface/btn-mute.png');
       game.load.image('btn-pause', 'images/interface/btn-pause.png');
     },

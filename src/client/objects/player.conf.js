@@ -38,6 +38,6 @@ module.exports = config({
   height: 90,
   speed: 6,
 
-  interfaceWidth: 280, // keep in sync with level.conf
-  healthYOffsetTop: 57, // keep in sync with level.conf
+  healthPaddingX: 33,
+  healthPaddingY: 73, // keep in sync with level.conf (healthBgPaddingY + 16)
 });

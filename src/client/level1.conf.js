@@ -99,13 +99,14 @@ function createEnemyWave(config) {
 module.exports = config({
   images: {
     background: '/images/backgrounds/background.jpg',
-    interface: '/images/interface/interfaic-ingame-right.png',
+    healthBarBackground: '/images/interface/healthbar-background.png',
   },
   backgroundWidth: 800,
   backgroundHeight: 1997,
   backgroundSpeed: 2,
 
-  interfaceWidth: 280, // keep in sync with player.conf
+  healthBarWidth: 33,
+  healthBgPaddingY: 57, // keep in sync with player.conf: healthPaddingY
 
   debrisSpawnRatio: 500,
 

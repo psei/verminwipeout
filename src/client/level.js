@@ -23,8 +23,14 @@ function Level(game, levelIndex) {
   this.config = levelConfigs[levelIndex];
   this.waves = this.config.waves;
 
-  this.interface = game.add.tileSprite(world.width - this.config.interfaceWidth, 0, this.config.interfaceWidth, world.height, this.config.images.interface);
-  world.sendToBack(this.interface);
+  this.healthBarBackground = game.add.tileSprite(
+      world.width - this.config.healthBarWidth,
+      this.config.healthBgPaddingY,
+      this.config.healthBarWidth,
+      world.height - this.config.healthBgPaddingY,
+      this.config.images.healthBarBackground
+  );
+  world.sendToBack(this.healthBarBackground);
 
   this.background = game.add.tileSprite(0, 0, world.width, world.height, this.config.images.background);
   world.sendToBack(this.background);

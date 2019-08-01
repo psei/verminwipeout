@@ -29,5 +29,6 @@ module.exports = config({
       frameRate: 3
     }
   },
-  chanceToShootPerSecondInPercent: 25
+  chanceToShootPerSecondInPercent: 25,
+  hitPoints: 25,
 });

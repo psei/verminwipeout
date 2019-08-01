@@ -98,11 +98,14 @@ function createEnemyWave(config) {
 
 module.exports = config({
   images: {
-    background: '/images/backgrounds/background.jpg'
+    background: '/images/backgrounds/background.jpg',
+    interface: '/images/interface/interfaic-ingame-right.png',
   },
   backgroundWidth: 800,
   backgroundHeight: 1997,
   backgroundSpeed: 2,
+
+  interfaceWidth: 280, // keep in sync with player.conf
 
   debrisSpawnRatio: 500,
 

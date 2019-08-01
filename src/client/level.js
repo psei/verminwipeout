@@ -22,7 +22,12 @@ function Level(game, levelIndex) {
 
   this.config = levelConfigs[levelIndex];
   this.waves = this.config.waves;
+
+  this.interface = game.add.tileSprite(world.width - this.config.interfaceWidth, 0, this.config.interfaceWidth, world.height, this.config.images.interface);
+  world.sendToBack(this.interface);
+
   this.background = game.add.tileSprite(0, 0, world.width, world.height, this.config.images.background);
+  world.sendToBack(this.background);
 }
 
 Level.prototype.update = function () {

@@ -95,6 +95,17 @@ function createEnemyWave(config) {
   return wave;
 }
 
+function createStation(config) {
+  var wave = {};
+  wave.type = config.type;
+  wave.spawnTime = config.spawnTime;
+  wave.objects = [{
+    type: config.type
+  }];
+
+  return wave;
+}
+
 
 module.exports = config({
   images: {
@@ -110,9 +121,14 @@ module.exports = config({
 
   waves: [
 
+      createStation({
+        type: 'station1',
+        spawnTime: 0,
+      }),
+
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 500,
+        spawnTime: 3500,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(50, 150),
         creatureCount: 5,
@@ -121,7 +137,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 501,
+        spawnTime: 3501,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(200, 150),
         creatureCount: 5,
@@ -130,7 +146,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 1200,
+        spawnTime: 4200,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(350, 150),
         creatureCount: 3,
@@ -139,7 +155,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 1400,
+        spawnTime: 4400,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(500, 150),
         creatureCount: 3,
@@ -148,7 +164,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 1600,
+        spawnTime: 4600,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(650, 150),
         creatureCount: 3,
@@ -157,7 +173,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 3000,
+        spawnTime: 6000,
         durationToReachNextWayPoint: 800,
         formation: formations.horizontal(50, 50),
         creatureCount: 8,
@@ -166,7 +182,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'jizzler',
-        spawnTime: 3300,
+        spawnTime: 6300,
         durationToReachNextWayPoint: 800,
         formation: formations.horizontal(50, 50),
         creatureCount: 7,
@@ -175,7 +191,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'jizzler',
-        spawnTime: 33000,
+        spawnTime: 36000,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(650, 150),
         creatureCount: 7,

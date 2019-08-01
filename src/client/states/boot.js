@@ -11,7 +11,8 @@ var configs = [
   require('../level1.conf.js'),
   require('../objects/weapon1.conf.js'),
   require('../objects/weapon2.conf.js'),
-  require('../objects/weapon3.conf.js')
+  require('../objects/weapon3.conf.js'),
+  require('../objects/station1.conf'),
 ];
 
 module.exports = function (game) {

@@ -74,9 +74,10 @@ module.exports = function (game) {
 
   return {
     create: function() {
-      level = Level.init(game, currentLevel);
       player = Player.create(game);
       enemies = game.add.group();
+      game.world.sendToBack(enemies);
+      level = Level.init(game, currentLevel);
 
       playMusic();
       toggleSounds();

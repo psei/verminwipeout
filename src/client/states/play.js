@@ -42,6 +42,18 @@ module.exports = function (game) {
     });
   }
 
+  function toggleFullScreen() {
+    if (game.scale.isFullScreen) {
+      game.scale.stopFullScreen();
+    } else {
+      game.scale.startFullScreen();
+    }
+  }
+
+  function togglePause() {
+    game.paused = !game.paused;
+  }
+
   return {
     create: function() {
       level = Level.init(game, currentLevel);
@@ -49,8 +61,14 @@ module.exports = function (game) {
       enemies = game.add.group();
 
       playMusic();
-      game.input.keyboard.addKey(Phaser.Keyboard.M)
-        .onDown.add(toggleSounds);
+      game.input.keyboard.addKey(Phaser.Keyboard.M).onDown.add(toggleSounds);
+      game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+      game.input.keyboard.addKey(Phaser.Keyboard.F).onDown.add(toggleFullScreen);
+      game.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(togglePause);
+      game.add.button(game.world.width - 249, 7, 'btn-mute', toggleSounds, this);
+      game.add.button(game.world.width - 187, 7, 'btn-pause', togglePause, this);
+      game.add.button(game.world.width - 122, 7, 'btn-fullscreen', toggleFullScreen, this);
+
 
       game.time.physicsElapsedTotalMS = 0;
     },

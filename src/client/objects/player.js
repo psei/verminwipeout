@@ -27,12 +27,21 @@ function addWeaponSwitchKeyBindings(game, player) {
 function Player(game) {
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
   game.physics.enable(player, window.Phaser.Physics.ARCADE);
+  game.physics.arcade.setBounds(0, 0, game.world.width - config.interfaceWidth, game.world.height);
   player.anchor.setTo(0.5, 0.5);
   player.body.collideWorldBounds = true;
 
-  var shield = game.add.sprite(player.body.x, player.body.y, config.sprites.shield.animationName);
+  var cfg = config;
+  var lastHealthBlink = 0;
+  player.health = 100;
+  player.isAlive = true;
+  var healthAlert = game.add.tileSprite(game.world.width - cfg.interfaceWidth + 10 + 1, cfg.healthYOffsetTop, 10, game.world.height, cfg.images.healthAlert)
+  healthAlert.visible = false;
+  var healthBar = game.add.tileSprite(game.world.width - cfg.interfaceWidth + 10 + 1, cfg.healthYOffsetTop, 10, game.world.height, cfg.images.healthBar);
+
+  var shield = game.add.sprite(player.body.x, player.body.y, cfg.sprites.shield.animationName);
   shield.anchor.setTo(0.5, 0.5);
-  shield.animations.add(config.sprites.shield.animationName);
+  shield.animations.add(cfg.sprites.shield.animationName);
   shield.visible = false;
 
   function playShieldAnimation() {
@@ -101,9 +110,41 @@ function Player(game) {
     }
   }
 
+  function healthStuff() {
+    if (player.health < 0 && player.isAlive) {
+      var deathMessages = [
+        config.images.deathMessage1,
+        config.images.deathMessage2,
+        config.images.deathMessage3,
+        config.images.deathMessage4,
+        config.images.deathMessage5,
+        config.images.deathMessage6,
+        config.images.deathMessage7,
+        config.images.deathMessage8,
+        config.images.deathMessage9,
+        config.images.deathMessage10,
+        config.images.deathMessage11,
+        config.images.deathMessage12,
+        config.images.deathMessage13,
+      ];
+      var selectedMessage = Phaser.ArrayUtils.getRandomItem(deathMessages);
+      game.add.tileSprite(0, game.world.height / 2, game.world.width, 111, selectedMessage);
+      player.isAlive = false;
+      player.kill();
+    }
+
+    healthBar.y = config.healthYOffsetTop - healthBar.height * (player.health - 100) / 100;
+
+    if (player.health < 30 && game.time.physicsElapsedTotalMS - lastHealthBlink > 500) {
+      healthAlert.visible = !healthAlert.visible;
+      lastHealthBlink = game.time.physicsElapsedTotalMS;
+    }
+  }
+
   player.update = function () {
     move();
     fireWeapon();
+    healthStuff();
   };
 
   player.onEnemyHitsPlayer = function (enemy) {
@@ -111,6 +152,10 @@ function Player(game) {
       playShieldAnimation();
       if (enemy.destroysItselfOnHit) {
         enemy.kill();
+      }
+      if (enemy.hasHitPlayerOnce !== true) {
+        player.setHealth(player.health - 25);
+        enemy.hasHitPlayerOnce = true;
       }
     };
   };

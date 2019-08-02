@@ -90,6 +90,7 @@ function Player(game) {
     }
     player.currentWeaponConfig = weaponConfig;
     player.weapon = Weapon.create(game, player, weaponConfig);
+    player.weapon.onKill.add(handleFiredBulletKilled);
   }
   setWeapon(weaponConfigs[0]);
 
@@ -100,6 +101,16 @@ function Player(game) {
     left: false,
     forwardFrame: 1,
   };
+
+  function handleFiredBulletKilled(event) {
+    if (event.position.y < 0) {
+      return; // no hit, just out of world
+    }
+
+    if (Math.abs(event.position.y - player.y) < 350) {
+      addSplatter();
+    }
+  }
 
   function thrustAnimation(sprite, anchorX, anchorY) {
     ownedSprites.remove(shipThrust);
@@ -273,6 +284,49 @@ function Player(game) {
     }
   }
 
+  function addSplatter() {
+    const splatterImages = [
+      config.images.splatter1,
+      config.images.splatter2,
+      config.images.splatter3,
+      config.images.splatter4,
+      config.images.splatter5,
+      config.images.splatter6,
+      config.images.splatter7,
+      config.images.splatter8,
+      config.images.splatter9,
+      config.images.splatter10,
+      config.images.splatter11,
+      config.images.splatter12,
+      config.images.splatter13,
+      config.images.splatter14,
+      config.images.splatter15,
+      config.images.splatter16,
+      config.images.splatter17,
+      config.images.splatter18,
+      config.images.splatter19,
+      config.images.splatter20,
+      config.images.splatter21,
+      config.images.splatter22,
+      config.images.splatter23,
+      config.images.splatter24,
+      config.images.splatter25,
+      config.images.splatter26,
+      config.images.splatter27,
+      config.images.splatter28,
+      config.images.splatter29,
+      config.images.splatter30,
+      config.images.splatter31,
+      config.images.splatter32,
+      config.images.splatter33,
+      config.images.splatter34,
+      config.images.splatter35,
+    ];
+    const selectedImage = Phaser.ArrayUtils.getRandomItem(splatterImages);
+    const splatter = game.add.tileSprite(0, 0, game.world.width, game.world.height, selectedImage);
+    splatterOnScreen.add(splatter);
+  }
+
   function emptyHealth() {
     ownedSprites.removeAll(true, true);
     splatterOnScreen.removeAll(true, true);
@@ -349,48 +403,8 @@ function Player(game) {
         player.setHealth(player.health - enemy.getHitPoints());
         enemy.hasHitPlayerOnce = true;
 
-        // splatter
         if (Math.abs(enemy.position.y - player.position.y) < enemy.height) {
-          const splatterImages = [
-            config.images.splatter1,
-            config.images.splatter2,
-            config.images.splatter3,
-            config.images.splatter4,
-            config.images.splatter5,
-            config.images.splatter6,
-            config.images.splatter7,
-            config.images.splatter8,
-            config.images.splatter9,
-            config.images.splatter10,
-            config.images.splatter11,
-            config.images.splatter12,
-            config.images.splatter13,
-            config.images.splatter14,
-            config.images.splatter15,
-            config.images.splatter16,
-            config.images.splatter17,
-            config.images.splatter18,
-            config.images.splatter19,
-            config.images.splatter20,
-            config.images.splatter21,
-            config.images.splatter22,
-            config.images.splatter23,
-            config.images.splatter24,
-            config.images.splatter25,
-            config.images.splatter26,
-            config.images.splatter27,
-            config.images.splatter28,
-            config.images.splatter29,
-            config.images.splatter30,
-            config.images.splatter31,
-            config.images.splatter32,
-            config.images.splatter33,
-            config.images.splatter34,
-            config.images.splatter35,
-          ];
-          const selectedImage = Phaser.ArrayUtils.getRandomItem(splatterImages);
-          const splatter = game.add.tileSprite(0, 0, game.world.width, game.world.height, selectedImage);
-          splatterOnScreen.add(splatter);
+          addSplatter();
         }
       }
     };

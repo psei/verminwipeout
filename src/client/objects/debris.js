@@ -23,7 +23,7 @@ function Debris(game, pos) {
 
   debris.destroysItselfOnHit = true;
 
-  debris.getHitPoints = function() {
+  debris.getCausedDamagePoints = function() {
     return 0;
   };
 

@@ -30,7 +30,7 @@ function Player(game) {
 
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
   ownedSprites.add(player);
-  var shipThrust = game.add.sprite(0,0, config.sprites.shipThrustLeftLow.animationName);
+  var shipThrust = game.add.sprite(0, 0, config.sprites.shipThrustLeftLow.animationName);
   ownedSprites.add(shipThrust);
   player.hitArea = new Phaser.Polygon([
     new Phaser.Point(41, 90),
@@ -399,8 +399,8 @@ function Player(game) {
       if (enemy.destroysItselfOnHit) {
         enemy.kill();
       }
-      if (enemy.getHitPoints() > 0 && enemy.hasHitPlayerOnce !== true) {
-        player.setHealth(player.health - enemy.getHitPoints());
+      if (enemy.getCausedDamagePoints() > 0 && enemy.hasHitPlayerOnce !== true) {
+        player.setHealth(player.health - enemy.getCausedDamagePoints());
         enemy.hasHitPlayerOnce = true;
 
         if (Math.abs(enemy.position.y - player.position.y) < enemy.height) {

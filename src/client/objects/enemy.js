@@ -58,8 +58,8 @@ function Enemy(game, config, spawnInfo) {
   attackSprite.visible = false;
   enemy.animations.add(attackConfig.animationName);
 
-  enemy.getHitPoints = function() {
-    return config.hitPoints;
+  enemy.getCausedDamagePoints = function() {
+    return config.causesDamagePoints;
   };
 
   enemy.attack = function () {

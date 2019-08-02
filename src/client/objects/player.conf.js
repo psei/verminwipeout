@@ -62,7 +62,8 @@ module.exports = config({
     splatter34: 'images/splatter/splatter-34.png',
     splatter35: 'images/splatter/splatter-35.png',
 
-    wiper: 'images/interface/wiper-2.png',
+    wiperClean: 'images/interface/wiper-1.png',
+    wiperDirty: 'images/interface/wiper-2.png',
   },
   sprites: {
     shield: {

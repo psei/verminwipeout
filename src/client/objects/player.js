@@ -253,6 +253,11 @@ function Player(game) {
       wiper.angle = -180;
       wiperAngleVelocity = 2;
       wiper.visible = true;
+      if (splatterOnScreen.countLiving() > 0) {
+        wiper.loadTexture(config.images.wiperDirty);
+      } else {
+        wiper.loadTexture(config.images.wiperClean);
+      }
       isWiping = true;
     }
 
@@ -325,7 +330,7 @@ function Player(game) {
     splatterOnScreen.removeAll(true, true);
   };
 
-  var wiper = game.add.tileSprite(game.world.width / 2, game.world.height - 124, 800, 124, config.images.wiper);
+  var wiper = game.add.tileSprite(game.world.width / 2, game.world.height - 124, 800, 124, config.images.wiperClean);
   ownedSprites.add(wiper);
 
   wiper.anchor.set(.5, .5);

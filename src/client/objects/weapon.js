@@ -29,6 +29,7 @@ function Weapon(game, player, config) {
   weapon.trackSprite(player, 0, 0, false);
   if (config.sound) {
     var fireSound = game.add.audio(config.sound);
+    fireSound.volume = 0.4;
     weapon.onFire.add(function () {
       fireSound.play();
     });

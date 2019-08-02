@@ -33,7 +33,7 @@ module.exports = function (game) {
     var newHeight;
     var newWidth;
 
-    if (Math.max(heightA, heightB) > originalHeight || Math.max(heightA, heightB) === 0) {
+    if (Math.max(heightA, heightB) === 0) {
       newHeight = originalHeight;
       newWidth = originalWidth;
     } else if (heightA > heightB) {

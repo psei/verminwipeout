@@ -97,7 +97,7 @@ function Enemy(game, config, spawnInfo) {
     }, this);
   }
 
-  enemy.events.onKilled.add(playDeathAnimation);
+  enemy.events.onKilled.add(playDeathAnimation, this);
 
   enemy.animations.play(flySpriteConfig.animationName, flySpriteConfig.frameRate, true);
   return enemy;

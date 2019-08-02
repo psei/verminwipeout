@@ -259,17 +259,25 @@ function Player(game) {
     }
   }
 
+  function startWipe() {
+    if (isWiping) {
+      return;
+    }
+
+    wiper.angle = -180;
+    wiperAngleVelocity = 2;
+    wiper.visible = true;
+    if (splatterOnScreen.countLiving() > 0) {
+      wiper.loadTexture(config.images.wiperDirty);
+    } else {
+      wiper.loadTexture(config.images.wiperClean);
+    }
+    isWiping = true;
+  }
+
   function wipeStuff() {
-    if (wipeButton.isDown && !isWiping) {
-      wiper.angle = -180;
-      wiperAngleVelocity = 2;
-      wiper.visible = true;
-      if (splatterOnScreen.countLiving() > 0) {
-        wiper.loadTexture(config.images.wiperDirty);
-      } else {
-        wiper.loadTexture(config.images.wiperClean);
-      }
-      isWiping = true;
+    if (wipeButton.isDown) {
+      startWipe();
     }
 
     if (isWiping) {
@@ -418,11 +426,29 @@ function Player(game) {
     };
   };
 
-  var touchPointer1 = game.input.pointer1;
+  const touchPointer1 = game.input.pointer1;
   var isPermanentFire = false;
-  var cursors = game.input.keyboard.createCursorKeys();
-  var fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-  var wipeButton = game.input.keyboard.addKey(Phaser.Keyboard.V);
+  const cursors = game.input.keyboard.createCursorKeys();
+  const fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  const wipeButton = game.input.keyboard.addKey(Phaser.Keyboard.V);
+
+  /* poor mans swipe detection start */
+  var touchStartX = 0;
+  var touchStartTime = 0;
+  game.input.touch.touchStartCallback = function(event) {
+    touchStartX = event.changedTouches[0].pageX;
+    touchStartTime = event.timeStamp;
+  };
+  game.input.touch.touchEndCallback = function(event) {
+    const deltaX = event.changedTouches[0].pageX - touchStartX;
+    const deltaTime = event.timeStamp - touchStartTime;
+
+    if (deltaTime < 400 && deltaX > 200) {
+      startWipe();
+    }
+  };
+  /* poor mans swipe detection end */
+
   addWeaponSwitchKeyBindings(game, player);
 
   return player;

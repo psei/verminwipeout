@@ -388,7 +388,6 @@ function Player(game) {
   var wiper = game.add.tileSprite(game.world.width / 2, game.world.height + 275, 883, 203, config.images.wiperClean);
   ownedSprites.add(wiper);
 
-  game.load.audio('wiper', '/audio/fx/wiper.mp3');
   var wiperSound = game.add.audio('wiper');
   wiperSound.volume = 3;
 

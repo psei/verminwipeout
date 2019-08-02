@@ -54,6 +54,7 @@ module.exports = function (game) {
       game.load.audio('music-1-loop', '/audio/music/music-1-loop.wav');
       game.load.audio('boss-intro', '/audio/music/boss-intro.wav');
       game.load.audio('boss-loop', '/audio/music/boss-loop.wav');
+      game.load.audio('wiper', '/audio/fx/wiper.mp3');
 
       game.load.image('btn-mute', 'images/interface/btn-mute.png');
       game.load.image('btn-pause', 'images/interface/btn-pause.png');

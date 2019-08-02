@@ -108,6 +108,10 @@ function Player(game) {
   };
 
   function thrustAnimation(sprite, anchorX, anchorY) {
+    if (!player.alive) {
+      return;
+    }
+
     ownedSprites.remove(shipThrust);
     shipThrust.destroy(true);
     shipThrust = game.add.sprite(0, 0, sprite.animationName);
@@ -249,6 +253,10 @@ function Player(game) {
   }
 
   function fireWeapon() {
+    if (!player.alive) {
+      return;
+    }
+
     if (fireButton.isDown || isPermanentFire) {
       player.weapon.fire();
     }
@@ -331,7 +339,7 @@ function Player(game) {
     splatterOnScreen.add(splatter);
   }
 
-  function emptyHealth() {
+  function showGameOver() {
     ownedSprites.removeAll(true, true);
     splatterOnScreen.removeAll(true, true);
 
@@ -360,9 +368,31 @@ function Player(game) {
     game.paused = true;
   }
 
+  var shipDeath = game.add.sprite(player.body.x, player.body.y, config.sprites.death.animationName);
+  ownedSprites.add(shipDeath);
+  shipDeath.scale.x *= 0.5;
+  shipDeath.scale.y *= 0.5;
+  shipDeath.anchor.setTo(0.5, 0.5);
+  shipDeath.animations.add(config.sprites.death.animationName);
+  shipDeath.visible = false;
+
+  function playDeathAnimation() {
+    shipDeath.x = player.x;
+    shipDeath.y = player.y;
+    shipDeath.visible = true;
+    shipDeath.animations.play(config.sprites.death.animationName,
+        config.sprites.death.frameRate,
+        false,
+        false);
+    shipDeath.animations.currentAnim.onComplete.add(showGameOver);
+  }
+
   function healthStuff() {
     if (player.health < 0 && player.alive) {
-      emptyHealth();
+      player.kill();
+      shipThrust.kill();
+      shield.kill();
+      playDeathAnimation();
     }
 
     healthBar.y = config.healthPaddingY - (game.world.height - config.healthPaddingY) * (player.health - 100) / 100;

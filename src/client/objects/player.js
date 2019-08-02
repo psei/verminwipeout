@@ -381,11 +381,13 @@ function Player(game) {
     splatterOnScreen.removeAll(true, true);
   };
 
-  var wiper = game.add.tileSprite(game.world.width / 2, game.world.height + 154, 1120, 174, config.images.wiperClean);
+  var wiper = game.add.tileSprite(game.world.width / 2, game.world.height + 275, 883, 203, config.images.wiperClean);
   ownedSprites.add(wiper);
 
   wiper.anchor.set(.5, .5);
   wiper.scale.x *= -1;
+  wiper.scale.x *= 1.3;
+  wiper.scale.y *= 1.3;
 
   wiper.anchor.setTo(1.1, 1.1);
 

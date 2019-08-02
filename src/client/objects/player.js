@@ -90,7 +90,6 @@ function Player(game) {
     }
     player.currentWeaponConfig = weaponConfig;
     player.weapon = Weapon.create(game, player, weaponConfig);
-    player.weapon.onKill.add(handleFiredBulletKilled);
   }
   setWeapon(weaponConfigs[0]);
 
@@ -102,15 +101,11 @@ function Player(game) {
     forwardFrame: 1,
   };
 
-  function handleFiredBulletKilled(event) {
-    if (event.position.y < 0) {
-      return; // no hit, just out of world
-    }
-
-    if (Math.abs(event.position.y - player.y) < 350) {
+  player.handleBulletHitEnemy = function(bullet, enemy) {
+    if (enemy.givesSplatter && Math.abs(enemy.position.y - player.y) < 350) {
       addSplatter();
     }
-  }
+  };
 
   function thrustAnimation(sprite, anchorX, anchorY) {
     ownedSprites.remove(shipThrust);

@@ -19,6 +19,8 @@ function Enemy(game, config, spawnInfo) {
   enemy.weapon = Weapon.create(game, enemy, require('./weapon1.conf'));
   enemy.weapon.fireAngle = 90;
 
+  enemy.givesSplatter = config.givesSplatter;
+
   enemy.animations.add(flySpriteConfig.animationName);
 
   var timeToFlyMotionPath = spawnInfo.time;

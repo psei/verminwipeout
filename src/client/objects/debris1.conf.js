@@ -29,5 +29,6 @@ module.exports = config({
       frameRate: 12
     }
   },
-  speeds: [1.2, 1.5, 1.8]
+  speeds: [1.2, 1.5, 1.8],
+  givesSplatter: false,
 });

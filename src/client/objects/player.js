@@ -267,9 +267,6 @@ function Player(game) {
         splatterOnScreen.removeAll(true, true);
       }
       if (wiper.angle > 10) {
-        wiperAngleVelocity = -2;
-      }
-      if (wiper.angle > 20) {
         isWiping = false;
         wiper.visible = false;
       }
@@ -330,7 +327,7 @@ function Player(game) {
     splatterOnScreen.removeAll(true, true);
   };
 
-  var wiper = game.add.tileSprite(game.world.width / 2, game.world.height - 124, 800, 124, config.images.wiperClean);
+  var wiper = game.add.tileSprite(game.world.width / 2, game.world.height + 154, 1120, 174, config.images.wiperClean);
   ownedSprites.add(wiper);
 
   wiper.anchor.set(.5, .5);

@@ -44,7 +44,7 @@ function Player(game) {
   ]);
 
   game.physics.enable(player, window.Phaser.Physics.ARCADE);
-  game.physics.arcade.setBounds(0, 0, game.world.width - config.interfaceWidth, game.world.height);
+  game.physics.arcade.setBounds(0, 0, game.world.width, game.world.height);
   player.anchor.setTo(0.5, 0.5);
   player.body.collideWorldBounds = true;
 

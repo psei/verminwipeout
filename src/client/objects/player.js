@@ -30,6 +30,8 @@ function Player(game) {
 
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
   ownedSprites.add(player);
+  var shipThrust = game.add.sprite(0,0, config.sprites.shipThrustLeftLow.animationName);
+  ownedSprites.add(shipThrust);
   player.hitArea = new Phaser.Polygon([
     new Phaser.Point(41, 90),
     new Phaser.Point(78, 65),
@@ -93,10 +95,24 @@ function Player(game) {
 
   var previousDirection = {
     forward: false,
-    right: false,
+    right: true,
     backward: false,
-    left: false
+    left: false,
+    forwardFrame: 1,
   };
+
+  function thrustAnimation(sprite, anchorX, anchorY) {
+    ownedSprites.remove(shipThrust);
+    shipThrust.destroy(true);
+    shipThrust = game.add.sprite(0, 0, sprite.animationName);
+    ownedSprites.add(shipThrust);
+    shipThrust.width = player.width + 75;
+    shipThrust.height = player.height + 180;
+    shipThrust.anchor.setTo(anchorX, anchorY);
+    shipThrust.animations.add(sprite.animationName, sprite.frames);
+    shipThrust.frame = 1;
+    shipThrust.animations.play(sprite.animationName, sprite.frameRate, true, false);
+  }
 
   function moveLeft() {
     player.x -= config.speed;
@@ -104,6 +120,12 @@ function Player(game) {
     if (!previousDirection.left) {
       previousDirection.left = true;
       player.loadTexture(config.images.shipLeft);
+
+      if (previousDirection.forward) {
+        thrustAnimation(config.sprites.shipThrustLeftMid, 0.3, 0.2);
+      } else {
+        thrustAnimation(config.sprites.shipThrustLeftLow, 0.3, 0.2);
+      }
     }
   }
 
@@ -113,26 +135,66 @@ function Player(game) {
     if (!previousDirection.right) {
       previousDirection.right = true;
       player.loadTexture(config.images.shipRight);
+
+      if (previousDirection.forward) {
+        thrustAnimation(config.sprites.shipThrustRightMid, 0.7, 0.2);
+      } else {
+        thrustAnimation(config.sprites.shipThrustRightLow, 0.7, 0.2);
+      }
     }
   }
 
   function moveCenterX() {
     player.loadTexture(config.images.ship);
+
+    previousDirection.left = false;
+    previousDirection.right = false;
+
+    if (previousDirection.forward) {
+      thrustAnimation(config.sprites.shipThrustCenterMid, 0.3, 0.2);
+    } else {
+      thrustAnimation(config.sprites.shipThrustCenterLow, 0.3, 0.2);
+    }
   }
 
   function moveUp() {
     player.y -= config.speed;
     previousDirection.backward = false;
-    if (!previousDirection.forward) {
-      previousDirection.forward = true;
+    previousDirection.forward = true;
+
+    if (previousDirection.left) {
+      thrustAnimation(config.sprites.shipThrustLeftMid, 0.3, 0.2);
+    } else if (previousDirection.right) {
+      thrustAnimation(config.sprites.shipThrustRightMid, 0.7, 0.2);
+    } else {
+      thrustAnimation(config.sprites.shipThrustCenterMid, 0.3, 0.2);
     }
   }
 
   function moveDown() {
     player.y += config.speed;
     previousDirection.forward = false;
-    if (!previousDirection.backward) {
-      previousDirection.backward = true;
+    previousDirection.backward = true;
+
+    if (previousDirection.left) {
+      thrustAnimation(config.sprites.shipThrustLeftLow, 0.3, 0.2);
+    } else if (previousDirection.right) {
+      thrustAnimation(config.sprites.shipThrustRightLow, 0.7, 0.2);
+    } else {
+      thrustAnimation(config.sprites.shipThrustCenterLow, 0.3, 0.2);
+    }
+  }
+
+  function moveCenterY() {
+    previousDirection.forward = false;
+    previousDirection.backward = false;
+
+    if (previousDirection.left) {
+      thrustAnimation(config.sprites.shipThrustLeftLow, 0.3, 0.2);
+    } else if (previousDirection.right) {
+      thrustAnimation(config.sprites.shipThrustRightLow, 0.7, 0.2);
+    } else {
+      thrustAnimation(config.sprites.shipThrustCenterLow, 0.3, 0.2);
     }
   }
 
@@ -149,6 +211,8 @@ function Player(game) {
       moveDown();
     } else if (cursors.up.isDown) {
       moveUp();
+    } else if (previousDirection.forward || previousDirection.backward) {
+      moveCenterY();
     }
 
     //touch
@@ -173,6 +237,9 @@ function Player(game) {
 
     shield.x = player.x;
     shield.y = player.y;
+
+    shipThrust.x = player.x;
+    shipThrust.y = player.y;
   }
 
   function fireWeapon() {
@@ -206,6 +273,7 @@ function Player(game) {
 
   function emptyHealth() {
     ownedSprites.removeAll(true, true);
+    splatterOnScreen.removeAll(true, true);
 
     var deathMessages = [
       config.images.deathMessage1,
@@ -254,6 +322,7 @@ function Player(game) {
 
   player.destroy = function() {
     ownedSprites.removeAll(true, true);
+    splatterOnScreen.removeAll(true, true);
   };
 
   var wiper = game.add.tileSprite(game.world.width / 2, game.world.height - 124, 800, 124, config.images.wiper);
@@ -320,7 +389,6 @@ function Player(game) {
           const selectedImage = Phaser.ArrayUtils.getRandomItem(splatterImages);
           const splatter = game.add.tileSprite(0, 0, game.world.width, game.world.height, selectedImage);
           splatterOnScreen.add(splatter);
-          ownedSprites.add(splatter);
         }
       }
     };

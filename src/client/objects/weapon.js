@@ -26,6 +26,7 @@ function Weapon(game, player, config) {
   weapon.bulletSpeed = config.bulletSpeed;
   weapon.bulletAngleOffset = 90;
   weapon.fireRate = config.reloadTime;
+  weapon.causesDamagePoints = config.causesDamagePoints;
   weapon.trackSprite(player, 0, 0, false);
   if (config.sound) {
     var fireSound = game.add.audio(config.sound);

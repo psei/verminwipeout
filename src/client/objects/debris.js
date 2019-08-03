@@ -27,6 +27,10 @@ function Debris(game, pos) {
     return 0;
   };
 
+  debris.takeBulletHit = function() {
+    debris.kill();
+  };
+
   function move() {
     debris.y += speed;
   }

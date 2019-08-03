@@ -31,5 +31,6 @@ module.exports = config({
   },
   chanceToShootPerSecondInPercent: 25,
   causesDamagePoints: 15,
+  health: 3,
   givesSplatter: true,
 });

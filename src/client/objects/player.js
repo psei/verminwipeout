@@ -303,8 +303,6 @@ function Player(game) {
     splatterOnScreen.add(splatter);
   }
 
-  addSplatter();
-
   function showGameOver() {
     ownedSprites.removeAll(true, true);
     splatterOnScreen.removeAll(true, true);

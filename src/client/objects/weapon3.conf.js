@@ -16,5 +16,6 @@ module.exports = config({
   reloadTime: 200,
   fireLimit: 1,
   bulletSpeed: 420,
-  range: 200
+  range: 200,
+  causesDamagePoints: 3,
 });

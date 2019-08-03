@@ -18,14 +18,42 @@ function Enemy(game, config, spawnInfo) {
 
   enemy.weapon = Weapon.create(game, enemy, require('./weapon1.conf'));
   enemy.weapon.fireAngle = 90;
-
   enemy.givesSplatter = config.givesSplatter;
+  enemy.health = config.health;
 
   enemy.animations.add(flySpriteConfig.animationName);
 
   var timeToFlyMotionPath = spawnInfo.time;
   var paths = { x: spawnInfo.x, y: spawnInfo.y };
   var spawnTime = game.time.physicsElapsedTotalMS;
+
+  var blood = game.add.sprite(0, 0, 'bloodAtlas', 'blood-0');
+  ownedSprites.add(blood);
+  blood.visible = false;
+
+  function firstBlood() {
+    blood.visible = true;
+    blood.x = enemy.x;
+    blood.y = enemy.y;
+    blood.scale.setTo(0.5, 0.5);
+    blood.anchor.setTo(0.5, 0.5);
+
+    const frames = Phaser.Animation.generateFrameNames('blood-', 1, 2, '');
+    blood.animations.add('enemyBloodAni', frames, 5, false);
+    blood.animations.play('enemyBloodAni');
+    blood.animations.currentAnim.onComplete.add(() => { blood.visible = false; });
+  }
+
+  enemy.takeBulletHit = function(bullet) {
+    enemy.health -= bullet.data.bulletManager.causesDamagePoints;
+    if (enemy.health < 0) {
+      enemy.kill();
+    }
+
+    if (enemy.alive) {
+      firstBlood();
+    }
+  };
 
   function move() {
     var timePassed = game.time.physicsElapsedTotalMS - spawnTime;

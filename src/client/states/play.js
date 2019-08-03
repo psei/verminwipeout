@@ -27,7 +27,7 @@ module.exports = function (game) {
 
   function hitEnemy(bullet, enemy) {
     player.handleBulletHitEnemy(bullet, enemy);
-    enemy.kill();
+    enemy.takeBulletHit(bullet);
     bullet.kill();
   }
 

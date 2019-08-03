@@ -368,22 +368,18 @@ function Player(game) {
     game.paused = true;
   }
 
-  var shipDeath = game.add.sprite(player.body.x, player.body.y, config.sprites.death.animationName);
-  ownedSprites.add(shipDeath);
-  shipDeath.scale.x *= 0.5;
-  shipDeath.scale.y *= 0.5;
-  shipDeath.anchor.setTo(0.5, 0.5);
-  shipDeath.animations.add(config.sprites.death.animationName);
-  shipDeath.visible = false;
-
   function playDeathAnimation() {
+    var shipDeath = game.add.sprite(0, 0, 'shipAtlas', 'shipdeath-00');
+    ownedSprites.add(shipDeath);
+
     shipDeath.x = player.x;
     shipDeath.y = player.y;
-    shipDeath.visible = true;
-    shipDeath.animations.play(config.sprites.death.animationName,
-        config.sprites.death.frameRate,
-        false,
-        false);
+    shipDeath.scale.setTo(0.5, 0.5);
+    shipDeath.anchor.setTo(0.5, 0.5);
+
+    const frames = Phaser.Animation.generateFrameNames('shipdeath-', 1, 12, '', 2);
+    shipDeath.animations.add('shipDieAni', frames, 5, false, false);
+    shipDeath.animations.play('shipDieAni');
     shipDeath.animations.currentAnim.onComplete.add(showGameOver);
   }
 

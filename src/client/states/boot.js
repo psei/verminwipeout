@@ -55,6 +55,7 @@ module.exports = function (game) {
       game.load.audio('boss-intro', '/audio/music/boss-intro.wav');
       game.load.audio('boss-loop', '/audio/music/boss-loop.wav');
       game.load.audio('wiper', '/audio/fx/wiper.mp3');
+      game.load.atlasJSONHash('shipAtlas', 'images/texturepacker/shipAtlas.png', 'images/texturepacker/shipAtlas.json');
 
       game.load.image('btn-mute', 'images/interface/btn-mute.png');
       game.load.image('btn-pause', 'images/interface/btn-pause.png');

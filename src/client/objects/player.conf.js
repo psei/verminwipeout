@@ -74,14 +74,6 @@ module.exports = config({
       height: 200,
       frameRate: 15
     },
-    death: {
-      animationName: 'ship-death',
-      imageSrc: '/images/ship/ship-death.png',
-      frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-      width: 500,
-      height: 500,
-      frameRate: 5
-    },
     shipThrustLeftLow: {
       animationName: 'ship-left-sprites',
       imageSrc: '/images/ship/ship-left-sprites.png',

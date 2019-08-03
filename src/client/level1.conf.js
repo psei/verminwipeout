@@ -95,7 +95,7 @@ function createEnemyWave(config) {
   return wave;
 }
 
-function createStation(config) {
+function createSingleObject(config) {
   var wave = {};
   wave.type = config.type;
   wave.spawnTime = config.spawnTime;
@@ -121,7 +121,7 @@ module.exports = config({
 
   waves: [
 
-      createStation({
+      createSingleObject({
         type: 'station1',
         spawnTime: 0,
       }),
@@ -187,6 +187,11 @@ module.exports = config({
         formation: formations.horizontal(50, 50),
         creatureCount: 7,
         wayPoints: wayPoints.straight(6)
+      }),
+
+      createSingleObject({
+        type: 'boss1',
+        spawnTime: 6600,
       }),
 
       createEnemyWave({

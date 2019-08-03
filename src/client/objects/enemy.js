@@ -2,7 +2,8 @@
 
 var configsByType = {
   cutterfly: require('./cutterfly.conf'),
-  jizzler: require('./jizzler.conf')
+  jizzler: require('./jizzler.conf'),
+  boss1: require('./boss1.conf'),
 };
 
 var Weapon = require('./weapon');
@@ -31,10 +32,14 @@ function Enemy(game, config, spawnInfo) {
   ownedSprites.add(blood);
   blood.visible = false;
 
-  function firstBlood() {
+  function firstBlood(bullet) {
+    if (blood.animations.currentAnim && blood.animations.currentAnim.isPlaying) {
+      return;
+    }
+
     blood.visible = true;
-    blood.x = enemy.x;
-    blood.y = enemy.y;
+    blood.x = bullet.x;
+    blood.y = bullet.y;
     blood.scale.setTo(0.5, 0.5);
     blood.anchor.setTo(0.5, 0.5);
 
@@ -51,7 +56,7 @@ function Enemy(game, config, spawnInfo) {
     }
 
     if (enemy.alive) {
-      firstBlood();
+      firstBlood(bullet);
     }
   };
 

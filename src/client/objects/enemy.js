@@ -112,6 +112,7 @@ function Enemy(game, config, spawnInfo) {
   };
 
   enemy.destroy = function() {
+    enemy.kill();
     ownedSprites.removeAll(true, true);
   };
 

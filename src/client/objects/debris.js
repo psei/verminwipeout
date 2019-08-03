@@ -6,6 +6,7 @@ var configs = [
 ];
 
 function Debris(game, pos) {
+  var ownedSprites = game.add.group();
   var config = game.random.sample(configs);
   var spriteConfig = game.random.sample([
     config.sprites.debris,
@@ -14,6 +15,7 @@ function Debris(game, pos) {
 
   var speed = game.random.sample(config.speeds);
   var debris = game.add.sprite(pos.x, pos.y, spriteConfig.animationName);
+  ownedSprites.add(debris);
   game.physics.enable(debris, window.Phaser.Physics.ARCADE);
   debris.anchor.setTo(0.5, 0.5);
 
@@ -33,6 +35,10 @@ function Debris(game, pos) {
 
   function move() {
     debris.y += speed;
+
+    if (debris.y > game.world.height + 500) {
+      debris.destroy();
+    }
   }
 
   debris.update = function () {
@@ -41,8 +47,14 @@ function Debris(game, pos) {
     }
   };
 
+  debris.destroy = function() {
+    debris.kill();
+    ownedSprites.removeAll(true, true);
+  };
+
   function playDeathAnimation() {
     var explosion = game.add.sprite(debris.body.x, debris.body.y, config.sprites.explode.animationName);
+    ownedSprites.add(explosion);
     explosion.anchor.setTo(0.5, 0.5);
     explosion.animations.add(
       config.sprites.explode.animationName);

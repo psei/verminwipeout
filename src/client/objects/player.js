@@ -76,6 +76,11 @@ function Player(game) {
   shield.visible = false;
 
   function playShieldAnimation() {
+    if (shield.animations.currentAnim && shield.animations.currentAnim.isPlaying) {
+      shield.animations.currentAnim.restart();
+      return;
+    }
+
     shield.frame = 1;
     shield.visible = true;
     shield.animations.play(config.sprites.shield.animationName,

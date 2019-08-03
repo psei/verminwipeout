@@ -300,6 +300,7 @@ function Player(game) {
     const splatterImagePool = Phaser.Animation.generateFrameNames('splatter-', 1, 35, '');
     const selectedImage = Phaser.ArrayUtils.getRandomItem(splatterImagePool);
     const splatter = game.add.tileSprite(0, 0, game.world.width, game.world.height, 'splatterAtlas', selectedImage);
+    splatter.scale.x *= 1.1851; // =800/675 (game-width / sprite-width)
     splatterOnScreen.add(splatter);
   }
 

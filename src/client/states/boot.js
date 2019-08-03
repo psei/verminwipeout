@@ -45,6 +45,11 @@ module.exports = function (game) {
       newWidth = widthB;
     }
 
+    if (clientHeight < 1024) {
+      newWidth = clientWidth;
+      newHeight = clientHeight;
+    }
+
     game.scale.setUserScale(newWidth / game.width, newHeight / game.height);
   }
 

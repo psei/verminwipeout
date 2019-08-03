@@ -399,7 +399,10 @@ function Player(game) {
         enemy.kill();
       }
       if (enemy.getCausedDamagePoints() > 0 && enemy.hasHitPlayerOnce !== true) {
-        player.setHealth(player.health - enemy.getCausedDamagePoints());
+        const isGodMode = window.location.hash === '#godmode';
+        if (!isGodMode) {
+          player.setHealth(player.health - enemy.getCausedDamagePoints());
+        }
         enemy.hasHitPlayerOnce = true;
 
         if (Math.abs(enemy.position.y - player.position.y) < enemy.height) {

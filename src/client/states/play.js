@@ -76,6 +76,16 @@ module.exports = function (game) {
     game.time.physicsElapsedTotalMS = 0;
   }
 
+  function onTouch() {
+    if (player.alive) {
+      if (game.paused) {
+        game.paused = false;
+      }
+    } else {
+      resetCurrentLevel();
+    }
+  }
+
   return {
     create: function() {
       player = Player.create(game);
@@ -90,7 +100,7 @@ module.exports = function (game) {
       game.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(togglePause);
       game.input.keyboard.addKey(Phaser.Keyboard.S).onDown.add(resetCurrentLevel, this);
 
-      game.input.touch.addTouchLockCallback(resetCurrentLevel, this);
+      game.input.touch.addTouchLockCallback(onTouch, this);
 
       game.add.button(game.world.width - 55, 5, 'btn-mute', toggleSounds, this);
       game.add.button(5, 5, 'btn-pause', togglePause, this);

@@ -98,7 +98,7 @@ module.exports = function (game) {
     create: function () {
       game.stage.backgroundColor = '#F0F0F0';
       game.state.clearCurrentState();
-      game.state.start('play');
+      game.state.start('startMenu');
     }
   };
 };

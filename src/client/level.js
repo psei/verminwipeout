@@ -28,15 +28,6 @@ function Level(game, levelIndex) {
   this.config = JSON.parse(JSON.stringify(levelConfigs[levelIndex]));
   this.waves = this.config.waves;
 
-  this.healthBarBackground = game.add.tileSprite(
-      world.width - this.config.healthBarWidth,
-      this.config.healthBgPaddingY,
-      this.config.healthBarWidth,
-      world.height - this.config.healthBgPaddingY,
-      this.config.images.healthBarBackground
-  );
-  world.sendToBack(this.healthBarBackground);
-
   this.background = game.add.tileSprite(0, 0, world.width, world.height, this.config.images.background);
   world.sendToBack(this.background);
 }
@@ -46,7 +37,6 @@ Level.prototype.update = function () {
 };
 
 Level.prototype.destroy = function () {
-  this.healthBarBackground.destroy();
   this.background.destroy();
   lastWaveSpawnTime = 0;
 };

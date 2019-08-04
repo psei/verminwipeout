@@ -4,6 +4,10 @@ var isEqual = require('lodash/isEqual');
 
 var config = require('./player.conf');
 var Weapon = require('./weapon');
+var Splatter = require('./splatter');
+var Shield = require('./shield');
+var ShipThrust = require('./shipThrust');
+var HealthBar = require('./healthBar');
 
 var weaponConfigs = [
   require('./weapon1.conf'),
@@ -26,12 +30,10 @@ function addWeaponSwitchKeyBindings(game, player) {
 
 function Player(game) {
   var ownedSprites = game.add.group();
-  var splatterOnScreen = game.add.group();
 
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
   ownedSprites.add(player);
-  var shipThrust = game.add.sprite(0, 0, config.sprites.shipThrustLeftLow.animationName);
-  ownedSprites.add(shipThrust);
+
   player.hitArea = new Phaser.Polygon([
     new Phaser.Point(41, 90),
     new Phaser.Point(78, 65),
@@ -47,47 +49,14 @@ function Player(game) {
   game.physics.arcade.setBounds(0, 0, game.world.width, game.world.height);
   player.anchor.setTo(0.5, 0.5);
   player.body.collideWorldBounds = true;
-
-  var lastHealthBlink = 0;
   player.health = 100;
-  var healthAlert = game.add.tileSprite(
-      game.world.width - 22,
-      config.healthPaddingY,
-      10,
-      game.world.height - config.healthPaddingY,
-      config.images.healthAlert
-  );
-  ownedSprites.add(healthAlert);
-  healthAlert.visible = false;
 
-  var healthBar = game.add.tileSprite(
-      game.world.width - 22,
-      config.healthPaddingY,
-      10,
-      game.world.height - config.healthPaddingY,
-      config.images.healthBar
-  );
-  ownedSprites.add(healthBar);
+  var splatter = Splatter.create(game, player);
+  ownedSprites.add(splatter);
 
-  var shield = game.add.sprite(player.body.x, player.body.y, config.sprites.shield.animationName);
-  ownedSprites.add(shield);
-  shield.anchor.setTo(0.5, 0.5);
-  shield.animations.add(config.sprites.shield.animationName);
-  shield.visible = false;
-
-  function playShieldAnimation() {
-    if (shield.animations.currentAnim && shield.animations.currentAnim.isPlaying) {
-      shield.animations.currentAnim.restart();
-      return;
-    }
-
-    shield.frame = 1;
-    shield.visible = true;
-    shield.animations.play(config.sprites.shield.animationName,
-      config.sprites.shield.frameRate,
-      false,
-      false);
-  }
+  var shield = Shield.create(game, player);
+  var shipThrust = ShipThrust.create(game, player);
+  var healthBar = HealthBar.create(game, player);
 
   function setWeapon(weaponConfig) {
     if (isEqual(weaponConfig, player.currentWeaponConfig)) {
@@ -107,27 +76,8 @@ function Player(game) {
   };
 
   player.handleBulletHitEnemy = function(bullet, enemy) {
-    if (enemy.givesSplatter && Math.abs(enemy.position.y - player.y) < 350) {
-      addSplatter();
-    }
+    splatter.handleBulletHitEnemy(bullet, enemy);
   };
-
-  function thrustAnimation(sprite, anchorX, anchorY) {
-    if (!player.alive) {
-      return;
-    }
-
-    ownedSprites.remove(shipThrust);
-    shipThrust.destroy(true);
-    shipThrust = game.add.sprite(0, 0, sprite.animationName);
-    ownedSprites.add(shipThrust);
-    shipThrust.width = player.width + 75;
-    shipThrust.height = player.height + 180;
-    shipThrust.anchor.setTo(anchorX, anchorY);
-    shipThrust.animations.add(sprite.animationName, sprite.frames);
-    shipThrust.frame = 1;
-    shipThrust.animations.play(sprite.animationName, sprite.frameRate, true, false);
-  }
 
   function moveLeft() {
     player.x -= config.speed;
@@ -137,9 +87,9 @@ function Player(game) {
       player.loadTexture(config.images.shipLeft);
 
       if (previousDirection.forward) {
-        thrustAnimation(config.sprites.shipThrustLeftMid, 0.3, 0.2);
+        shipThrust.leftMid();
       } else {
-        thrustAnimation(config.sprites.shipThrustLeftLow, 0.3, 0.2);
+        shipThrust.leftLow();
       }
     }
   }
@@ -152,9 +102,9 @@ function Player(game) {
       player.loadTexture(config.images.shipRight);
 
       if (previousDirection.forward) {
-        thrustAnimation(config.sprites.shipThrustRightMid, 0.7, 0.2);
+        shipThrust.rightMid();
       } else {
-        thrustAnimation(config.sprites.shipThrustRightLow, 0.7, 0.2);
+        shipThrust.rightLow();
       }
     }
   }
@@ -166,9 +116,9 @@ function Player(game) {
     previousDirection.right = false;
 
     if (previousDirection.forward) {
-      thrustAnimation(config.sprites.shipThrustCenterMid, 0.3, 0.2);
+      shipThrust.centerMid();
     } else {
-      thrustAnimation(config.sprites.shipThrustCenterLow, 0.3, 0.2);
+      shipThrust.centerLow();
     }
   }
 
@@ -178,11 +128,11 @@ function Player(game) {
     previousDirection.forward = true;
 
     if (previousDirection.left) {
-      thrustAnimation(config.sprites.shipThrustLeftMid, 0.3, 0.2);
+      shipThrust.leftMid();
     } else if (previousDirection.right) {
-      thrustAnimation(config.sprites.shipThrustRightMid, 0.7, 0.2);
+      shipThrust.rightMid();
     } else {
-      thrustAnimation(config.sprites.shipThrustCenterMid, 0.3, 0.2);
+      shipThrust.centerMid();
     }
   }
 
@@ -192,11 +142,11 @@ function Player(game) {
     previousDirection.backward = true;
 
     if (previousDirection.left) {
-      thrustAnimation(config.sprites.shipThrustLeftLow, 0.3, 0.2);
+      shipThrust.leftLow();
     } else if (previousDirection.right) {
-      thrustAnimation(config.sprites.shipThrustRightLow, 0.7, 0.2);
+      shipThrust.rightLow();
     } else {
-      thrustAnimation(config.sprites.shipThrustCenterLow, 0.3, 0.2);
+      shipThrust.centerLow();
     }
   }
 
@@ -205,11 +155,11 @@ function Player(game) {
     previousDirection.backward = false;
 
     if (previousDirection.left) {
-      thrustAnimation(config.sprites.shipThrustLeftLow, 0.3, 0.2);
+      shipThrust.leftLow();
     } else if (previousDirection.right) {
-      thrustAnimation(config.sprites.shipThrustRightLow, 0.7, 0.2);
+      shipThrust.rightLow();
     } else {
-      thrustAnimation(config.sprites.shipThrustCenterLow, 0.3, 0.2);
+      shipThrust.centerLow();
     }
   }
 
@@ -249,12 +199,6 @@ function Player(game) {
         moveDown();
       }
     }
-
-    shield.x = player.x;
-    shield.y = player.y;
-
-    shipThrust.x = player.x;
-    shipThrust.y = player.y;
   }
 
   function fireWeapon() {
@@ -267,53 +211,9 @@ function Player(game) {
     }
   }
 
-  function startWipe() {
-    if (isWiping) {
-      return;
-    }
-
-    wiper.angle = -180;
-    wiperAngleVelocity = 2;
-    wiper.visible = true;
-    if (splatterOnScreen.countLiving() > 0) {
-      wiper.loadTexture(config.images.wiperDirty);
-    } else {
-      wiper.loadTexture(config.images.wiperClean);
-    }
-    wiperSound.play();
-    isWiping = true;
-  }
-
-  function wipeStuff() {
-    game.world.bringToTop(splatterOnScreen);
-
-    if (wipeButton.isDown) {
-      startWipe();
-    }
-
-    if (isWiping) {
-      wiper.angle += wiperAngleVelocity;
-      if (wiperAngleVelocity === 2 && wiper.angle > -90) {
-        splatterOnScreen.removeAll(true, true);
-      }
-      if (wiper.angle > 10) {
-        isWiping = false;
-        wiper.visible = false;
-      }
-    }
-  }
-
-  function addSplatter() {
-    const splatterImagePool = Phaser.Animation.generateFrameNames('splatter-', 1, 35, '');
-    const selectedImage = Phaser.ArrayUtils.getRandomItem(splatterImagePool);
-    const splatter = game.add.tileSprite(0, 0, game.world.width, game.world.height, 'splatterAtlas', selectedImage);
-    splatter.scale.x *= 1.1851; // =800/675 (game-width / sprite-width)
-    splatterOnScreen.add(splatter);
-  }
-
   function showGameOver() {
     ownedSprites.removeAll(true, true);
-    splatterOnScreen.removeAll(true, true);
+    splatter.destroy();
 
     var deathMessages = [
       config.images.deathMessage1,
@@ -355,54 +255,34 @@ function Player(game) {
     shipDeath.animations.currentAnim.onComplete.add(showGameOver);
   }
 
-  function healthStuff() {
+  function checkStillAlive() {
     if (player.health < 0 && player.alive) {
       player.kill();
-      shipThrust.kill();
-      shield.kill();
       playDeathAnimation();
-    }
-
-    healthBar.y = config.healthPaddingY - (game.world.height - config.healthPaddingY) * (player.health - 100) / 100;
-
-    if (player.health < 30 && game.time.physicsElapsedTotalMS - lastHealthBlink > 500) {
-      healthAlert.visible = !healthAlert.visible;
-      lastHealthBlink = game.time.physicsElapsedTotalMS;
     }
   }
 
   player.update = function () {
     move();
     fireWeapon();
-    healthStuff();
-    wipeStuff();
+    checkStillAlive();
+    healthBar.update();
+    shield.update();
+    shipThrust.update();
+    splatter.update();
   };
 
   player.destroy = function() {
     ownedSprites.removeAll(true, true);
-    splatterOnScreen.removeAll(true, true);
+    healthBar.destroy();
+    shield.destroy();
+    shipThrust.destroy();
+    splatter.destroy();
   };
-
-  var wiper = game.add.tileSprite(game.world.width / 2, game.world.height + 275, 883, 203, config.images.wiperClean);
-  ownedSprites.add(wiper);
-
-  var wiperSound = game.add.audio('wiper');
-  wiperSound.volume = 3;
-
-  wiper.anchor.set(.5, .5);
-  wiper.scale.x *= -1;
-  wiper.scale.x *= 1.3;
-  wiper.scale.y *= 1.3;
-
-  wiper.anchor.setTo(1.1, 1.1);
-
-  wiper.visible = false;
-  var isWiping = false;
-  var wiperAngleVelocity = 2;
 
   player.onEnemyHitsPlayer = function (enemy) {
     return function () {
-      playShieldAnimation();
+      shield.playShieldAnimation();
       if (enemy.destroysItselfOnHit) {
         enemy.kill();
       }
@@ -412,11 +292,9 @@ function Player(game) {
           player.setHealth(player.health - enemy.getCausedDamagePoints());
         }
         enemy.hasHitPlayerOnce = true;
-
-        if (Math.abs(enemy.position.y - player.position.y) < enemy.height) {
-          addSplatter();
-        }
       }
+
+      splatter.onEnemyHitsPlayer(enemy);
     };
   };
 
@@ -430,24 +308,6 @@ function Player(game) {
   var isPermanentFire = false;
   const cursors = game.input.keyboard.createCursorKeys();
   const fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-  const wipeButton = game.input.keyboard.addKey(Phaser.Keyboard.V);
-
-  /* poor mans swipe detection start */
-  var touchStartX = 0;
-  var touchStartTime = 0;
-  game.input.touch.touchStartCallback = function(event) {
-    touchStartX = event.changedTouches[0].pageX;
-    touchStartTime = event.timeStamp;
-  };
-  game.input.touch.touchEndCallback = function(event) {
-    const deltaX = event.changedTouches[0].pageX - touchStartX;
-    const deltaTime = event.timeStamp - touchStartTime;
-
-    if (deltaTime < 400 && deltaX > 200) {
-      startWipe();
-    }
-  };
-  /* poor mans swipe detection end */
 
   addWeaponSwitchKeyBindings(game, player);
 

@@ -5,6 +5,7 @@ var isEqual = require('lodash/isEqual');
 var config = require('./player.conf');
 var Weapon = require('./weapon');
 var Splatter = require('./splatter');
+var Shield = require('./shield');
 
 var weaponConfigs = [
   require('./weapon1.conf'),
@@ -73,25 +74,8 @@ function Player(game) {
   );
   ownedSprites.add(healthBar);
 
-  var shield = game.add.sprite(player.body.x, player.body.y, config.sprites.shield.animationName);
+  var shield = Shield.create(game, player);
   ownedSprites.add(shield);
-  shield.anchor.setTo(0.5, 0.5);
-  shield.animations.add(config.sprites.shield.animationName);
-  shield.visible = false;
-
-  function playShieldAnimation() {
-    if (shield.animations.currentAnim && shield.animations.currentAnim.isPlaying) {
-      shield.animations.currentAnim.restart();
-      return;
-    }
-
-    shield.frame = 1;
-    shield.visible = true;
-    shield.animations.play(config.sprites.shield.animationName,
-      config.sprites.shield.frameRate,
-      false,
-      false);
-  }
 
   function setWeapon(weaponConfig) {
     if (isEqual(weaponConfig, player.currentWeaponConfig)) {
@@ -252,9 +236,6 @@ function Player(game) {
       }
     }
 
-    shield.x = player.x;
-    shield.y = player.y;
-
     shipThrust.x = player.x;
     shipThrust.y = player.y;
   }
@@ -334,6 +315,7 @@ function Player(game) {
     fireWeapon();
     healthStuff();
     splatter.update();
+    shield.update();
   };
 
   player.destroy = function() {
@@ -343,7 +325,7 @@ function Player(game) {
 
   player.onEnemyHitsPlayer = function (enemy) {
     return function () {
-      playShieldAnimation();
+      shield.playShieldAnimation();
       if (enemy.destroysItselfOnHit) {
         enemy.kill();
       }

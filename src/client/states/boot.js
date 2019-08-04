@@ -8,6 +8,7 @@ var configs = [
   require('../objects/shield.conf'),
   require('../objects/shipThrust.conf'),
   require('../objects/healthBar.conf'),
+  require('../objects/gameOver.conf'),
   require('../objects/debris1.conf'),
   require('../objects/debris2.conf'),
   require('../objects/cutterfly.conf'),

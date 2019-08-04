@@ -77,7 +77,7 @@ module.exports = function (game) {
   return {
     preload: function () {
       game.stage.backgroundColor = '#182d3b';
-      game.add.text(32, 32, 'Loading ...', { fill: '#fcf7e3', fontSize: 65 });
+      game.add.text(32, 32, 'Loading ...', { fill: '#fcf7e3', fontSize: 65, font: 'Forward' });
 
       invokeMap(configs, 'loadMedia', game);
       game.load.audio('music-1-intro', '/audio/music/music-1-intro.wav');

@@ -285,6 +285,8 @@ function Player(game) {
   }
 
   function wipeStuff() {
+    game.world.bringToTop(splatterOnScreen);
+
     if (wipeButton.isDown) {
       startWipe();
     }

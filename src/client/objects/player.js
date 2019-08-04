@@ -29,7 +29,7 @@ function addWeaponSwitchKeyBindings(game, player) {
   });
 }
 
-function Player(game) {
+function Player(game, lifeCounter) {
   var ownedSprites = game.add.group();
 
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
@@ -58,7 +58,7 @@ function Player(game) {
   var shield = Shield.create(game, player);
   var shipThrust = ShipThrust.create(game, player);
   var healthBar = HealthBar.create(game, player);
-  var gameOver = GameOver.create(game, player);
+  var gameOver = GameOver.create(game, player, lifeCounter);
 
   function setWeapon(weaponConfig) {
     if (isEqual(weaponConfig, player.currentWeaponConfig)) {
@@ -289,7 +289,7 @@ function Player(game) {
 }
 
 module.exports = {
-  create: function (game) {
-    return new Player(game);
+  create: function (game, lifeCounter) {
+    return new Player(game, lifeCounter);
   }
 };

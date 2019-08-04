@@ -2,7 +2,7 @@
 
 var config = require('./gameOver.conf');
 
-function GameOver(game, player) {
+function GameOver(game, player, lifeCounter) {
   var ownedSprites = game.add.group();
 
   var gameOver = {};
@@ -57,13 +57,16 @@ function GameOver(game, player) {
 
     player.loadTexture(config.images.gameOverShipLife);
     player.loadTexture(config.images.gameOverShipDeath);
-    const ship1 = game.add.sprite(150 + 190, game.world.height - 180, config.images.gameOverShipLife);
+    var image = lifeCounter > 1 ? config.images.gameOverShipLife : config.images.gameOverShipDeath;
+    const ship1 = game.add.sprite(150 + 190, game.world.height - 180, image);
     ownedSprites.add(ship1);
 
-    const ship2 = game.add.sprite(150 + 220, game.world.height - 180, config.images.gameOverShipLife);
+    image = lifeCounter > 2 ? config.images.gameOverShipLife : config.images.gameOverShipDeath;
+    const ship2 = game.add.sprite(150 + 220, game.world.height - 180, image);
     ownedSprites.add(ship2);
 
-    const ship3 = game.add.sprite(150 + 250, game.world.height - 180, config.images.gameOverShipDeath);
+    image = lifeCounter > 3 ? config.images.gameOverShipLife : config.images.gameOverShipDeath;
+    const ship3 = game.add.sprite(150 + 250, game.world.height - 180, image);
     ownedSprites.add(ship3);
 
     const textBottom = game.add.text(game.world.width / 2, game.world.height - 150 / 2, 'TOUCH TO CONTINUE', {
@@ -87,7 +90,7 @@ function GameOver(game, player) {
 }
 
 module.exports = {
-  create: function (game, player) {
-    return new GameOver(game, player);
+  create: function (game, player, lifeCounter) {
+    return new GameOver(game, player, lifeCounter);
   }
 };

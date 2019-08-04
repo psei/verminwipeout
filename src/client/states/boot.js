@@ -4,6 +4,7 @@ var invokeMap = require('lodash/invokeMap');
 
 var configs = [
   require('../objects/player.conf'),
+  require('../objects/splatter.conf'),
   require('../objects/debris1.conf'),
   require('../objects/debris2.conf'),
   require('../objects/cutterfly.conf'),

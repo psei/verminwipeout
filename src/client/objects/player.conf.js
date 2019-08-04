@@ -25,9 +25,6 @@ module.exports = config({
     deathMessage11: 'images/titles/death-message-11.png',
     deathMessage12: 'images/titles/death-message-12.png',
     deathMessage13: 'images/titles/death-message-13.png',
-
-    wiperClean: 'images/interface/wiper-1.png',
-    wiperDirty: 'images/interface/wiper-2.png',
   },
   sprites: {
     shield: {

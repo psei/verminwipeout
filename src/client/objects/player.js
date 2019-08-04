@@ -4,6 +4,7 @@ var isEqual = require('lodash/isEqual');
 
 var config = require('./player.conf');
 var Weapon = require('./weapon');
+var Splatter = require('./splatter');
 
 var weaponConfigs = [
   require('./weapon1.conf'),
@@ -26,10 +27,13 @@ function addWeaponSwitchKeyBindings(game, player) {
 
 function Player(game) {
   var ownedSprites = game.add.group();
-  var splatterOnScreen = game.add.group();
 
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
   ownedSprites.add(player);
+
+  var splatter = Splatter.create(game, player);
+  ownedSprites.add(splatter);
+
   var shipThrust = game.add.sprite(0, 0, config.sprites.shipThrustLeftLow.animationName);
   ownedSprites.add(shipThrust);
   player.hitArea = new Phaser.Polygon([
@@ -107,9 +111,7 @@ function Player(game) {
   };
 
   player.handleBulletHitEnemy = function(bullet, enemy) {
-    if (enemy.givesSplatter && Math.abs(enemy.position.y - player.y) < 350) {
-      addSplatter();
-    }
+    splatter.handleBulletHitEnemy(bullet, enemy);
   };
 
   function thrustAnimation(sprite, anchorX, anchorY) {
@@ -267,53 +269,9 @@ function Player(game) {
     }
   }
 
-  function startWipe() {
-    if (isWiping) {
-      return;
-    }
-
-    wiper.angle = -180;
-    wiperAngleVelocity = 2;
-    wiper.visible = true;
-    if (splatterOnScreen.countLiving() > 0) {
-      wiper.loadTexture(config.images.wiperDirty);
-    } else {
-      wiper.loadTexture(config.images.wiperClean);
-    }
-    wiperSound.play();
-    isWiping = true;
-  }
-
-  function wipeStuff() {
-    game.world.bringToTop(splatterOnScreen);
-
-    if (wipeButton.isDown) {
-      startWipe();
-    }
-
-    if (isWiping) {
-      wiper.angle += wiperAngleVelocity;
-      if (wiperAngleVelocity === 2 && wiper.angle > -90) {
-        splatterOnScreen.removeAll(true, true);
-      }
-      if (wiper.angle > 10) {
-        isWiping = false;
-        wiper.visible = false;
-      }
-    }
-  }
-
-  function addSplatter() {
-    const splatterImagePool = Phaser.Animation.generateFrameNames('splatter-', 1, 35, '');
-    const selectedImage = Phaser.ArrayUtils.getRandomItem(splatterImagePool);
-    const splatter = game.add.tileSprite(0, 0, game.world.width, game.world.height, 'splatterAtlas', selectedImage);
-    splatter.scale.x *= 1.1851; // =800/675 (game-width / sprite-width)
-    splatterOnScreen.add(splatter);
-  }
-
   function showGameOver() {
     ownedSprites.removeAll(true, true);
-    splatterOnScreen.removeAll(true, true);
+    splatter.destroy();
 
     var deathMessages = [
       config.images.deathMessage1,
@@ -375,30 +333,13 @@ function Player(game) {
     move();
     fireWeapon();
     healthStuff();
-    wipeStuff();
+    splatter.update();
   };
 
   player.destroy = function() {
     ownedSprites.removeAll(true, true);
-    splatterOnScreen.removeAll(true, true);
+    splatter.destroy();
   };
-
-  var wiper = game.add.tileSprite(game.world.width / 2, game.world.height + 275, 883, 203, config.images.wiperClean);
-  ownedSprites.add(wiper);
-
-  var wiperSound = game.add.audio('wiper');
-  wiperSound.volume = 3;
-
-  wiper.anchor.set(.5, .5);
-  wiper.scale.x *= -1;
-  wiper.scale.x *= 1.3;
-  wiper.scale.y *= 1.3;
-
-  wiper.anchor.setTo(1.1, 1.1);
-
-  wiper.visible = false;
-  var isWiping = false;
-  var wiperAngleVelocity = 2;
 
   player.onEnemyHitsPlayer = function (enemy) {
     return function () {
@@ -412,11 +353,9 @@ function Player(game) {
           player.setHealth(player.health - enemy.getCausedDamagePoints());
         }
         enemy.hasHitPlayerOnce = true;
-
-        if (Math.abs(enemy.position.y - player.position.y) < enemy.height) {
-          addSplatter();
-        }
       }
+
+      splatter.onEnemyHitsPlayer(enemy);
     };
   };
 
@@ -430,24 +369,6 @@ function Player(game) {
   var isPermanentFire = false;
   const cursors = game.input.keyboard.createCursorKeys();
   const fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-  const wipeButton = game.input.keyboard.addKey(Phaser.Keyboard.V);
-
-  /* poor mans swipe detection start */
-  var touchStartX = 0;
-  var touchStartTime = 0;
-  game.input.touch.touchStartCallback = function(event) {
-    touchStartX = event.changedTouches[0].pageX;
-    touchStartTime = event.timeStamp;
-  };
-  game.input.touch.touchEndCallback = function(event) {
-    const deltaX = event.changedTouches[0].pageX - touchStartX;
-    const deltaTime = event.timeStamp - touchStartTime;
-
-    if (deltaTime < 400 && deltaX > 200) {
-      startWipe();
-    }
-  };
-  /* poor mans swipe detection end */
 
   addWeaponSwitchKeyBindings(game, player);
 

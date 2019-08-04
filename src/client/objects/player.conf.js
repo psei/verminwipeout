@@ -7,9 +7,6 @@ module.exports = config({
     shipLeft: '/images/ship/ship-left.png',
     shipRight: '/images/ship/ship-right.png',
 
-    healthBar: 'images/interface/healthbar-static.png',
-    healthAlert: 'images/interface/healthbar-alert.gif',
-
     gameOver: 'images/interface/gameOver.jpg',
 
     deathMessage1: 'images/titles/death-message-1.png',
@@ -29,7 +26,4 @@ module.exports = config({
   width: 78,
   height: 90,
   speed: 6,
-
-  healthPaddingX: 33,
-  healthPaddingY: 73, // keep in sync with level.conf (healthBgPaddingY + 16)
 });

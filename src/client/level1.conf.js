@@ -110,13 +110,8 @@ function createSingleObject(config) {
 module.exports = config({
   images: {
     background: '/images/backgrounds/background.jpg',
-    healthBarBackground: '/images/interface/healthbar-background.png',
   },
   backgroundSpeed: 2,
-
-  healthBarWidth: 33,
-  healthBgPaddingY: 57, // keep in sync with player.conf: healthPaddingY
-
   debrisSpawnRatio: 500,
 
   waves: [

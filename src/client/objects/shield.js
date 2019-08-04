@@ -3,7 +3,10 @@
 var config = require('./shield.conf');
 
 function Shield(game, player) {
+  var ownedSprites = game.add.group();
+
   var shield = game.add.sprite(player.body.x, player.body.y, config.sprites.shield.animationName);
+  ownedSprites.add(shield);
 
   shield.anchor.setTo(0.5, 0.5);
   shield.animations.add(config.sprites.shield.animationName);
@@ -23,6 +26,10 @@ function Shield(game, player) {
   shield.update = function() {
     shield.x = player.x;
     shield.y = player.y;
+  };
+
+  shield.destroy = function() {
+    ownedSprites.removeAll(true, true);
   };
 
   return shield;

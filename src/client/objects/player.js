@@ -7,6 +7,7 @@ var Weapon = require('./weapon');
 var Splatter = require('./splatter');
 var Shield = require('./shield');
 var ShipThrust = require('./shipThrust');
+var HealthBar = require('./healthBar');
 
 var weaponConfigs = [
   require('./weapon1.conf'),
@@ -48,35 +49,14 @@ function Player(game) {
   game.physics.arcade.setBounds(0, 0, game.world.width, game.world.height);
   player.anchor.setTo(0.5, 0.5);
   player.body.collideWorldBounds = true;
+  player.health = 100;
 
   var splatter = Splatter.create(game, player);
   ownedSprites.add(splatter);
 
   var shield = Shield.create(game, player);
-  ownedSprites.add(shield);
-
   var shipThrust = ShipThrust.create(game, player);
-
-  var lastHealthBlink = 0;
-  player.health = 100;
-  var healthAlert = game.add.tileSprite(
-      game.world.width - 22,
-      config.healthPaddingY,
-      10,
-      game.world.height - config.healthPaddingY,
-      config.images.healthAlert
-  );
-  ownedSprites.add(healthAlert);
-  healthAlert.visible = false;
-
-  var healthBar = game.add.tileSprite(
-      game.world.width - 22,
-      config.healthPaddingY,
-      10,
-      game.world.height - config.healthPaddingY,
-      config.images.healthBar
-  );
-  ownedSprites.add(healthBar);
+  var healthBar = HealthBar.create(game, player);
 
   function setWeapon(weaponConfig) {
     if (isEqual(weaponConfig, player.currentWeaponConfig)) {
@@ -275,35 +255,29 @@ function Player(game) {
     shipDeath.animations.currentAnim.onComplete.add(showGameOver);
   }
 
-  function healthStuff() {
+  function checkStillAlive() {
     if (player.health < 0 && player.alive) {
       player.kill();
-      shipThrust.kill();
-      shield.kill();
       playDeathAnimation();
-    }
-
-    healthBar.y = config.healthPaddingY - (game.world.height - config.healthPaddingY) * (player.health - 100) / 100;
-
-    if (player.health < 30 && game.time.physicsElapsedTotalMS - lastHealthBlink > 500) {
-      healthAlert.visible = !healthAlert.visible;
-      lastHealthBlink = game.time.physicsElapsedTotalMS;
     }
   }
 
   player.update = function () {
     move();
     fireWeapon();
-    healthStuff();
-    splatter.update();
+    checkStillAlive();
+    healthBar.update();
     shield.update();
     shipThrust.update();
+    splatter.update();
   };
 
   player.destroy = function() {
     ownedSprites.removeAll(true, true);
-    splatter.destroy();
+    healthBar.destroy();
+    shield.destroy();
     shipThrust.destroy();
+    splatter.destroy();
   };
 
   player.onEnemyHitsPlayer = function (enemy) {

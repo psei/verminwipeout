@@ -1,0 +1,77 @@
+{"frames": {
+
+"preLoaderSlime_43.png":
+{
+	"frame": {"x":930,"y":1345,"w":930,"h":412},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":100,"w":930,"h":412},
+	"sourceSize": {"w":1000,"h":728}
+},
+"preLoaderSlime_44.png":
+{
+	"frame": {"x":0,"y":1340,"w":930,"h":427},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":100,"w":930,"h":427},
+	"sourceSize": {"w":1000,"h":728}
+},
+"preLoaderSlime_45.png":
+{
+	"frame": {"x":930,"y":909,"w":930,"h":436},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":100,"w":930,"h":436},
+	"sourceSize": {"w":1000,"h":728}
+},
+"preLoaderSlime_46.png":
+{
+	"frame": {"x":0,"y":466,"w":930,"h":447},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":100,"w":930,"h":447},
+	"sourceSize": {"w":1000,"h":728}
+},
+"preLoaderSlime_47.png":
+{
+	"frame": {"x":0,"y":0,"w":930,"h":466},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":100,"w":930,"h":466},
+	"sourceSize": {"w":1000,"h":728}
+},
+"preLoaderSlime_147.png":
+{
+	"frame": {"x":0,"y":913,"w":930,"h":427},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":100,"w":930,"h":427},
+	"sourceSize": {"w":1000,"h":728}
+},
+"preLoaderSlime_148.png":
+{
+	"frame": {"x":930,"y":462,"w":930,"h":447},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":100,"w":930,"h":447},
+	"sourceSize": {"w":1000,"h":728}
+},
+"preLoaderSlime_149.png":
+{
+	"frame": {"x":930,"y":0,"w":930,"h":462},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":100,"w":930,"h":462},
+	"sourceSize": {"w":1000,"h":728}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "title-for-menu11.png",
+	"format": "RGBA8888",
+	"size": {"w":1860,"h":1767},
+	"scale": "0.5",
+	"related_multi_packs": [ "title-for-menu0.json", "title-for-menu1.json", "title-for-menu2.json", "title-for-menu3.json", "title-for-menu4.json", "title-for-menu5.json", "title-for-menu6.json", "title-for-menu7.json", "title-for-menu8.json", "title-for-menu9.json", "title-for-menu10.json", "title-for-menu12.json", "title-for-menu13.json", "title-for-menu14.json", "title-for-menu15.json", "title-for-menu16.json" ],
+	"smartupdate": "$TexturePacker:SmartUpdate:6eb74918f39738cd6b182a9eebad459d:dd178947d30c65e617b480c12e9296ca:eaba15a17d44b443b3d5d6f50841b5ca$"
+}
+}

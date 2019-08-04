@@ -6,6 +6,7 @@ var config = require('./player.conf');
 var Weapon = require('./weapon');
 var Splatter = require('./splatter');
 var Shield = require('./shield');
+var ShipThrust = require('./shipThrust');
 
 var weaponConfigs = [
   require('./weapon1.conf'),
@@ -32,11 +33,6 @@ function Player(game) {
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
   ownedSprites.add(player);
 
-  var splatter = Splatter.create(game, player);
-  ownedSprites.add(splatter);
-
-  var shipThrust = game.add.sprite(0, 0, config.sprites.shipThrustLeftLow.animationName);
-  ownedSprites.add(shipThrust);
   player.hitArea = new Phaser.Polygon([
     new Phaser.Point(41, 90),
     new Phaser.Point(78, 65),
@@ -52,6 +48,14 @@ function Player(game) {
   game.physics.arcade.setBounds(0, 0, game.world.width, game.world.height);
   player.anchor.setTo(0.5, 0.5);
   player.body.collideWorldBounds = true;
+
+  var splatter = Splatter.create(game, player);
+  ownedSprites.add(splatter);
+
+  var shield = Shield.create(game, player);
+  ownedSprites.add(shield);
+
+  var shipThrust = ShipThrust.create(game, player);
 
   var lastHealthBlink = 0;
   player.health = 100;
@@ -74,9 +78,6 @@ function Player(game) {
   );
   ownedSprites.add(healthBar);
 
-  var shield = Shield.create(game, player);
-  ownedSprites.add(shield);
-
   function setWeapon(weaponConfig) {
     if (isEqual(weaponConfig, player.currentWeaponConfig)) {
       return;
@@ -98,23 +99,6 @@ function Player(game) {
     splatter.handleBulletHitEnemy(bullet, enemy);
   };
 
-  function thrustAnimation(sprite, anchorX, anchorY) {
-    if (!player.alive) {
-      return;
-    }
-
-    ownedSprites.remove(shipThrust);
-    shipThrust.destroy(true);
-    shipThrust = game.add.sprite(0, 0, sprite.animationName);
-    ownedSprites.add(shipThrust);
-    shipThrust.width = player.width + 75;
-    shipThrust.height = player.height + 180;
-    shipThrust.anchor.setTo(anchorX, anchorY);
-    shipThrust.animations.add(sprite.animationName, sprite.frames);
-    shipThrust.frame = 1;
-    shipThrust.animations.play(sprite.animationName, sprite.frameRate, true, false);
-  }
-
   function moveLeft() {
     player.x -= config.speed;
     previousDirection.right = false;
@@ -123,9 +107,9 @@ function Player(game) {
       player.loadTexture(config.images.shipLeft);
 
       if (previousDirection.forward) {
-        thrustAnimation(config.sprites.shipThrustLeftMid, 0.3, 0.2);
+        shipThrust.leftMid();
       } else {
-        thrustAnimation(config.sprites.shipThrustLeftLow, 0.3, 0.2);
+        shipThrust.leftLow();
       }
     }
   }
@@ -138,9 +122,9 @@ function Player(game) {
       player.loadTexture(config.images.shipRight);
 
       if (previousDirection.forward) {
-        thrustAnimation(config.sprites.shipThrustRightMid, 0.7, 0.2);
+        shipThrust.rightMid();
       } else {
-        thrustAnimation(config.sprites.shipThrustRightLow, 0.7, 0.2);
+        shipThrust.rightLow();
       }
     }
   }
@@ -152,9 +136,9 @@ function Player(game) {
     previousDirection.right = false;
 
     if (previousDirection.forward) {
-      thrustAnimation(config.sprites.shipThrustCenterMid, 0.3, 0.2);
+      shipThrust.centerMid();
     } else {
-      thrustAnimation(config.sprites.shipThrustCenterLow, 0.3, 0.2);
+      shipThrust.centerLow();
     }
   }
 
@@ -164,11 +148,11 @@ function Player(game) {
     previousDirection.forward = true;
 
     if (previousDirection.left) {
-      thrustAnimation(config.sprites.shipThrustLeftMid, 0.3, 0.2);
+      shipThrust.leftMid();
     } else if (previousDirection.right) {
-      thrustAnimation(config.sprites.shipThrustRightMid, 0.7, 0.2);
+      shipThrust.rightMid();
     } else {
-      thrustAnimation(config.sprites.shipThrustCenterMid, 0.3, 0.2);
+      shipThrust.centerMid();
     }
   }
 
@@ -178,11 +162,11 @@ function Player(game) {
     previousDirection.backward = true;
 
     if (previousDirection.left) {
-      thrustAnimation(config.sprites.shipThrustLeftLow, 0.3, 0.2);
+      shipThrust.leftLow();
     } else if (previousDirection.right) {
-      thrustAnimation(config.sprites.shipThrustRightLow, 0.7, 0.2);
+      shipThrust.rightLow();
     } else {
-      thrustAnimation(config.sprites.shipThrustCenterLow, 0.3, 0.2);
+      shipThrust.centerLow();
     }
   }
 
@@ -191,11 +175,11 @@ function Player(game) {
     previousDirection.backward = false;
 
     if (previousDirection.left) {
-      thrustAnimation(config.sprites.shipThrustLeftLow, 0.3, 0.2);
+      shipThrust.leftLow();
     } else if (previousDirection.right) {
-      thrustAnimation(config.sprites.shipThrustRightLow, 0.7, 0.2);
+      shipThrust.rightLow();
     } else {
-      thrustAnimation(config.sprites.shipThrustCenterLow, 0.3, 0.2);
+      shipThrust.centerLow();
     }
   }
 
@@ -235,9 +219,6 @@ function Player(game) {
         moveDown();
       }
     }
-
-    shipThrust.x = player.x;
-    shipThrust.y = player.y;
   }
 
   function fireWeapon() {
@@ -316,11 +297,13 @@ function Player(game) {
     healthStuff();
     splatter.update();
     shield.update();
+    shipThrust.update();
   };
 
   player.destroy = function() {
     ownedSprites.removeAll(true, true);
     splatter.destroy();
+    shipThrust.destroy();
   };
 
   player.onEnemyHitsPlayer = function (enemy) {

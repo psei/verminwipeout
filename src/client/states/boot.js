@@ -6,6 +6,7 @@ var configs = [
   require('../objects/player.conf'),
   require('../objects/splatter.conf'),
   require('../objects/shield.conf'),
+  require('../objects/shipThrust.conf'),
   require('../objects/debris1.conf'),
   require('../objects/debris2.conf'),
   require('../objects/cutterfly.conf'),

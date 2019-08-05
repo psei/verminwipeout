@@ -123,6 +123,15 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
+        spawnTime: 2000,
+        durationToReachNextWayPoint: 2000,
+        formation: formations.horizontal(50, 150),
+        creatureCount: 5,
+        wayPoints: wayPoints.zickZack(6)
+      }),
+
+      createEnemyWave({
+        type: 'cutterfly',
         spawnTime: 3500,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(50, 150),

@@ -8,6 +8,7 @@ var Splatter = require('./splatter');
 var Shield = require('./shield');
 var ShipThrust = require('./shipThrust');
 var HealthBar = require('./healthBar');
+var GameOver = require('./gameOver');
 
 var weaponConfigs = [
   require('./weapon1.conf'),
@@ -28,7 +29,7 @@ function addWeaponSwitchKeyBindings(game, player) {
   });
 }
 
-function Player(game) {
+function Player(game, lifeCounter) {
   var ownedSprites = game.add.group();
 
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
@@ -57,6 +58,7 @@ function Player(game) {
   var shield = Shield.create(game, player);
   var shipThrust = ShipThrust.create(game, player);
   var healthBar = HealthBar.create(game, player);
+  var gameOver = GameOver.create(game, player, lifeCounter);
 
   function setWeapon(weaponConfig) {
     if (isEqual(weaponConfig, player.currentWeaponConfig)) {
@@ -211,35 +213,6 @@ function Player(game) {
     }
   }
 
-  function showGameOver() {
-    ownedSprites.removeAll(true, true);
-    splatter.destroy();
-
-    var deathMessages = [
-      config.images.deathMessage1,
-      config.images.deathMessage2,
-      config.images.deathMessage3,
-      config.images.deathMessage4,
-      config.images.deathMessage5,
-      config.images.deathMessage6,
-      config.images.deathMessage7,
-      config.images.deathMessage8,
-      config.images.deathMessage9,
-      config.images.deathMessage10,
-      config.images.deathMessage11,
-      config.images.deathMessage12,
-      config.images.deathMessage13,
-    ];
-    var selectedMessage = Phaser.ArrayUtils.getRandomItem(deathMessages);
-    const gameOverScreen = game.add.tileSprite(-560, 0, 1920, 1080, config.images.gameOver);
-    ownedSprites.add(gameOverScreen);
-    const gameOverText = game.add.tileSprite(0, 0, game.world.width, 111, selectedMessage);
-    ownedSprites.add(gameOverText);
-    game.world.bringToTop(ownedSprites);
-
-    game.paused = true;
-  }
-
   function playDeathAnimation() {
     var shipDeath = game.add.sprite(0, 0, 'shipAtlas', 'shipdeath-00');
     ownedSprites.add(shipDeath);
@@ -252,12 +225,15 @@ function Player(game) {
     const frames = Phaser.Animation.generateFrameNames('shipdeath-', 1, 12, '', 2);
     shipDeath.animations.add('shipDieAni', frames, 5, false, false);
     shipDeath.animations.play('shipDieAni');
-    shipDeath.animations.currentAnim.onComplete.add(showGameOver);
+    shipDeath.animations.currentAnim.onComplete.add(gameOver.show);
   }
 
   function checkStillAlive() {
-    if (player.health < 0 && player.alive) {
+    if (player.health <= 0 && player.alive) {
       player.kill();
+      shield.destroy();
+      shipThrust.destroy();
+      splatter.destroy();
       playDeathAnimation();
     }
   }
@@ -275,9 +251,7 @@ function Player(game) {
   player.destroy = function() {
     ownedSprites.removeAll(true, true);
     healthBar.destroy();
-    shield.destroy();
-    shipThrust.destroy();
-    splatter.destroy();
+    gameOver.destroy();
   };
 
   player.onEnemyHitsPlayer = function (enemy) {
@@ -315,7 +289,7 @@ function Player(game) {
 }
 
 module.exports = {
-  create: function (game) {
-    return new Player(game);
+  create: function (game, lifeCounter) {
+    return new Player(game, lifeCounter);
   }
 };

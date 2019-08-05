@@ -10,6 +10,7 @@ module.exports = function (game) {
   var level;
   var player;
   var enemies;
+  var lifeCounter = 3;
 
   function toggleSounds() {
     game.sound.mute = !game.sound.mute;
@@ -63,6 +64,13 @@ module.exports = function (game) {
       return;
     }
 
+    if (lifeCounter === 1) {
+      currentLevel = 1;
+      lifeCounter = 3;
+    } else {
+      lifeCounter -= 1;
+    }
+
     togglePause();
 
     enemies.callAll('destroy');
@@ -71,7 +79,7 @@ module.exports = function (game) {
     player.destroy();
 
     level = Level.init(game, currentLevel);
-    player = Player.create(game);
+    player = Player.create(game, lifeCounter);
 
     game.time.physicsElapsedTotalMS = 0;
   }
@@ -88,7 +96,7 @@ module.exports = function (game) {
 
   return {
     create: function() {
-      player = Player.create(game);
+      player = Player.create(game, lifeCounter);
       enemies = game.add.group();
       game.world.sendToBack(enemies);
       level = Level.init(game, currentLevel);

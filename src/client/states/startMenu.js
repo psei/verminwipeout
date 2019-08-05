@@ -19,7 +19,7 @@ module.exports = function (game) {
       bg.scale.y *= 1024 / 1080;
       bgMove = -1;
 
-      game.add.text(200, 920, 'Touch to start', { fontSize: 65 });
+      game.add.text(190, 910, 'Touch to start', { fontSize: 50, font: 'Forward' });
       game.input.touch.touchStartCallback = startGame;
       game.input.keyboard.onDownCallback = startGame;
     },

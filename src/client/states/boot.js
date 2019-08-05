@@ -8,6 +8,7 @@ var configs = [
   require('../objects/shield.conf'),
   require('../objects/shipThrust.conf'),
   require('../objects/healthBar.conf'),
+  require('../objects/gameOver.conf'),
   require('../objects/debris1.conf'),
   require('../objects/debris2.conf'),
   require('../objects/cutterfly.conf'),
@@ -77,7 +78,7 @@ module.exports = function (game) {
   return {
     preload: function () {
       game.stage.backgroundColor = '#182d3b';
-      game.add.text(32, 32, 'Loading ...', { fill: '#fcf7e3', fontSize: 65 });
+      game.add.text(32, 32, 'Loading ...', { fill: '#fcf7e3', fontSize: 65, font: 'Forward' });
 
       invokeMap(configs, 'loadMedia', game);
       game.load.audio('music-1-intro', '/audio/music/music-1-intro.wav');
@@ -86,7 +87,7 @@ module.exports = function (game) {
       game.load.audio('boss-loop', '/audio/music/boss-loop.wav');
       game.load.audio('wiper', '/audio/fx/wiper.mp3');
       game.load.atlasJSONHash('shipAtlas', 'images/texturepacker/shipAtlas.png', 'images/texturepacker/shipAtlas.json');
-      game.load.atlasJSONHash('splatterAtlas', 'images/texturepacker/splatterAtlas.png', 'images/texturepacker/splatterAtlas.json');
+      game.load.atlasJSONHash('splatterAtlas', 'images/splatter2/splatter-0.png', 'images/splatter2/splatter.json');
       game.load.atlasJSONHash('bloodAtlas', 'images/texturepacker/bloodAtlas.png', 'images/texturepacker/bloodAtlas.json');
 
       game.load.image('btn-mute', 'images/interface/btn-mute.png');

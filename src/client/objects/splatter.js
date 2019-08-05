@@ -43,13 +43,10 @@ function Splatter(game, player) {
   };
 
   wiper.onEnemyHitsPlayer = function(enemy) {
-    return function () {
-      if (enemy.getCausedDamagePoints() > 0) {
-        if (Math.abs(enemy.position.y - player.position.y) < enemy.height) {
-          addSplatter();
-        }
-      }
-    };
+    if (enemy.givesSplatter && !enemy.gaveSplatterDirectly) {
+      enemy.gaveSplatterDirectly = true;
+      addSplatter();
+    }
   };
 
   function startWipe() {

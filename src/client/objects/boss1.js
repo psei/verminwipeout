@@ -6,6 +6,7 @@ function Boss1(game) {
   var ownedSprites = game.add.group();
   var isCurrentlyFiring = false;
 
+
   var boss = game.add.sprite(400, 200, 'verminAtlas', 'enemies/bosses/0-crank/body.png');
   ownedSprites.add(boss);
 

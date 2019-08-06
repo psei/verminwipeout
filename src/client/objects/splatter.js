@@ -53,7 +53,7 @@ function Splatter(game, player) {
       return;
     }
 
-    wiper.angle = -180;
+    wiper.angle = -10;
     wiper.visible = true;
     if (ownedSprites.countLiving() > 0) {
       wiper.loadTexture(config.images.wiperDirty);
@@ -73,10 +73,10 @@ function Splatter(game, player) {
 
     if (isWiping) {
       wiper.angle += 2;
-      if (wiper.angle > -90) {
+      if (wiper.angle > 90 && ownedSprites.countLiving() > 0) {
         ownedSprites.removeAll(true, true);
       }
-      if (wiper.angle > 10) {
+      if (wiper.angle < -10) {
         isWiping = false;
         wiper.visible = false;
       }

@@ -56,6 +56,7 @@ module.exports = function (game) {
       game.load.atlasJSONHash('shipAtlas', 'images/texturepacker/shipAtlas.png', 'images/texturepacker/shipAtlas.json');
       game.load.atlasJSONHash('splatterAtlas', 'images/splatter2/splatter-0.png', 'images/splatter2/splatter.json');
       game.load.atlasJSONHash('bloodAtlas', 'images/texturepacker/bloodAtlas.png', 'images/texturepacker/bloodAtlas.json');
+      game.load.atlasJSONHash('verminAtlas', 'images/TexturePacker-SmartFolder/vermin-wipeout-atlas0.png', 'images/TexturePacker-SmartFolder/vermin-wipeout-atlas0.json');
 
       game.load.image('btn-mute', 'images/interface/btn-mute.png');
       game.load.image('btn-pause', 'images/interface/btn-pause.png');

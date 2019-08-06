@@ -14,12 +14,12 @@ function Boss1(game, config) {
   var isCurrentlyFiring = false;
   var boss = game.add.sprite(400, 200, flySpriteConfig.animationName);
 
-    boss.hitArea = new Phaser.Polygon([
-      new Phaser.Point(100, 20),
-      new Phaser.Point(240, 20),
-      new Phaser.Point(240, 100),
-      new Phaser.Point(120, 100),
-    ]);
+  boss.hitArea = new Phaser.Polygon([
+    new Phaser.Point(100, 20),
+    new Phaser.Point(240, 20),
+    new Phaser.Point(240, 100),
+    new Phaser.Point(120, 100),
+  ]);
 
   ownedSprites.add(boss);
   game.physics.enable(boss, window.Phaser.Physics.ARCADE);

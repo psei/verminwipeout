@@ -19,10 +19,8 @@ domready(function () {
       };
 
       game.world.setBounds(0, 0, gameConfig.width, gameConfig.height);
-      game.state.add('boot', require('./states/boot.js')(game));
-      game.state.add('play', require('./states/play.js')(game));
-      game.state.add('startMenu', require('./states/startMenu.js')(game))
-      game.state.start('boot');
+      game.state.add('preBoot', require('./states/preBoot.js')(game));
+      game.state.start('preBoot');
     }
   });
 });

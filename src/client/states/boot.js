@@ -22,63 +22,30 @@ var configs = [
 ];
 
 module.exports = function (game) {
-  // from https://stackoverflow.com/questions/4817029/whats-the-best-way-to-detect-a-touch-screen-device-using-javascript
-  function isTouchDevice() {
-    var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
-    var mq = function(query) {
-      return window.matchMedia(query).matches;
-    }
-
-    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
-      return true;
-    }
-
-    // include the 'heartz' as a way to have a non matching MQ to help terminate the join
-    // https://git.io/vznFH
-    var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
-    return mq(query);
-  }
-
-  function scaleGame(clientWidth, clientHeight) {
-    const originalWidth = 800; // keep in sync with game.conf.js width
-    const originalHeight = 1024; // keep in sync with game.conf.js height
-
-    const aspectRatio = originalWidth / originalHeight;
-
-    const widthA = clientWidth;
-    var heightA = clientWidth / aspectRatio;
-    heightA = heightA > clientHeight ? 0 : heightA;
-
-    var heightB = clientHeight;
-    const widthB = clientHeight * aspectRatio;
-    heightB = widthB > clientWidth ? 0 : heightB;
-
-    var newHeight;
-    var newWidth;
-
-    if (Math.max(heightA, heightB) === 0) {
-      newHeight = originalHeight;
-      newWidth = originalWidth;
-    } else if (heightA > heightB) {
-      newHeight = heightA;
-      newWidth = widthA;
-    } else {
-      newHeight = heightB;
-      newWidth = widthB;
-    }
-
-    if (isTouchDevice()) {
-      newWidth = clientWidth;
-      newHeight = clientHeight;
-    }
-
-    game.scale.setUserScale(newWidth / game.width, newHeight / game.height);
-  }
+  var rectangle;
+  var subTitle;
+  var preloadShip;
 
   return {
     preload: function () {
-      game.stage.backgroundColor = '#182d3b';
-      game.add.text(32, 32, 'Loading ...', { fill: '#fcf7e3', fontSize: 65, font: 'Forward' });
+      game.stage.backgroundColor = '#340101';
+      game.add.text(32, 32, 'VERMIN WIPEOUT', { fill: '#5c0101', fontSize: 65, font: 'Forward' });
+
+      subTitle = game.add.text(110, 150, 'generating ships', { fill: '#5c0101', fontSize: 32, font: 'Forward' });
+      subTitle.anchorX = 0.5;
+
+      preloadShip = game.add.sprite(game.world.width / 2, game.world.height / 2, 'preload-ship');
+      preloadShip.anchor.setTo(0.5, 0.5);
+
+      var width = preloadShip.width;
+      var height = preloadShip.height;
+      var bmd = game.add.bitmapData(width, height);
+      bmd.ctx.beginPath();
+      bmd.ctx.rect(0, 0, width, height);
+      bmd.ctx.fillStyle = '#340101';
+      bmd.ctx.fill();
+      rectangle = game.add.sprite(preloadShip.x, preloadShip.y, bmd);
+      rectangle.anchor.setTo(0.5, 0.5);
 
       invokeMap(configs, 'loadMedia', game);
       game.load.audio('music-1-intro', '/audio/music/music-1-intro.wav');
@@ -92,18 +59,37 @@ module.exports = function (game) {
 
       game.load.image('btn-mute', 'images/interface/btn-mute.png');
       game.load.image('btn-pause', 'images/interface/btn-pause.png');
-
-      game.scale.fullScreenScaleMode = Phaser.ScaleManager.USER_SCALE;
-      game.scale.scaleMode = Phaser.ScaleManager.USER_SCALE;
-      scaleGame(window.innerWidth, window.innerHeight);
-      window.onresize = function (event) {
-        scaleGame(event.target.innerWidth, event.target.innerHeight);
-      };
     },
     create: function () {
       game.stage.backgroundColor = '#F0F0F0';
       game.state.clearCurrentState();
       game.state.start('startMenu');
+    },
+    loadUpdate: function () {
+        rectangle.height = Math.floor(preloadShip.height * (1 - game.load.progress﻿ / 100));
+        rectangle.y = preloadShip.y - (preloadShip.height - rectangle.height) / 2;
+
+        if (game.load.progress﻿ > 90) {
+          subTitle.setText('slime up');
+        } else if (game.load.progress > 80) {
+          subTitle.setText('add more alien blood');
+        } else if (game.load.progress > 70) {
+          subTitle.setText('gather blaster info');
+        } else if (game.load.progress > 60) {
+          subTitle.setText('load lasers and asteroids');
+        } else if (game.load.progress > 50) {
+          subTitle.setText('boot thruster sequence');
+        } else if (game.load.progress > 40) {
+          subTitle.setText('loading trader rumors');
+        } else if (game.load.progress > 30) {
+          subTitle.setText('rendering some critters');
+        } else if (game.load.progress > 20) {
+          subTitle.setText('building splashes');
+        } else if (game.load.progress > 10) {
+          subTitle.setText('creating splatter');
+        } else {
+          subTitle.setText('generating ships');
+        }
     }
   };
 };

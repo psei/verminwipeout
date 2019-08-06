@@ -9,7 +9,6 @@ function Splatter(game, player) {
   wiperSound.volume = 3;
 
   var wiper = game.add.tileSprite(game.world.width / 2, game.world.height + 275, 883, 203, config.images.wiperClean);
-  wiper.scale.x *= -1;
   wiper.scale.x *= 1.3;
   wiper.scale.y *= 1.3;
   wiper.anchor.set(1.1, 1.1);

@@ -1,55 +1,53 @@
 'use strict';
 
-var configsByType = {
-  cutterfly: require('./cutterfly.conf'),
-  jizzler: require('./jizzler.conf'),
-  boss1: require('./boss1.conf'),
-};
+var config = require('./boss1.conf');
 
-var Weapon = require('./weapon');
-
-function Boss1(game, config) {
+function Boss1(game) {
   var ownedSprites = game.add.group();
-  var flySpriteConfig = config.sprites.enemy;
   var isCurrentlyFiring = false;
-  var boss = game.add.sprite(400, 200, flySpriteConfig.animationName);
 
-  boss.hitArea = new Phaser.Polygon([
-    new Phaser.Point(100, 20),
-    new Phaser.Point(240, 20),
-    new Phaser.Point(240, 100),
-    new Phaser.Point(120, 100),
-  ]);
-
+  var boss = game.add.sprite(400, 200, 'verminAtlas', 'enemies/bosses/0-crank/body.png');
   ownedSprites.add(boss);
+
+  var arm1 = game.add.sprite(boss.x - 150, boss.y - 40, 'verminAtlas', 'enemies/bosses/0-crank/arm0.png');
+  ownedSprites.add(arm1);
+
+  var arm2 = game.add.sprite(boss.x + 30, boss.y - 40, 'verminAtlas', 'enemies/bosses/0-crank/arm1.png');
+  ownedSprites.add(arm2);
+
+  var arm3 = game.add.sprite(boss.x + 30, boss.y + 30, 'verminAtlas', 'enemies/bosses/0-crank/arm2a.png');
+  ownedSprites.add(arm3);
+
+  var arm4 = game.add.sprite(boss.x + 30 + 50, boss.y + 30 + 60, 'verminAtlas', 'enemies/bosses/0-crank/arm3b.png');
+  ownedSprites.add(arm4);
+
+  var arm5 = game.add.sprite(boss.x - 110, boss.y + 30, 'verminAtlas', 'enemies/bosses/0-crank/arm3a.png');
+  ownedSprites.add(arm5);
+
+  var arm6 = game.add.sprite(boss.x - 110 - 30, boss.y + 30 + 60, 'verminAtlas', 'enemies/bosses/0-crank/arm2b.png');
+  ownedSprites.add(arm6);
+
   game.physics.enable(boss, window.Phaser.Physics.ARCADE);
   boss.anchor.setTo(0.5, 0.5);
-
-  boss.weapon = Weapon.create(game, boss, require('./weapon1.conf'));
-  boss.weapon.fireAngle = 90;
   boss.givesSplatter = config.givesSplatter;
   boss.health = config.health;
 
-  boss.animations.add(flySpriteConfig.animationName);
-
-  var blood = game.add.sprite(0, 0, 'bloodAtlas', 'blood-0');
+  var blood = game.add.sprite(0, 0, 'verminAtlas', 'enemies/bosses/0-crank/firstblood/00.png');
   ownedSprites.add(blood);
+  const frames = Phaser.Animation.generateFrameNames('enemies/bosses/0-crank/firstblood/', 1, 13, '.png', 2);
+  blood.animations.add('crankFirstBlood', frames, 15, false);
+  blood.anchor.setTo(0.5, 0.5);
   blood.visible = false;
 
-  function firstBlood(bullet) {
+  function firstBlood() {
     if (blood.animations.currentAnim && blood.animations.currentAnim.isPlaying) {
       return;
     }
 
+    blood.x = boss.x - 5;
+    blood.y = boss.y + 30;
     blood.visible = true;
-    blood.x = bullet.x;
-    blood.y = bullet.y;
-    blood.scale.setTo(0.5, 0.5);
-    blood.anchor.setTo(0.5, 0.5);
-
-    const frames = Phaser.Animation.generateFrameNames('blood-', 1, 2, '');
-    blood.animations.add('enemyBloodAni', frames, 5, false);
-    blood.animations.play('enemyBloodAni');
+    blood.animations.play('crankFirstBlood');
     blood.animations.currentAnim.onComplete.add(() => { blood.visible = false; });
   }
 
@@ -60,7 +58,7 @@ function Boss1(game, config) {
     }
 
     if (boss.alive) {
-      firstBlood(bullet);
+      firstBlood();
     }
   };
 
@@ -72,29 +70,36 @@ function Boss1(game, config) {
     }
   };
 
-  var attackConfig = config.sprites.attack;
-  var attackSprite = game.add.sprite(boss.body.x, boss.body.y, attackConfig.animationName);
-  ownedSprites.add(attackSprite);
-  attackSprite.anchor.setTo(0.5, 0.5);
-  attackSprite.visible = false;
-  boss.animations.add(attackConfig.animationName);
-
   boss.getCausedDamagePoints = function() {
     return config.causesDamagePoints;
   };
 
+  var attackSprite = game.add.sprite(0, 0, 'verminAtlas', 'enemies/bosses/0-crank/shot1/00.png');
+  ownedSprites.add(attackSprite);
+  attackSprite.anchor.setTo(0.5, 0.5);
+  attackSprite.visible = false;
+  const attackFrames = Phaser.Animation.generateFrameNames('enemies/bosses/0-crank/shot1/', 1, 27, '.png', 2);
+  attackSprite.animations.add('crankAttack1', attackFrames, 15, false);
+  game.physics.enable(attackSprite, window.Phaser.Physics.ARCADE);
+
+  boss.weapon = {
+    bullets: []
+  };
+
   boss.attack = function () {
-    attackSprite.frame = 1;
-    attackSprite.visible = true;
     isCurrentlyFiring = true;
-    boss.animations.play(attackConfig.animationName, attackConfig.frameRate);
-    boss.animations.currentAnim.onComplete.add(function () {
+    boss.weapon.bullets.push(attackSprite);
+    boss.hasHitPlayerOnce = false;
+
+    attackSprite.x = boss.x + 25;
+    attackSprite.y = boss.y + attackSprite.height / 2;
+    attackSprite.visible = true;
+    attackSprite.animations.play('crankAttack1');
+    attackSprite.animations.currentAnim.onComplete.add(() => {
       attackSprite.visible = false;
       isCurrentlyFiring = false;
-      boss.weapon.fire();
-      boss.frame = 1;
-      boss.animations.play(flySpriteConfig.animationName, flySpriteConfig.frameRate, true);
-    }, this);
+      boss.weapon.bullets = [];
+    });
   };
 
   boss.destroy = function() {
@@ -103,12 +108,11 @@ function Boss1(game, config) {
 
   boss.events.onKilled.add(() => { boss.destroy(); }, this);
 
-  boss.animations.play(flySpriteConfig.animationName, flySpriteConfig.frameRate, true);
   return boss;
 }
 
 module.exports = {
-  create: function (game, type, pos) {
-    return new Boss1(game, configsByType[type], pos);
+  create: function (game) {
+    return new Boss1(game);
   }
 };

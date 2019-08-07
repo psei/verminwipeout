@@ -57,7 +57,7 @@ module.exports = function (game) {
   return {
     preload: function () {
       game.stage.backgroundColor = '#340101';
-      game.add.text(32, 32, 'VERMIN WIPEOUT', { fill: '#5c0101', fontSize: 65, font: 'Forward' });
+      game.add.text(32, 32, 'VERMIN WIPEOUT', { fill: '#f5af00', fontSize: 65, font: 'Forward' });
       game.load.image('preload-ship', 'images/preloader/1.png');
 
       game.scale.fullScreenScaleMode = Phaser.ScaleManager.USER_SCALE;

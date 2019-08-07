@@ -23,6 +23,7 @@ var levelConfigs = [
 
 function Level(game, levelIndex) {
   var world = game.world;
+  this.isBgMoving = true;
 
   // we need to copy the config for restarts with this Json trick
   this.config = JSON.parse(JSON.stringify(levelConfigs[levelIndex]));
@@ -33,7 +34,13 @@ function Level(game, levelIndex) {
 }
 
 Level.prototype.update = function () {
-  this.background.tilePosition.y += this.config.backgroundSpeed;
+  if (this.isBgMoving) {
+    this.background.tilePosition.y += this.config.backgroundSpeed;
+  }
+};
+
+Level.prototype.stopBackground = function() {
+  this.isBgMoving = false;
 };
 
 Level.prototype.destroy = function () {

@@ -131,7 +131,12 @@ module.exports = function (game) {
     update: function() {
       game.time.physicsElapsedTotalMS += game.time.physicsElapsedMS;
       level.update();
-      enemies.addMultiple(level.spawnEnemies(game));
+      const newEnemies = level.spawnEnemies(game);
+      const isBoss = newEnemies.filter((enemy) => enemy.visible === false).length === 1;
+      if (isBoss) {
+        level.stopBackground();
+      }
+      enemies.addMultiple(newEnemies);
       player.update();
       enemies.callAll('update');
       checkCollisions();

@@ -2,8 +2,8 @@
   "frames": {
     "enemies/bosses/0-crank/arm0.png": {
       "frame": {
-        "x": 1640,
-        "y": 656,
+        "x": 1883,
+        "y": 1672,
         "w": 134,
         "h": 68
       },
@@ -22,8 +22,8 @@
     },
     "enemies/bosses/0-crank/arm1.png": {
       "frame": {
-        "x": 810,
-        "y": 564,
+        "x": 1855,
+        "y": 1742,
         "w": 144,
         "h": 80
       },
@@ -42,8 +42,8 @@
     },
     "enemies/bosses/0-crank/arm2a.png": {
       "frame": {
-        "x": 1624,
-        "y": 933,
+        "x": 1873,
+        "y": 1941,
         "w": 61,
         "h": 72
       },
@@ -62,8 +62,8 @@
     },
     "enemies/bosses/0-crank/arm2b.png": {
       "frame": {
-        "x": 765,
-        "y": 541,
+        "x": 347,
+        "y": 1852,
         "w": 43,
         "h": 120
       },
@@ -82,8 +82,8 @@
     },
     "enemies/bosses/0-crank/arm3a.png": {
       "frame": {
-        "x": 956,
-        "y": 583,
+        "x": 1806,
+        "y": 1941,
         "w": 65,
         "h": 78
       },
@@ -102,8 +102,8 @@
     },
     "enemies/bosses/0-crank/arm3b.png": {
       "frame": {
-        "x": 1695,
-        "y": 823,
+        "x": 1968,
+        "y": 839,
         "w": 47,
         "h": 95
       },
@@ -122,8 +122,8 @@
     },
     "enemies/bosses/0-crank/body.png": {
       "frame": {
-        "x": 1416,
-        "y": 583,
+        "x": 1472,
+        "y": 1882,
         "w": 141,
         "h": 134
       },
@@ -142,8 +142,8 @@
     },
     "enemies/bosses/0-crank/death/0.png": {
       "frame": {
-        "x": 599,
-        "y": 685,
+        "x": 1872,
+        "y": 1335,
         "w": 78,
         "h": 114
       },
@@ -162,8 +162,8 @@
     },
     "enemies/bosses/0-crank/death/1.png": {
       "frame": {
-        "x": 1624,
-        "y": 845,
+        "x": 1952,
+        "y": 1319,
         "w": 69,
         "h": 86
       },
@@ -182,8 +182,8 @@
     },
     "enemies/bosses/0-crank/death/2.png": {
       "frame": {
-        "x": 766,
-        "y": 908,
+        "x": 1753,
+        "y": 1335,
         "w": 117,
         "h": 114
       },
@@ -202,8 +202,8 @@
     },
     "enemies/bosses/0-crank/firstblood/00.png": {
       "frame": {
-        "x": 103,
-        "y": 908,
+        "x": 828,
+        "y": 1920,
         "w": 154,
         "h": 108
       },
@@ -222,8 +222,8 @@
     },
     "enemies/bosses/0-crank/firstblood/01.png": {
       "frame": {
-        "x": 1640,
-        "y": 363,
+        "x": 1314,
+        "y": 1718,
         "w": 160,
         "h": 127
       },
@@ -242,8 +242,8 @@
     },
     "enemies/bosses/0-crank/firstblood/02.png": {
       "frame": {
-        "x": 600,
-        "y": 541,
+        "x": 993,
+        "y": 1887,
         "w": 163,
         "h": 142
       },
@@ -262,8 +262,8 @@
     },
     "enemies/bosses/0-crank/firstblood/03.png": {
       "frame": {
-        "x": 962,
-        "y": 829,
+        "x": 1158,
+        "y": 1871,
         "w": 157,
         "h": 153
       },
@@ -282,8 +282,8 @@
     },
     "enemies/bosses/0-crank/firstblood/04.png": {
       "frame": {
-        "x": 1060,
-        "y": 501,
+        "x": 1317,
+        "y": 1847,
         "w": 153,
         "h": 160
       },
@@ -302,8 +302,8 @@
     },
     "enemies/bosses/0-crank/firstblood/05.png": {
       "frame": {
-        "x": 1121,
-        "y": 663,
+        "x": 1157,
+        "y": 1704,
         "w": 155,
         "h": 165
       },
@@ -322,8 +322,8 @@
     },
     "enemies/bosses/0-crank/firstblood/06.png": {
       "frame": {
-        "x": 962,
-        "y": 663,
+        "x": 1679,
+        "y": 1462,
         "w": 157,
         "h": 164
       },
@@ -342,8 +342,8 @@
     },
     "enemies/bosses/0-crank/firstblood/07.png": {
       "frame": {
-        "x": 1640,
-        "y": 492,
+        "x": 1754,
+        "y": 1001,
         "w": 158,
         "h": 162
       },
@@ -362,8 +362,8 @@
     },
     "enemies/bosses/0-crank/firstblood/08.png": {
       "frame": {
-        "x": 1416,
-        "y": 719,
+        "x": 1615,
+        "y": 1896,
         "w": 133,
         "h": 127
       },
@@ -382,8 +382,8 @@
     },
     "enemies/bosses/0-crank/firstblood/09.png": {
       "frame": {
-        "x": 1,
-        "y": 908,
+        "x": 1807,
+        "y": 1824,
         "w": 100,
         "h": 115
       },
@@ -402,8 +402,8 @@
     },
     "enemies/bosses/0-crank/firstblood/10.png": {
       "frame": {
-        "x": 1559,
-        "y": 583,
+        "x": 1907,
+        "y": 1451,
         "w": 79,
         "h": 122
       },
@@ -422,8 +422,8 @@
     },
     "enemies/bosses/0-crank/firstblood/11.png": {
       "frame": {
-        "x": 1607,
-        "y": 726,
+        "x": 1886,
+        "y": 1200,
         "w": 77,
         "h": 117
       },
@@ -442,8 +442,8 @@
     },
     "enemies/bosses/0-crank/firstblood/12.png": {
       "frame": {
-        "x": 1341,
-        "y": 580,
+        "x": 1968,
+        "y": 936,
         "w": 46,
         "h": 54
       },
@@ -462,8 +462,8 @@
     },
     "enemies/bosses/0-crank/firstblood/13.png": {
       "frame": {
-        "x": 459,
-        "y": 964,
+        "x": 1743,
+        "y": 916,
         "w": 51,
         "h": 50
       },
@@ -482,8 +482,8 @@
     },
     "enemies/bosses/0-crank/shot1/00.png": {
       "frame": {
-        "x": 403,
-        "y": 964,
+        "x": 1687,
+        "y": 952,
         "w": 54,
         "h": 57
       },
@@ -502,8 +502,8 @@
     },
     "enemies/bosses/0-crank/shot1/01.png": {
       "frame": {
-        "x": 1734,
-        "y": 271,
+        "x": 1936,
+        "y": 1938,
         "w": 54,
         "h": 58
       },
@@ -522,8 +522,8 @@
     },
     "enemies/bosses/0-crank/shot1/02.png": {
       "frame": {
-        "x": 347,
-        "y": 964,
+        "x": 588,
+        "y": 1334,
         "w": 54,
         "h": 59
       },
@@ -542,8 +542,8 @@
     },
     "enemies/bosses/0-crank/shot1/03.png": {
       "frame": {
-        "x": 885,
-        "y": 902,
+        "x": 772,
+        "y": 1913,
         "w": 54,
         "h": 116
       },
@@ -562,8 +562,8 @@
     },
     "enemies/bosses/0-crank/shot1/04.png": {
       "frame": {
-        "x": 1551,
-        "y": 719,
+        "x": 1750,
+        "y": 1896,
         "w": 54,
         "h": 126
       },
@@ -582,8 +582,8 @@
     },
     "enemies/bosses/0-crank/shot1/05.png": {
       "frame": {
-        "x": 1555,
-        "y": 847,
+        "x": 1838,
+        "y": 1451,
         "w": 67,
         "h": 156
       },
@@ -602,8 +602,8 @@
     },
     "enemies/bosses/0-crank/shot1/06.png": {
       "frame": {
-        "x": 1355,
-        "y": 656,
+        "x": 1914,
+        "y": 1001,
         "w": 59,
         "h": 174
       },
@@ -622,8 +622,8 @@
     },
     "enemies/bosses/0-crank/shot1/07.png": {
       "frame": {
-        "x": 1278,
-        "y": 658,
+        "x": 1602,
+        "y": 1437,
         "w": 75,
         "h": 201
       },
@@ -642,8 +642,8 @@
     },
     "enemies/bosses/0-crank/shot1/08.png": {
       "frame": {
-        "x": 857,
-        "y": 663,
+        "x": 888,
+        "y": 1681,
         "w": 103,
         "h": 237
       },
@@ -662,8 +662,8 @@
     },
     "enemies/bosses/0-crank/shot1/09.png": {
       "frame": {
-        "x": 766,
-        "y": 663,
+        "x": 1603,
+        "y": 1192,
         "w": 89,
         "h": 243
       },
@@ -682,8 +682,8 @@
     },
     "enemies/bosses/0-crank/shot1/10.png": {
       "frame": {
-        "x": 1734,
-        "y": 1,
+        "x": 1694,
+        "y": 1192,
         "w": 57,
         "h": 268
       },
@@ -702,8 +702,8 @@
     },
     "enemies/bosses/0-crank/shot1/11.png": {
       "frame": {
-        "x": 685,
-        "y": 685,
+        "x": 1341,
+        "y": 1291,
         "w": 79,
         "h": 294
       },
@@ -722,8 +722,8 @@
     },
     "enemies/bosses/0-crank/shot1/12.png": {
       "frame": {
-        "x": 349,
-        "y": 469,
+        "x": 1271,
+        "y": 1325,
         "w": 68,
         "h": 323
       },
@@ -742,8 +742,8 @@
     },
     "enemies/bosses/0-crank/shot1/13.png": {
       "frame": {
-        "x": 1624,
-        "y": 1,
+        "x": 888,
+        "y": 1319,
         "w": 108,
         "h": 360
       },
@@ -762,8 +762,8 @@
     },
     "enemies/bosses/0-crank/shot1/14.png": {
       "frame": {
-        "x": 1458,
-        "y": 1,
+        "x": 1113,
+        "y": 941,
         "w": 164,
         "h": 382
       },
@@ -782,8 +782,8 @@
     },
     "enemies/bosses/0-crank/shot1/15.png": {
       "frame": {
-        "x": 398,
-        "y": 1,
+        "x": 588,
+        "y": 920,
         "w": 246,
         "h": 412
       },
@@ -802,8 +802,8 @@
     },
     "enemies/bosses/0-crank/shot1/16.png": {
       "frame": {
-        "x": 1,
-        "y": 469,
+        "x": 956,
+        "y": 502,
         "w": 346,
         "h": 437
       },
@@ -823,7 +823,7 @@
     "enemies/bosses/0-crank/shot1/17.png": {
       "frame": {
         "x": 1,
-        "y": 1,
+        "y": 1384,
         "w": 395,
         "h": 466
       },
@@ -842,8 +842,8 @@
     },
     "enemies/bosses/0-crank/shot1/18.png": {
       "frame": {
-        "x": 1060,
-        "y": 1,
+        "x": 432,
+        "y": 925,
         "w": 154,
         "h": 498
       },
@@ -862,8 +862,8 @@
     },
     "enemies/bosses/0-crank/shot1/19.png": {
       "frame": {
-        "x": 1216,
-        "y": 1,
+        "x": 646,
+        "y": 1334,
         "w": 128,
         "h": 511
       },
@@ -882,7 +882,7 @@
     },
     "enemies/bosses/0-crank/shot1/20.png": {
       "frame": {
-        "x": 646,
+        "x": 1831,
         "y": 1,
         "w": 164,
         "h": 538
@@ -902,8 +902,8 @@
     },
     "enemies/bosses/0-crank/shot1/21.png": {
       "frame": {
-        "x": 812,
-        "y": 1,
+        "x": 398,
+        "y": 1425,
         "w": 144,
         "h": 561
       },
@@ -922,8 +922,8 @@
     },
     "enemies/bosses/0-crank/shot1/22.png": {
       "frame": {
-        "x": 958,
-        "y": 1,
+        "x": 544,
+        "y": 1425,
         "w": 100,
         "h": 580
       },
@@ -942,8 +942,8 @@
     },
     "enemies/bosses/0-crank/shot1/23.png": {
       "frame": {
-        "x": 1346,
-        "y": 1,
+        "x": 776,
+        "y": 1334,
         "w": 54,
         "h": 577
       },
@@ -962,8 +962,8 @@
     },
     "enemies/bosses/0-crank/shot1/24.png": {
       "frame": {
-        "x": 1402,
-        "y": 1,
+        "x": 832,
+        "y": 1334,
         "w": 54,
         "h": 552
       },
@@ -982,8 +982,8 @@
     },
     "enemies/bosses/0-crank/shot1/25.png": {
       "frame": {
-        "x": 1461,
-        "y": 983,
+        "x": 1907,
+        "y": 1575,
         "w": 16,
         "h": 40
       },
@@ -1002,8 +1002,8 @@
     },
     "enemies/bosses/0-crank/shot1/26.png": {
       "frame": {
-        "x": 1624,
-        "y": 363,
+        "x": 836,
+        "y": 1319,
         "w": 11,
         "h": 13
       },
@@ -1022,8 +1022,8 @@
     },
     "enemies/bosses/0-crank/shot1/27.png": {
       "frame": {
-        "x": 1052,
-        "y": 583,
+        "x": 347,
+        "y": 1974,
         "w": 6,
         "h": 7
       },
@@ -1040,10 +1040,450 @@
         "h": 600
       }
     },
+    "interface/boss-names/00.png": {
+      "frame": {
+        "x": 1654,
+        "y": 502,
+        "w": 166,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 120,
+        "y": 48,
+        "w": 166,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 406,
+        "h": 130
+      }
+    },
+    "interface/boss-names/01.png": {
+      "frame": {
+        "x": 1,
+        "y": 1983,
+        "w": 389,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 48,
+        "w": 389,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 406,
+        "h": 130
+      }
+    },
+    "interface/boss-names/02.png": {
+      "frame": {
+        "x": 998,
+        "y": 1630,
+        "w": 271,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 68,
+        "y": 48,
+        "w": 271,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 406,
+        "h": 130
+      }
+    },
+    "interface/boss-names/03.png": {
+      "frame": {
+        "x": 1,
+        "y": 1852,
+        "w": 344,
+        "h": 129
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 31,
+        "y": 1,
+        "w": 344,
+        "h": 129
+      },
+      "sourceSize": {
+        "w": 406,
+        "h": 130
+      }
+    },
+    "interface/boss-names/04.png": {
+      "frame": {
+        "x": 1620,
+        "y": 1699,
+        "w": 228,
+        "h": 43
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 89,
+        "y": 44,
+        "w": 228,
+        "h": 43
+      },
+      "sourceSize": {
+        "w": 406,
+        "h": 130
+      }
+    },
+    "interface/boss-names/05.png": {
+      "frame": {
+        "x": 392,
+        "y": 1988,
+        "w": 139,
+        "h": 33
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 134,
+        "y": 49,
+        "w": 139,
+        "h": 33
+      },
+      "sourceSize": {
+        "w": 406,
+        "h": 130
+      }
+    },
+    "interface/boss-names/06.png": {
+      "frame": {
+        "x": 1279,
+        "y": 952,
+        "w": 406,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 48,
+        "w": 406,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 406,
+        "h": 130
+      }
+    },
+    "interface/boss-names/07.png": {
+      "frame": {
+        "x": 998,
+        "y": 1667,
+        "w": 301,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 53,
+        "y": 48,
+        "w": 301,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 406,
+        "h": 130
+      }
+    },
+    "interface/boss-names/08.png": {
+      "frame": {
+        "x": 1620,
+        "y": 1815,
+        "w": 185,
+        "h": 43
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 111,
+        "y": 44,
+        "w": 185,
+        "h": 43
+      },
+      "sourceSize": {
+        "w": 406,
+        "h": 130
+      }
+    },
+    "interface/death-message/00.png": {
+      "frame": {
+        "x": 1679,
+        "y": 1628,
+        "w": 244,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 123,
+        "y": 9,
+        "w": 244,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/01.png": {
+      "frame": {
+        "x": 1341,
+        "y": 1610,
+        "w": 252,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 119,
+        "y": 9,
+        "w": 252,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/02.png": {
+      "frame": {
+        "x": 1304,
+        "y": 916,
+        "w": 435,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 27,
+        "y": 9,
+        "w": 435,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/03.png": {
+      "frame": {
+        "x": 1754,
+        "y": 1165,
+        "w": 149,
+        "h": 33
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 167,
+        "y": 10,
+        "w": 149,
+        "h": 33
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/04.png": {
+      "frame": {
+        "x": 1620,
+        "y": 1860,
+        "w": 181,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 154,
+        "y": 9,
+        "w": 181,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/05.png": {
+      "frame": {
+        "x": 1620,
+        "y": 1780,
+        "w": 214,
+        "h": 33
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 133,
+        "y": 10,
+        "w": 214,
+        "h": 33
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/06.png": {
+      "frame": {
+        "x": 1304,
+        "y": 836,
+        "w": 315,
+        "h": 33
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 87,
+        "y": 10,
+        "w": 315,
+        "h": 33
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/07.png": {
+      "frame": {
+        "x": 1620,
+        "y": 1744,
+        "w": 233,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 130,
+        "y": 9,
+        "w": 233,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/08.png": {
+      "frame": {
+        "x": 1314,
+        "y": 1682,
+        "w": 282,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 104,
+        "y": 9,
+        "w": 282,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/09.png": {
+      "frame": {
+        "x": 1341,
+        "y": 1646,
+        "w": 295,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 99,
+        "y": 9,
+        "w": 295,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/10.png": {
+      "frame": {
+        "x": 1279,
+        "y": 989,
+        "w": 401,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 45,
+        "y": 9,
+        "w": 401,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/11.png": {
+      "frame": {
+        "x": 1304,
+        "y": 871,
+        "w": 490,
+        "h": 43
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 490,
+        "h": 43
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
+    "interface/death-message/12.png": {
+      "frame": {
+        "x": 1638,
+        "y": 1664,
+        "w": 243,
+        "h": 33
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 121,
+        "y": 10,
+        "w": 243,
+        "h": 33
+      },
+      "sourceSize": {
+        "w": 490,
+        "h": 43
+      }
+    },
     "neutral/debris/asteroid/death/0.png": {
       "frame": {
-        "x": 1686,
-        "y": 726,
+        "x": 1925,
+        "y": 1575,
         "w": 82,
         "h": 95
       },
@@ -1062,8 +1502,8 @@
     },
     "neutral/debris/asteroid/death/1.png": {
       "frame": {
-        "x": 1422,
-        "y": 848,
+        "x": 1753,
+        "y": 1200,
         "w": 131,
         "h": 133
       },
@@ -1082,8 +1522,8 @@
     },
     "neutral/debris/asteroid/death/2.png": {
       "frame": {
-        "x": 1121,
-        "y": 830,
+        "x": 1597,
+        "y": 1025,
         "w": 155,
         "h": 165
       },
@@ -1102,8 +1542,8 @@
     },
     "neutral/debris/asteroid/death/3.png": {
       "frame": {
-        "x": 1458,
-        "y": 385,
+        "x": 1415,
+        "y": 1025,
         "w": 180,
         "h": 196
       },
@@ -1122,8 +1562,8 @@
     },
     "neutral/debris/asteroid/death/4.png": {
       "frame": {
-        "x": 419,
-        "y": 612,
+        "x": 1422,
+        "y": 1420,
         "w": 178,
         "h": 188
       },
@@ -1142,8 +1582,8 @@
     },
     "neutral/debris/asteroid/idle/0.png": {
       "frame": {
-        "x": 1023,
-        "y": 583,
+        "x": 1992,
+        "y": 1407,
         "w": 27,
         "h": 46
       },
@@ -1162,8 +1602,8 @@
     },
     "neutral/debris/asteroid/idle/1.png": {
       "frame": {
-        "x": 1422,
-        "y": 983,
+        "x": 1975,
+        "y": 1124,
         "w": 37,
         "h": 40
       },
@@ -1182,8 +1622,8 @@
     },
     "neutral/debris/asteroid/idle/2.png": {
       "frame": {
-        "x": 600,
-        "y": 503,
+        "x": 682,
+        "y": 1991,
         "w": 38,
         "h": 34
       },
@@ -1202,8 +1642,8 @@
     },
     "neutral/debris/asteroid/idle/3.png": {
       "frame": {
-        "x": 512,
-        "y": 985,
+        "x": 646,
+        "y": 1991,
         "w": 34,
         "h": 38
       },
@@ -1222,8 +1662,8 @@
     },
     "neutral/debris/asteroid/idle/4.png": {
       "frame": {
-        "x": 1770,
-        "y": 726,
+        "x": 1988,
+        "y": 1455,
         "w": 30,
         "h": 44
       },
@@ -1242,8 +1682,8 @@
     },
     "neutral/debris/asteroid/idle/5.png": {
       "frame": {
-        "x": 1770,
-        "y": 772,
+        "x": 1988,
+        "y": 1501,
         "w": 26,
         "h": 45
       },
@@ -1262,8 +1702,8 @@
     },
     "neutral/debris/mud/animation/0.png": {
       "frame": {
-        "x": 685,
-        "y": 981,
+        "x": 1952,
+        "y": 1407,
         "w": 38,
         "h": 42
       },
@@ -1282,8 +1722,8 @@
     },
     "neutral/debris/mud/animation/1.png": {
       "frame": {
-        "x": 600,
-        "y": 415,
+        "x": 1975,
+        "y": 992,
         "w": 40,
         "h": 43
       },
@@ -1302,8 +1742,8 @@
     },
     "neutral/debris/mud/animation/2.png": {
       "frame": {
-        "x": 725,
-        "y": 981,
+        "x": 1975,
+        "y": 1080,
         "w": 38,
         "h": 42
       },
@@ -1322,8 +1762,8 @@
     },
     "neutral/debris/mud/animation/3.png": {
       "frame": {
-        "x": 600,
-        "y": 460,
+        "x": 1975,
+        "y": 1037,
         "w": 40,
         "h": 41
       },
@@ -1342,8 +1782,8 @@
     },
     "neutral/debris/mud/death/0.png": {
       "frame": {
-        "x": 259,
-        "y": 908,
+        "x": 1909,
+        "y": 1824,
         "w": 86,
         "h": 112
       },
@@ -1362,8 +1802,8 @@
     },
     "neutral/debris/mud/death/1.png": {
       "frame": {
-        "x": 1215,
-        "y": 514,
+        "x": 646,
+        "y": 1847,
         "w": 124,
         "h": 142
       },
@@ -1382,8 +1822,8 @@
     },
     "neutral/debris/mud/death/2.png": {
       "frame": {
-        "x": 1278,
-        "y": 861,
+        "x": 1476,
+        "y": 1718,
         "w": 142,
         "h": 162
       },
@@ -1402,8 +1842,8 @@
     },
     "neutral/debris/mud/death/3.png": {
       "frame": {
-        "x": 521,
-        "y": 802,
+        "x": 993,
+        "y": 1704,
         "w": 162,
         "h": 181
       },
@@ -1422,8 +1862,8 @@
     },
     "neutral/debris/mud/death/4.png": {
       "frame": {
-        "x": 419,
-        "y": 415,
+        "x": 1422,
+        "y": 1223,
         "w": 179,
         "h": 195
       },
@@ -1442,8 +1882,8 @@
     },
     "neutral/debris/mud/death/5.png": {
       "frame": {
-        "x": 349,
-        "y": 802,
+        "x": 1796,
+        "y": 839,
         "w": 170,
         "h": 160
       },
@@ -1459,6 +1899,226 @@
         "w": 200,
         "h": 200
       }
+    },
+    "splatter/0.png": {
+      "frame": {
+        "x": 1279,
+        "y": 1025,
+        "w": 134,
+        "h": 264
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 11,
+        "w": 134,
+        "h": 264
+      },
+      "sourceSize": {
+        "w": 158,
+        "h": 287
+      }
+    },
+    "splatter/1.png": {
+      "frame": {
+        "x": 1,
+        "y": 502,
+        "w": 536,
+        "h": 421
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 19,
+        "w": 536,
+        "h": 421
+      },
+      "sourceSize": {
+        "w": 566,
+        "h": 457
+      }
+    },
+    "splatter/2.png": {
+      "frame": {
+        "x": 539,
+        "y": 502,
+        "w": 415,
+        "h": 416
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 41,
+        "w": 415,
+        "h": 416
+      },
+      "sourceSize": {
+        "w": 445,
+        "h": 457
+      }
+    },
+    "splatter/3.png": {
+      "frame": {
+        "x": 998,
+        "y": 1325,
+        "w": 271,
+        "h": 303
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 5,
+        "w": 271,
+        "h": 303
+      },
+      "sourceSize": {
+        "w": 293,
+        "h": 316
+      }
+    },
+    "splatter/4.png": {
+      "frame": {
+        "x": 836,
+        "y": 941,
+        "w": 275,
+        "h": 376
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 4,
+        "w": 275,
+        "h": 376
+      },
+      "sourceSize": {
+        "w": 286,
+        "h": 386
+      }
+    },
+    "splatter/5.png": {
+      "frame": {
+        "x": 1304,
+        "y": 502,
+        "w": 348,
+        "h": 332
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 13,
+        "w": 348,
+        "h": 332
+      },
+      "sourceSize": {
+        "w": 367,
+        "h": 354
+      }
+    },
+    "splatter/6.png": {
+      "frame": {
+        "x": 1,
+        "y": 925,
+        "w": 429,
+        "h": 457
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 27,
+        "y": 0,
+        "w": 429,
+        "h": 457
+      },
+      "sourceSize": {
+        "w": 465,
+        "h": 457
+      }
+    },
+    "splatter/7.png": {
+      "frame": {
+        "x": 1654,
+        "y": 541,
+        "w": 340,
+        "h": 296
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 22,
+        "y": 15,
+        "w": 340,
+        "h": 296
+      },
+      "sourceSize": {
+        "w": 404,
+        "h": 332
+      }
+    },
+    "splatter/8.png": {
+      "frame": {
+        "x": 1,
+        "y": 925,
+        "w": 429,
+        "h": 457
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 0,
+        "w": 429,
+        "h": 457
+      },
+      "sourceSize": {
+        "w": 438,
+        "h": 457
+      }
+    },
+    "splatter/9.png": {
+      "frame": {
+        "x": 1654,
+        "y": 541,
+        "w": 340,
+        "h": 296
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 3,
+        "y": 4,
+        "w": 340,
+        "h": 296
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 317
+      }
+    },
+    "vermin-wipeout-atlas0.png": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 1828,
+        "h": 499
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 1,
+        "y": 1,
+        "w": 1828,
+        "h": 499
+      },
+      "sourceSize": {
+        "w": 1830,
+        "h": 500
+      }
     }
   },
   "meta": {
@@ -1467,10 +2127,10 @@
     "image": "vermin-wipeout-atlas0.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1801,
-      "h": 1024
+      "w": 2022,
+      "h": 2030
     },
     "scale": "1",
-    "smartupdate": "$TexturePacker:SmartUpdate:da4d908754787aaef8099ea7ab78828a:63fdca6e4b48ae6e4d1e2ca591201c92:f99107290d48c9e265cf26b3c6c59330$"
+    "smartupdate": "$TexturePacker:SmartUpdate:00e9ad3e9255cdbaf8c20bc8b487df63:2d5ad9e5da54ba237c0b17a116cee9a1:f99107290d48c9e265cf26b3c6c59330$"
   }
 }

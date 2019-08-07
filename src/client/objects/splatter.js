@@ -84,10 +84,11 @@ function Splatter(game, player) {
   };
 
   function addSplatter() {
-    const splatterImagePool = Phaser.Animation.generateFrameNames('splatter-', 1, 35, '');
+    const splatterImagePool = Phaser.Animation.generateFrameNames('splatter/', 0, 9, '.png');
     const selectedImage = Phaser.ArrayUtils.getRandomItem(splatterImagePool);
-    const splatter = game.add.tileSprite(0, 0, game.world.width, game.world.height, 'splatterAtlas', selectedImage);
-    splatter.scale.x *= 1.1851; // =800/675 (game-width / sprite-width)
+    const x = game.random.between(-200, game.world.width - 100);
+    const y = game.random.between(-200, game.world.height - 100);
+    const splatter = game.add.image(x, y, 'verminAtlas', selectedImage);
     ownedSprites.add(splatter);
   }
 

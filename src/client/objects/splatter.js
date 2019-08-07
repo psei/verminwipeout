@@ -72,7 +72,7 @@ function Splatter(game, player) {
     }
 
     if (isWiping) {
-      wiper.angle += 2;
+      wiper.angle += 1.5;
       if (wiper.angle > 90 && ownedSprites.countLiving() > 0) {
         ownedSprites.removeAll(true, true);
       }

@@ -4,36 +4,25 @@ var config = require('./boss1.conf');
 
 function Boss1(game) {
   var ownedSprites = game.add.group();
+  ownedSprites.x = game.world.width / 2;
+  ownedSprites.y = 270;
   var isCurrentlyFiring = false;
 
-
-  var boss = game.add.sprite(400, 200, 'verminAtlas', 'enemies/bosses/0-crank/body.png');
+  var boss = game.add.sprite(game.world.width / 2 - 70, 270, 'verminAtlas', 'enemies/bosses/0-crank/body.png');
   ownedSprites.add(boss);
 
-  var arm1 = game.add.sprite(boss.x - 150, boss.y - 40, 'verminAtlas', 'enemies/bosses/0-crank/arm0.png');
-  ownedSprites.add(arm1);
-
-  var arm2 = game.add.sprite(boss.x + 30, boss.y - 40, 'verminAtlas', 'enemies/bosses/0-crank/arm1.png');
-  ownedSprites.add(arm2);
-
-  var arm3 = game.add.sprite(boss.x + 30, boss.y + 30, 'verminAtlas', 'enemies/bosses/0-crank/arm2a.png');
-  ownedSprites.add(arm3);
-
-  var arm4 = game.add.sprite(boss.x + 30 + 50, boss.y + 30 + 60, 'verminAtlas', 'enemies/bosses/0-crank/arm3b.png');
-  ownedSprites.add(arm4);
-
-  var arm5 = game.add.sprite(boss.x - 110, boss.y + 30, 'verminAtlas', 'enemies/bosses/0-crank/arm3a.png');
-  ownedSprites.add(arm5);
-
-  var arm6 = game.add.sprite(boss.x - 110 - 30, boss.y + 30 + 60, 'verminAtlas', 'enemies/bosses/0-crank/arm2b.png');
-  ownedSprites.add(arm6);
+  ownedSprites.create(-160, 40, 'verminAtlas', 'enemies/bosses/0-crank/arm0.png');
+  ownedSprites.create(20, 40, 'verminAtlas', 'enemies/bosses/0-crank/arm1.png');
+  ownedSprites.create(40, 95, 'verminAtlas', 'enemies/bosses/0-crank/arm2a.png');
+  ownedSprites.create(90, 95 + 60, 'verminAtlas', 'enemies/bosses/0-crank/arm3b.png');
+  ownedSprites.create(-100, 95, 'verminAtlas', 'enemies/bosses/0-crank/arm3a.png');
+  ownedSprites.create(-130, 95 + 60, 'verminAtlas', 'enemies/bosses/0-crank/arm2b.png');
 
   game.physics.enable(boss, window.Phaser.Physics.ARCADE);
-  boss.anchor.setTo(0.5, 0.5);
   boss.givesSplatter = config.givesSplatter;
   boss.health = config.health;
 
-  var blood = game.add.sprite(0, 0, 'verminAtlas', 'enemies/bosses/0-crank/firstblood/00.png');
+  var blood = game.add.sprite(0, 90, 'verminAtlas', 'enemies/bosses/0-crank/firstblood/00.png');
   ownedSprites.add(blood);
   const frames = Phaser.Animation.generateFrameNames('enemies/bosses/0-crank/firstblood/', 1, 13, '.png', 2);
   blood.animations.add('crankFirstBlood', frames, 15, false);
@@ -45,8 +34,6 @@ function Boss1(game) {
       return;
     }
 
-    blood.x = boss.x - 5;
-    blood.y = boss.y + 30;
     blood.visible = true;
     blood.animations.play('crankFirstBlood');
     blood.animations.currentAnim.onComplete.add(() => { blood.visible = false; });
@@ -75,7 +62,8 @@ function Boss1(game) {
     return config.causesDamagePoints;
   };
 
-  var attackSprite = game.add.sprite(0, 0, 'verminAtlas', 'enemies/bosses/0-crank/shot1/00.png');
+  var attackSprite = game.add.sprite(25, 400, 'verminAtlas', 'enemies/bosses/0-crank/shot1/00.png');
+  game.physics.enable(attackSprite, window.Phaser.Physics.ARCADE);
   ownedSprites.add(attackSprite);
   attackSprite.anchor.setTo(0.5, 0.5);
   attackSprite.visible = false;
@@ -88,19 +76,25 @@ function Boss1(game) {
   };
 
   boss.attack = function () {
+    const attackAngle = game.random.between(-20, 20);
+    boss.angle = attackAngle;
+    ownedSprites.angle = attackAngle;
     isCurrentlyFiring = true;
-    boss.weapon.bullets.push(attackSprite);
-    boss.hasHitPlayerOnce = false;
 
-    attackSprite.x = boss.x + 25;
-    attackSprite.y = boss.y + attackSprite.height / 2;
-    attackSprite.visible = true;
-    attackSprite.animations.play('crankAttack1');
-    attackSprite.animations.currentAnim.onComplete.add(() => {
-      attackSprite.visible = false;
-      isCurrentlyFiring = false;
-      boss.weapon.bullets = [];
-    });
+    setTimeout(() => {
+      boss.hasHitPlayerOnce = false;
+      boss.weapon.bullets.push(attackSprite);
+      attackSprite.body.setSize(60, 600, 140, 0);
+      attackSprite.visible = true;
+      attackSprite.animations.play('crankAttack1');
+      attackSprite.animations.currentAnim.onComplete.add(() => {
+        attackSprite.visible = false;
+        isCurrentlyFiring = false;
+        boss.weapon.bullets = [];
+        ownedSprites.angle = 0;
+        boss.angle = 0;
+        ownedSprites.angle = 0;
+      })}, 500);
   };
 
   boss.destroy = function() {

@@ -21,7 +21,7 @@ module.exports = config({
       frameRate: 1
     }
   },
-  chanceToShootPerSecondInPercent: 25,
+  chanceToShootPerSecondInPercent: 70,
   causesDamagePoints: 15,
   health: 100,
   givesSplatter: true,

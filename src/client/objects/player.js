@@ -208,7 +208,7 @@ function Player(game, lifeCounter) {
       return;
     }
 
-    if (fireButton.isDown || isPermanentFire) {
+    if (fireButton.isDown || game.input.activePointer.leftButton.isDown || isPermanentFire) {
       player.weapon.fire();
     }
   }
@@ -281,7 +281,8 @@ function Player(game, lifeCounter) {
   const touchPointer1 = game.input.pointer1;
   var isPermanentFire = false;
   const cursors = game.input.keyboard.createCursorKeys();
-  const fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+  const fireButton = game.input.keyboard.addKey(Phaser.Keyboard.X);
+  game.input.mouse.capture = true;
 
   addWeaponSwitchKeyBindings(game, player);
 

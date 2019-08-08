@@ -30,7 +30,7 @@ function Boss1(game) {
 
     var blood = game.add.sprite(0, 90, game.findAtlas('enemies/bosses/0-crank/firstblood/00.png'), 'enemies/bosses/0-crank/firstblood/00.png');
     ownedSprites.add(blood);
-    const frames = Phaser.Animation.generateFrameNames('enemies/bosses/0-crank/firstblood/', 1, 13, '.png', 2);
+    const frames = Phaser.Animation.generateFrameNames('enemies/bosses/0-crank/firstblood/', 0, 13, '.png', 2);
     blood.animations.add('crankFirstBlood', frames, 15, false);
     blood.anchor.setTo(0.5, 0.5);
     blood.visible = false;
@@ -73,7 +73,7 @@ function Boss1(game) {
     ownedSprites.add(attackSprite);
     attackSprite.anchor.setTo(0.5, 0.5);
     attackSprite.visible = false;
-    const attackFrames = Phaser.Animation.generateFrameNames('enemies/bosses/0-crank/shot1/', 1, 27, '.png', 2);
+    const attackFrames = Phaser.Animation.generateFrameNames('enemies/bosses/0-crank/shot1/', 0, 27, '.png', 2);
     attackSprite.animations.add('crankAttack1', attackFrames, 15, false);
     game.physics.enable(attackSprite, window.Phaser.Physics.ARCADE);
 

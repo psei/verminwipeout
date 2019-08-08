@@ -8,27 +8,27 @@ function Boss1(game) {
   ownedSprites.y = 270;
   var isCurrentlyFiring = false;
 
-  var bossName = game.add.image(200, 350, 'verminAtlas', 'interface/boss-names/00.png');
+  var bossName = game.add.image(200, 350, game.findAtlas('interface/boss-names/00.png'), 'interface/boss-names/00.png');
 
-  var boss = game.add.sprite(game.world.width / 2 - 70, 270, 'verminAtlas', 'enemies/bosses/0-crank/body.png');
+  var boss = game.add.sprite(game.world.width / 2 - 70, 270, game.findAtlas('enemies/bosses/0-crank/body.png'), 'enemies/bosses/0-crank/body.png');
   ownedSprites.add(boss);
   boss.visible = false;
 
   setTimeout(() => {
     bossName.destroy();
     boss.visible = true;
-    ownedSprites.create(-160, 40, 'verminAtlas', 'enemies/bosses/0-crank/arm0.png');
-    ownedSprites.create(20, 40, 'verminAtlas', 'enemies/bosses/0-crank/arm1.png');
-    ownedSprites.create(40, 95, 'verminAtlas', 'enemies/bosses/0-crank/arm2a.png');
-    ownedSprites.create(90, 95 + 60, 'verminAtlas', 'enemies/bosses/0-crank/arm3b.png');
-    ownedSprites.create(-100, 95, 'verminAtlas', 'enemies/bosses/0-crank/arm3a.png');
-    ownedSprites.create(-130, 95 + 60, 'verminAtlas', 'enemies/bosses/0-crank/arm2b.png');
+    ownedSprites.create(-160, 40, game.findAtlas('enemies/bosses/0-crank/arm0.png'), 'enemies/bosses/0-crank/arm0.png');
+    ownedSprites.create(20, 40, game.findAtlas('enemies/bosses/0-crank/arm1.png'), 'enemies/bosses/0-crank/arm1.png');
+    ownedSprites.create(40, 95, game.findAtlas('enemies/bosses/0-crank/arm2a.png'), 'enemies/bosses/0-crank/arm2a.png');
+    ownedSprites.create(90, 95 + 60, game.findAtlas('enemies/bosses/0-crank/arm3b.png'), 'enemies/bosses/0-crank/arm3b.png');
+    ownedSprites.create(-100, 95, game.findAtlas('enemies/bosses/0-crank/arm3a.png'), 'enemies/bosses/0-crank/arm3a.png');
+    ownedSprites.create(-130, 95 + 60, game.findAtlas('enemies/bosses/0-crank/arm2b.png'), 'enemies/bosses/0-crank/arm2b.png');
 
     game.physics.enable(boss, window.Phaser.Physics.ARCADE);
     boss.givesSplatter = config.givesSplatter;
     boss.health = config.health;
 
-    var blood = game.add.sprite(0, 90, 'verminAtlas', 'enemies/bosses/0-crank/firstblood/00.png');
+    var blood = game.add.sprite(0, 90, game.findAtlas('enemies/bosses/0-crank/firstblood/00.png'), 'enemies/bosses/0-crank/firstblood/00.png');
     ownedSprites.add(blood);
     const frames = Phaser.Animation.generateFrameNames('enemies/bosses/0-crank/firstblood/', 1, 13, '.png', 2);
     blood.animations.add('crankFirstBlood', frames, 15, false);
@@ -68,7 +68,7 @@ function Boss1(game) {
       return config.causesDamagePoints;
     };
 
-    var attackSprite = game.add.sprite(25, 400, 'verminAtlas', 'enemies/bosses/0-crank/shot1/00.png');
+    var attackSprite = game.add.sprite(25, 400, game.findAtlas('enemies/bosses/0-crank/shot1/00.png'), 'enemies/bosses/0-crank/shot1/00.png');
     game.physics.enable(attackSprite, window.Phaser.Physics.ARCADE);
     ownedSprites.add(attackSprite);
     attackSprite.anchor.setTo(0.5, 0.5);

@@ -58,7 +58,20 @@ module.exports = function (game) {
       game.load.atlasJSONHash('shipAtlas', 'images/texturepacker/shipAtlas.png', 'images/texturepacker/shipAtlas.json');
       game.load.atlasJSONHash('splatterAtlas', 'images/splatter2/splatter-0.png', 'images/splatter2/splatter.json');
       game.load.atlasJSONHash('bloodAtlas', 'images/texturepacker/bloodAtlas.png', 'images/texturepacker/bloodAtlas.json');
-      game.load.atlasJSONHash('verminAtlas', 'images/TexturePacker-SmartFolder/vermin-wipeout-atlas0.png', 'images/TexturePacker-SmartFolder/vermin-wipeout-atlas0.json');
+      for (var i = 0; i <= 5; i++) {
+        game.load.atlasJSONHash(`verminAtlas${i}`, `images/TexturePacker-SmartFolder/verminAtlas${i}.png`, `images/TexturePacker-SmartFolder/verminAtlas${i}.json`);
+      }
+
+      game.findAtlas = function(frameName) {
+        for (var i = 0; i <= 5; i++) {
+          const atlas = `verminAtlas${i}`;
+          if (game﻿﻿﻿﻿.cache._cache.image﻿[atlas].frameData﻿._frameNames.hasOwnProperty﻿(frameName)) {
+            return atlas;
+          }
+        }
+
+        return '';
+      };
 
       game.load.image('btn-mute', 'images/interface/btn-mute.png');
       game.load.image('btn-pause', 'images/interface/btn-pause.png');

@@ -72,7 +72,7 @@ function Splatter(game, player) {
     }
 
     if (isWiping) {
-      wiper.angle += 2;
+      wiper.angle += 1.5;
       if (wiper.angle > 90 && ownedSprites.countLiving() > 0) {
         ownedSprites.removeAll(true, true);
       }
@@ -83,12 +83,25 @@ function Splatter(game, player) {
     }
   };
 
+  var alienDeath0 = game.add.audio('alien-death-0');
+  var alienDeath1 = game.add.audio('alien-death-1');
+
   function addSplatter() {
+    if (ownedSprites.countLiving() > 9000) {
+      return;
+    }
+
+    if (game.random.between(0, 1) < 0.5) {
+      alienDeath0.play();
+    } else {
+      alienDeath1.play();
+    }
     const splatterImagePool = Phaser.Animation.generateFrameNames('splatter/', 0, 9, '.png');
     const selectedImage = Phaser.ArrayUtils.getRandomItem(splatterImagePool);
     const x = game.random.between(-200, game.world.width - 100);
     const y = game.random.between(-200, game.world.height - 100);
     const splatter = game.add.image(x, y, 'verminAtlas', selectedImage);
+    splatter.angle = game.random.between(0, 180);
     ownedSprites.add(splatter);
   }
 

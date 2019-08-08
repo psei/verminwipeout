@@ -377,6 +377,52 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">interface/boss-names/00.png</key>
+            <key type="filename">interface/boss-names/01.png</key>
+            <key type="filename">interface/boss-names/02.png</key>
+            <key type="filename">interface/boss-names/03.png</key>
+            <key type="filename">interface/boss-names/04.png</key>
+            <key type="filename">interface/boss-names/05.png</key>
+            <key type="filename">interface/boss-names/06.png</key>
+            <key type="filename">interface/boss-names/07.png</key>
+            <key type="filename">interface/boss-names/08.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>102,33,203,65</rect>
+                <key>scale9Paddings</key>
+                <rect>102,33,203,65</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/death-message/00.png</key>
+            <key type="filename">interface/death-message/01.png</key>
+            <key type="filename">interface/death-message/02.png</key>
+            <key type="filename">interface/death-message/03.png</key>
+            <key type="filename">interface/death-message/04.png</key>
+            <key type="filename">interface/death-message/05.png</key>
+            <key type="filename">interface/death-message/06.png</key>
+            <key type="filename">interface/death-message/07.png</key>
+            <key type="filename">interface/death-message/08.png</key>
+            <key type="filename">interface/death-message/09.png</key>
+            <key type="filename">interface/death-message/10.png</key>
+            <key type="filename">interface/death-message/11.png</key>
+            <key type="filename">interface/death-message/12.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>123,11,245,21</rect>
+                <key>scale9Paddings</key>
+                <rect>123,11,245,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">neutral/debris/asteroid/death/0.png</key>
             <key type="filename">neutral/debris/asteroid/death/1.png</key>
             <key type="filename">neutral/debris/asteroid/death/2.png</key>
@@ -443,6 +489,136 @@
                 <rect>50,50,100,100</rect>
                 <key>scale9Paddings</key>
                 <rect>50,50,100,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">splatter/0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>40,72,79,143</rect>
+                <key>scale9Paddings</key>
+                <rect>40,72,79,143</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">splatter/1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>142,114,283,229</rect>
+                <key>scale9Paddings</key>
+                <rect>142,114,283,229</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">splatter/2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>111,114,223,229</rect>
+                <key>scale9Paddings</key>
+                <rect>111,114,223,229</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">splatter/3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>73,79,147,158</rect>
+                <key>scale9Paddings</key>
+                <rect>73,79,147,158</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">splatter/4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>72,97,143,193</rect>
+                <key>scale9Paddings</key>
+                <rect>72,97,143,193</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">splatter/5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>92,89,183,177</rect>
+                <key>scale9Paddings</key>
+                <rect>92,89,183,177</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">splatter/6.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>116,114,233,229</rect>
+                <key>scale9Paddings</key>
+                <rect>116,114,233,229</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">splatter/7.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>101,83,202,166</rect>
+                <key>scale9Paddings</key>
+                <rect>101,83,202,166</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">splatter/8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>110,114,219,229</rect>
+                <key>scale9Paddings</key>
+                <rect>110,114,219,229</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">splatter/9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>88,79,175,159</rect>
+                <key>scale9Paddings</key>
+                <rect>88,79,175,159</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

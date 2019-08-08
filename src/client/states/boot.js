@@ -29,9 +29,9 @@ module.exports = function (game) {
   return {
     preload: function () {
       game.stage.backgroundColor = '#340101';
-      game.add.text(32, 32, 'VERMIN WIPEOUT', { fill: '#5c0101', fontSize: 65, font: 'Forward' });
+      game.add.text(32, 32, 'VERMIN WIPEOUT', { fill: '#f5af00', fontSize: 65, font: 'Forward' });
 
-      subTitle = game.add.text(110, 150, 'generating ships', { fill: '#5c0101', fontSize: 32, font: 'Forward' });
+      subTitle = game.add.text(110, 150, 'generating ships', { fill: '#f5af00', fontSize: 32, font: 'Forward' });
       subTitle.anchorX = 0.5;
 
       preloadShip = game.add.sprite(game.world.width / 2, game.world.height / 2, 'preload-ship');
@@ -53,6 +53,8 @@ module.exports = function (game) {
       game.load.audio('boss-intro', '/audio/music/boss-intro.wav');
       game.load.audio('boss-loop', '/audio/music/boss-loop.wav');
       game.load.audio('wiper', '/audio/fx/wiper.mp3');
+      game.load.audio('alien-death-0', '/audio/fx/alien-death.wav');
+      game.load.audio('alien-death-1', '/audio/fx/alien-death1.wav');
       game.load.atlasJSONHash('shipAtlas', 'images/texturepacker/shipAtlas.png', 'images/texturepacker/shipAtlas.json');
       game.load.atlasJSONHash('splatterAtlas', 'images/splatter2/splatter-0.png', 'images/splatter2/splatter.json');
       game.load.atlasJSONHash('bloodAtlas', 'images/texturepacker/bloodAtlas.png', 'images/texturepacker/bloodAtlas.json');

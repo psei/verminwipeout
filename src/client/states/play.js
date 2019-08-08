@@ -110,15 +110,33 @@ module.exports = function (game) {
 
       game.input.touch.addTouchLockCallback(onTouch, this);
 
-      game.add.button(game.world.width - 55, 5, 'btn-mute', toggleSounds, this);
-      game.add.button(5, 5, 'btn-pause', togglePause, this);
+      var pauseBtn = game.add.button(10, 10, 'btn-pause', togglePause, this);
+      pauseBtn.hitArea = new Phaser.Polygon([
+        new Phaser.Point(-10, -10),
+        new Phaser.Point(60, -10),
+        new Phaser.Point(60, 60),
+        new Phaser.Point(-10, 60),
+      ]);
+
+      var muteBtn = game.add.button(80, 10, 'btn-mute', toggleSounds, this);
+      muteBtn.hitArea = new Phaser.Polygon([
+        new Phaser.Point(-5, -10),
+        new Phaser.Point(60, -10),
+        new Phaser.Point(60, 60),
+        new Phaser.Point(-5, 60),
+      ]);
 
       game.time.physicsElapsedTotalMS = 0;
     },
     update: function() {
       game.time.physicsElapsedTotalMS += game.time.physicsElapsedMS;
       level.update();
-      enemies.addMultiple(level.spawnEnemies(game));
+      const newEnemies = level.spawnEnemies(game);
+      const isBoss = newEnemies.filter((enemy) => enemy.visible === false).length === 1;
+      if (isBoss) {
+        level.stopBackground();
+      }
+      enemies.addMultiple(newEnemies);
       player.update();
       enemies.callAll('update');
       checkCollisions();

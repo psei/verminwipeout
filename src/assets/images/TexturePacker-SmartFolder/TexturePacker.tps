@@ -194,6 +194,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">input/blood/blood-0.png</key>
+            <key type="filename">input/blood/blood-1.png</key>
+            <key type="filename">input/blood/blood-2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>60,97,120,193</rect>
+                <key>scale9Paddings</key>
+                <rect>60,97,120,193</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">input/enemies/bosses/0-crank/arm0.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

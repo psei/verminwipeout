@@ -28,7 +28,7 @@ function Enemy(game, config, spawnInfo) {
   var paths = { x: spawnInfo.x, y: spawnInfo.y };
   var spawnTime = game.time.physicsElapsedTotalMS;
 
-  var blood = game.add.sprite(0, 0, 'bloodAtlas', 'blood-0');
+  var blood = game.add.sprite(0, 0, game.findAtlas('blood/blood-0.png'), 'blood/blood-0.png');
   ownedSprites.add(blood);
   blood.visible = false;
 
@@ -40,10 +40,10 @@ function Enemy(game, config, spawnInfo) {
     blood.visible = true;
     blood.x = bullet.x;
     blood.y = bullet.y;
-    blood.scale.setTo(0.5, 0.5);
+    blood.scale.setTo(2, 2);
     blood.anchor.setTo(0.5, 0.5);
 
-    const frames = Phaser.Animation.generateFrameNames('blood-', 1, 2, '');
+    const frames = Phaser.Animation.generateFrameNames('blood/blood-', 0, 2, '.png');
     blood.animations.add('enemyBloodAni', frames, 5, false);
     blood.animations.play('enemyBloodAni');
     blood.animations.currentAnim.onComplete.add(() => { blood.visible = false; });

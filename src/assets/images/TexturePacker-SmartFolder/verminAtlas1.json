@@ -392,6 +392,6 @@
 	"size": {"w":2048,"h":2046},
 	"scale": "1",
 	"related_multi_packs": [ "verminAtlas0.json", "verminAtlas2.json", "verminAtlas3.json", "verminAtlas4.json", "verminAtlas5.json" ],
-	"smartupdate": "$TexturePacker:SmartUpdate:bce7b43c2f80205829a43b0ef2034a3d:0982055937cad489bde3f44252c13483:f95d5a94ea2dd26d1fa7bfbf0a4cf49b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:93116f7cb67a94da799477c33643020c:5168784a6a665985d7309649766b79eb:f95d5a94ea2dd26d1fa7bfbf0a4cf49b$"
 }
 }

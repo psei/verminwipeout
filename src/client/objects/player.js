@@ -214,7 +214,7 @@ function Player(game, lifeCounter) {
   }
 
   function playDeathAnimation() {
-    var shipDeath = game.add.sprite(0, 0, 'shipAtlas', 'shipdeath-00');
+    var shipDeath = game.add.sprite(0, 0, game.findAtlas('ship/death/0.png'), 'ship/death/0.png');
     ownedSprites.add(shipDeath);
 
     shipDeath.x = player.x;
@@ -222,7 +222,7 @@ function Player(game, lifeCounter) {
     shipDeath.scale.setTo(0.5, 0.5);
     shipDeath.anchor.setTo(0.5, 0.5);
 
-    const frames = Phaser.Animation.generateFrameNames('shipdeath-', 1, 12, '', 2);
+    const frames = Phaser.Animation.generateFrameNames('ship/death/', 1, 12, '.png');
     shipDeath.animations.add('shipDieAni', frames, 5, false, false);
     shipDeath.animations.play('shipDieAni');
     shipDeath.animations.currentAnim.onComplete.add(gameOver.show);

@@ -115,15 +115,19 @@ module.exports = config({
   debrisSpawnRatio: 500,
 
   waves: [
-
       createSingleObject({
         type: 'station1',
         spawnTime: 0,
       }),
 
+      createSingleObject({
+        type: 'barrier1',
+        spawnTime: 2000,
+      }),
+
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 2000,
+        spawnTime: 4000,
         durationToReachNextWayPoint: 2000,
         formation: formations.horizontal(50, 150),
         creatureCount: 5,
@@ -132,7 +136,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 3500,
+        spawnTime: 5500,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(50, 150),
         creatureCount: 5,
@@ -141,7 +145,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 3501,
+        spawnTime: 5501,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(200, 150),
         creatureCount: 5,
@@ -150,7 +154,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 4200,
+        spawnTime: 6200,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(350, 150),
         creatureCount: 3,
@@ -159,7 +163,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 4400,
+        spawnTime: 6400,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(500, 150),
         creatureCount: 3,
@@ -168,7 +172,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 4600,
+        spawnTime: 6600,
         durationToReachNextWayPoint: 800,
         formation: formations.vertical(650, 150),
         creatureCount: 3,
@@ -177,7 +181,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'cutterfly',
-        spawnTime: 6000,
+        spawnTime: 8000,
         durationToReachNextWayPoint: 800,
         formation: formations.horizontal(50, 50),
         creatureCount: 8,
@@ -186,7 +190,7 @@ module.exports = config({
 
       createEnemyWave({
         type: 'jizzler',
-        spawnTime: 6300,
+        spawnTime: 8300,
         durationToReachNextWayPoint: 800,
         formation: formations.horizontal(50, 50),
         creatureCount: 7,
@@ -195,16 +199,7 @@ module.exports = config({
 
       createSingleObject({
         type: 'boss1',
-        spawnTime: 6600,
+        spawnTime: 8600,
       }),
-
-      createEnemyWave({
-        type: 'jizzler',
-        spawnTime: 36000,
-        durationToReachNextWayPoint: 800,
-        formation: formations.vertical(650, 150),
-        creatureCount: 7,
-        wayPoints: wayPoints.straight(6)
-    })
   ]
 });

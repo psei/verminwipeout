@@ -4,6 +4,7 @@ var configsByType = {
   cutterfly: require('./cutterfly.conf'),
   jizzler: require('./jizzler.conf'),
   boss1: require('./boss1.conf'),
+  barrier1: require('./barrier1.conf'),
 };
 
 var Weapon = require('./weapon');

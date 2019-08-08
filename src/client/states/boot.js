@@ -14,6 +14,7 @@ var configs = [
   require('../objects/cutterfly.conf'),
   require('../objects/jizzler.conf'),
   require('../objects/boss1.conf'),
+  require('../objects/barrier1.conf'),
   require('../level1.conf.js'),
   require('../objects/weapon1.conf.js'),
   require('../objects/weapon2.conf.js'),

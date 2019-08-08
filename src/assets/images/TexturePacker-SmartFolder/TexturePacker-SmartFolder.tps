@@ -163,7 +163,7 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>1</uint>
+            <uint>0</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
@@ -181,6 +181,32 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">_bak/vermin-wipeout-atlas0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>506,508,1011,1015</rect>
+                <key>scale9Paddings</key>
+                <rect>506,508,1011,1015</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">barriers/0/0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>200,63,400,125</rect>
+                <key>scale9Paddings</key>
+                <rect>200,63,400,125</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">enemies/bosses/0-crank/arm0.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -377,6 +403,156 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">enemies/level1/0-cutterfly/attack/0.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/attack/1.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/fly/0.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/fly/1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>58,73,116,145</rect>
+                <key>scale9Paddings</key>
+                <rect>58,73,116,145</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/level1/0-cutterfly/death/00.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/death/01.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/death/02.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/death/03.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/death/04.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/death/05.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/death/06.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/death/07.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/death/08.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/death/09.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/death/10.png</key>
+            <key type="filename">enemies/level1/0-cutterfly/death/11.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>103,75,205,150</rect>
+                <key>scale9Paddings</key>
+                <rect>103,75,205,150</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/level1/1-ghumbo/death/0.png</key>
+            <key type="filename">enemies/level1/1-ghumbo/death/1.png</key>
+            <key type="filename">enemies/level1/1-ghumbo/death/2.png</key>
+            <key type="filename">enemies/level1/1-ghumbo/death/3.png</key>
+            <key type="filename">enemies/level1/1-ghumbo/death/4.png</key>
+            <key type="filename">enemies/level1/1-ghumbo/death/5.png</key>
+            <key type="filename">enemies/level1/1-ghumbo/death/6.png</key>
+            <key type="filename">enemies/level1/1-ghumbo/death/7.png</key>
+            <key type="filename">enemies/level1/1-ghumbo/death/8.png</key>
+            <key type="filename">enemies/level1/1-ghumbo/death/9.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/00.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/01.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/02.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/03.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/04.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/05.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/06.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/07.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/08.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/09.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/10.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/11.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/12.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/13.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/14.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/15.png</key>
+            <key type="filename">enemies/level1/2-jizzler/attack/16.png</key>
+            <key type="filename">enemies/level1/2-jizzler/death/00.png</key>
+            <key type="filename">enemies/level1/2-jizzler/death/01.png</key>
+            <key type="filename">enemies/level1/2-jizzler/death/02.png</key>
+            <key type="filename">enemies/level1/2-jizzler/death/03.png</key>
+            <key type="filename">enemies/level1/2-jizzler/death/04.png</key>
+            <key type="filename">enemies/level1/2-jizzler/death/05.png</key>
+            <key type="filename">enemies/level1/2-jizzler/death/06.png</key>
+            <key type="filename">enemies/level1/2-jizzler/death/07.png</key>
+            <key type="filename">enemies/level1/2-jizzler/death/08.png</key>
+            <key type="filename">enemies/level1/2-jizzler/death/09.png</key>
+            <key type="filename">enemies/level1/2-jizzler/fly/0.png</key>
+            <key type="filename">enemies/level1/2-jizzler/fly/1.png</key>
+            <key type="filename">enemies/level1/2-jizzler/fly/2.png</key>
+            <key type="filename">enemies/level1/2-jizzler/fly/3.png</key>
+            <key type="filename">enemies/level1/3-sawjaw/death/0.png</key>
+            <key type="filename">enemies/level1/3-sawjaw/death/1.png</key>
+            <key type="filename">enemies/level1/3-sawjaw/death/2.png</key>
+            <key type="filename">enemies/level1/3-sawjaw/death/3.png</key>
+            <key type="filename">enemies/level1/3-sawjaw/death/4.png</key>
+            <key type="filename">enemies/level1/3-sawjaw/death/5.png</key>
+            <key type="filename">enemies/level1/3-sawjaw/death/6.png</key>
+            <key type="filename">enemies/level1/3-sawjaw/death/7.png</key>
+            <key type="filename">enemies/level1/3-sawjaw/fly/0.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/death/0.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/death/1.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/death/2.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/death/3.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/death/4.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/death/5.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/death/6.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/death/7.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/death/8.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/death/9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>250,250,500,500</rect>
+                <key>scale9Paddings</key>
+                <rect>250,250,500,500</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/level1/1-ghumbo/fly/0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>74,90,148,179</rect>
+                <key>scale9Paddings</key>
+                <rect>74,90,148,179</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/00.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/01.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/02.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/03.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/04.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/05.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/06.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/07.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/08.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/09.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/10.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/attack/11.png</key>
+            <key type="filename">enemies/level1/4-ghumbo2/fly/0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>88,95,175,190</rect>
+                <key>scale9Paddings</key>
+                <rect>88,95,175,190</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">interface/boss-names/00.png</key>
             <key type="filename">interface/boss-names/01.png</key>
             <key type="filename">interface/boss-names/02.png</key>
@@ -395,6 +571,21 @@
                 <rect>102,33,203,65</rect>
                 <key>scale9Paddings</key>
                 <rect>102,33,203,65</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/buttons/fullscreen.png</key>
+            <key type="filename">interface/buttons/pause.png</key>
+            <key type="filename">interface/buttons/sound.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>25,24,50,47</rect>
+                <key>scale9Paddings</key>
+                <rect>25,24,50,47</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -420,6 +611,209 @@
                 <rect>123,11,245,21</rect>
                 <key>scale9Paddings</key>
                 <rect>123,11,245,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">interface/startscreen/slime/000.png</key>
+            <key type="filename">interface/startscreen/slime/001.png</key>
+            <key type="filename">interface/startscreen/slime/002.png</key>
+            <key type="filename">interface/startscreen/slime/003.png</key>
+            <key type="filename">interface/startscreen/slime/004.png</key>
+            <key type="filename">interface/startscreen/slime/005.png</key>
+            <key type="filename">interface/startscreen/slime/006.png</key>
+            <key type="filename">interface/startscreen/slime/007.png</key>
+            <key type="filename">interface/startscreen/slime/008.png</key>
+            <key type="filename">interface/startscreen/slime/009.png</key>
+            <key type="filename">interface/startscreen/slime/010.png</key>
+            <key type="filename">interface/startscreen/slime/011.png</key>
+            <key type="filename">interface/startscreen/slime/012.png</key>
+            <key type="filename">interface/startscreen/slime/013.png</key>
+            <key type="filename">interface/startscreen/slime/014.png</key>
+            <key type="filename">interface/startscreen/slime/015.png</key>
+            <key type="filename">interface/startscreen/slime/016.png</key>
+            <key type="filename">interface/startscreen/slime/017.png</key>
+            <key type="filename">interface/startscreen/slime/018.png</key>
+            <key type="filename">interface/startscreen/slime/019.png</key>
+            <key type="filename">interface/startscreen/slime/020.png</key>
+            <key type="filename">interface/startscreen/slime/021.png</key>
+            <key type="filename">interface/startscreen/slime/022.png</key>
+            <key type="filename">interface/startscreen/slime/023.png</key>
+            <key type="filename">interface/startscreen/slime/024.png</key>
+            <key type="filename">interface/startscreen/slime/025.png</key>
+            <key type="filename">interface/startscreen/slime/026.png</key>
+            <key type="filename">interface/startscreen/slime/027.png</key>
+            <key type="filename">interface/startscreen/slime/028.png</key>
+            <key type="filename">interface/startscreen/slime/029.png</key>
+            <key type="filename">interface/startscreen/slime/030.png</key>
+            <key type="filename">interface/startscreen/slime/031.png</key>
+            <key type="filename">interface/startscreen/slime/032.png</key>
+            <key type="filename">interface/startscreen/slime/033.png</key>
+            <key type="filename">interface/startscreen/slime/034.png</key>
+            <key type="filename">interface/startscreen/slime/035.png</key>
+            <key type="filename">interface/startscreen/slime/036.png</key>
+            <key type="filename">interface/startscreen/slime/037.png</key>
+            <key type="filename">interface/startscreen/slime/038.png</key>
+            <key type="filename">interface/startscreen/slime/039.png</key>
+            <key type="filename">interface/startscreen/slime/040.png</key>
+            <key type="filename">interface/startscreen/slime/041.png</key>
+            <key type="filename">interface/startscreen/slime/042.png</key>
+            <key type="filename">interface/startscreen/slime/043.png</key>
+            <key type="filename">interface/startscreen/slime/044.png</key>
+            <key type="filename">interface/startscreen/slime/045.png</key>
+            <key type="filename">interface/startscreen/slime/046.png</key>
+            <key type="filename">interface/startscreen/slime/047.png</key>
+            <key type="filename">interface/startscreen/slime/048.png</key>
+            <key type="filename">interface/startscreen/slime/049.png</key>
+            <key type="filename">interface/startscreen/slime/050.png</key>
+            <key type="filename">interface/startscreen/slime/051.png</key>
+            <key type="filename">interface/startscreen/slime/052.png</key>
+            <key type="filename">interface/startscreen/slime/053.png</key>
+            <key type="filename">interface/startscreen/slime/054.png</key>
+            <key type="filename">interface/startscreen/slime/055.png</key>
+            <key type="filename">interface/startscreen/slime/056.png</key>
+            <key type="filename">interface/startscreen/slime/057.png</key>
+            <key type="filename">interface/startscreen/slime/058.png</key>
+            <key type="filename">interface/startscreen/slime/059.png</key>
+            <key type="filename">interface/startscreen/slime/060.png</key>
+            <key type="filename">interface/startscreen/slime/061.png</key>
+            <key type="filename">interface/startscreen/slime/062.png</key>
+            <key type="filename">interface/startscreen/slime/063.png</key>
+            <key type="filename">interface/startscreen/slime/064.png</key>
+            <key type="filename">interface/startscreen/slime/065.png</key>
+            <key type="filename">interface/startscreen/slime/066.png</key>
+            <key type="filename">interface/startscreen/slime/067.png</key>
+            <key type="filename">interface/startscreen/slime/068.png</key>
+            <key type="filename">interface/startscreen/slime/069.png</key>
+            <key type="filename">interface/startscreen/slime/070.png</key>
+            <key type="filename">interface/startscreen/slime/071.png</key>
+            <key type="filename">interface/startscreen/slime/072.png</key>
+            <key type="filename">interface/startscreen/slime/073.png</key>
+            <key type="filename">interface/startscreen/slime/074.png</key>
+            <key type="filename">interface/startscreen/slime/075.png</key>
+            <key type="filename">interface/startscreen/slime/076.png</key>
+            <key type="filename">interface/startscreen/slime/077.png</key>
+            <key type="filename">interface/startscreen/slime/078.png</key>
+            <key type="filename">interface/startscreen/slime/079.png</key>
+            <key type="filename">interface/startscreen/slime/080.png</key>
+            <key type="filename">interface/startscreen/slime/081.png</key>
+            <key type="filename">interface/startscreen/slime/082.png</key>
+            <key type="filename">interface/startscreen/slime/083.png</key>
+            <key type="filename">interface/startscreen/slime/084.png</key>
+            <key type="filename">interface/startscreen/slime/085.png</key>
+            <key type="filename">interface/startscreen/slime/086.png</key>
+            <key type="filename">interface/startscreen/slime/087.png</key>
+            <key type="filename">interface/startscreen/slime/088.png</key>
+            <key type="filename">interface/startscreen/slime/089.png</key>
+            <key type="filename">interface/startscreen/slime/090.png</key>
+            <key type="filename">interface/startscreen/slime/091.png</key>
+            <key type="filename">interface/startscreen/slime/092.png</key>
+            <key type="filename">interface/startscreen/slime/093.png</key>
+            <key type="filename">interface/startscreen/slime/094.png</key>
+            <key type="filename">interface/startscreen/slime/095.png</key>
+            <key type="filename">interface/startscreen/slime/096.png</key>
+            <key type="filename">interface/startscreen/slime/097.png</key>
+            <key type="filename">interface/startscreen/slime/098.png</key>
+            <key type="filename">interface/startscreen/slime/099.png</key>
+            <key type="filename">interface/startscreen/slime/100.png</key>
+            <key type="filename">interface/startscreen/slime/101.png</key>
+            <key type="filename">interface/startscreen/slime/102.png</key>
+            <key type="filename">interface/startscreen/slime/103.png</key>
+            <key type="filename">interface/startscreen/slime/104.png</key>
+            <key type="filename">interface/startscreen/slime/105.png</key>
+            <key type="filename">interface/startscreen/slime/106.png</key>
+            <key type="filename">interface/startscreen/slime/107.png</key>
+            <key type="filename">interface/startscreen/slime/108.png</key>
+            <key type="filename">interface/startscreen/slime/109.png</key>
+            <key type="filename">interface/startscreen/slime/110.png</key>
+            <key type="filename">interface/startscreen/slime/111.png</key>
+            <key type="filename">interface/startscreen/slime/112.png</key>
+            <key type="filename">interface/startscreen/slime/113.png</key>
+            <key type="filename">interface/startscreen/slime/114.png</key>
+            <key type="filename">interface/startscreen/slime/115.png</key>
+            <key type="filename">interface/startscreen/slime/116.png</key>
+            <key type="filename">interface/startscreen/slime/117.png</key>
+            <key type="filename">interface/startscreen/slime/118.png</key>
+            <key type="filename">interface/startscreen/slime/119.png</key>
+            <key type="filename">interface/startscreen/slime/120.png</key>
+            <key type="filename">interface/startscreen/slime/121.png</key>
+            <key type="filename">interface/startscreen/slime/122.png</key>
+            <key type="filename">interface/startscreen/slime/123.png</key>
+            <key type="filename">interface/startscreen/slime/124.png</key>
+            <key type="filename">interface/startscreen/slime/125.png</key>
+            <key type="filename">interface/startscreen/slime/126.png</key>
+            <key type="filename">interface/startscreen/slime/127.png</key>
+            <key type="filename">interface/startscreen/slime/128.png</key>
+            <key type="filename">interface/startscreen/slime/129.png</key>
+            <key type="filename">interface/startscreen/slime/130.png</key>
+            <key type="filename">interface/startscreen/slime/131.png</key>
+            <key type="filename">interface/startscreen/slime/132.png</key>
+            <key type="filename">interface/startscreen/slime/133.png</key>
+            <key type="filename">interface/startscreen/slime/134.png</key>
+            <key type="filename">interface/startscreen/slime/135.png</key>
+            <key type="filename">interface/startscreen/slime/136.png</key>
+            <key type="filename">interface/startscreen/slime/137.png</key>
+            <key type="filename">interface/startscreen/slime/138.png</key>
+            <key type="filename">interface/startscreen/slime/139.png</key>
+            <key type="filename">interface/startscreen/slime/140.png</key>
+            <key type="filename">interface/startscreen/slime/141.png</key>
+            <key type="filename">interface/startscreen/slime/142.png</key>
+            <key type="filename">interface/startscreen/slime/143.png</key>
+            <key type="filename">interface/startscreen/slime/144.png</key>
+            <key type="filename">interface/startscreen/slime/145.png</key>
+            <key type="filename">interface/startscreen/slime/146.png</key>
+            <key type="filename">interface/startscreen/slime/147.png</key>
+            <key type="filename">interface/startscreen/slime/148.png</key>
+            <key type="filename">interface/startscreen/slime/149.png</key>
+            <key type="filename">interface/startscreen/slime/150.png</key>
+            <key type="filename">interface/startscreen/slime/151.png</key>
+            <key type="filename">interface/startscreen/slime/152.png</key>
+            <key type="filename">interface/startscreen/slime/153.png</key>
+            <key type="filename">interface/startscreen/slime/154.png</key>
+            <key type="filename">interface/startscreen/slime/155.png</key>
+            <key type="filename">interface/startscreen/slime/156.png</key>
+            <key type="filename">interface/startscreen/slime/157.png</key>
+            <key type="filename">interface/startscreen/slime/158.png</key>
+            <key type="filename">interface/startscreen/slime/159.png</key>
+            <key type="filename">interface/startscreen/slime/160.png</key>
+            <key type="filename">interface/startscreen/slime/161.png</key>
+            <key type="filename">interface/startscreen/slime/162.png</key>
+            <key type="filename">interface/startscreen/slime/163.png</key>
+            <key type="filename">interface/startscreen/slime/164.png</key>
+            <key type="filename">interface/startscreen/slime/165.png</key>
+            <key type="filename">interface/startscreen/slime/166.png</key>
+            <key type="filename">interface/startscreen/slime/167.png</key>
+            <key type="filename">interface/startscreen/slime/168.png</key>
+            <key type="filename">interface/startscreen/slime/169.png</key>
+            <key type="filename">interface/startscreen/slime/170.png</key>
+            <key type="filename">interface/startscreen/slime/171.png</key>
+            <key type="filename">interface/startscreen/slime/172.png</key>
+            <key type="filename">interface/startscreen/slime/173.png</key>
+            <key type="filename">interface/startscreen/slime/174.png</key>
+            <key type="filename">interface/startscreen/slime/175.png</key>
+            <key type="filename">interface/startscreen/slime/176.png</key>
+            <key type="filename">interface/startscreen/slime/177.png</key>
+            <key type="filename">interface/startscreen/slime/178.png</key>
+            <key type="filename">interface/startscreen/slime/179.png</key>
+            <key type="filename">interface/startscreen/slime/180.png</key>
+            <key type="filename">interface/startscreen/slime/181.png</key>
+            <key type="filename">interface/startscreen/slime/182.png</key>
+            <key type="filename">interface/startscreen/slime/183.png</key>
+            <key type="filename">interface/startscreen/slime/184.png</key>
+            <key type="filename">interface/startscreen/slime/185.png</key>
+            <key type="filename">interface/startscreen/slime/186.png</key>
+            <key type="filename">interface/startscreen/slime/187.png</key>
+            <key type="filename">interface/startscreen/slime/188.png</key>
+            <key type="filename">interface/startscreen/slime/189.png</key>
+            <key type="filename">interface/startscreen/title.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>325,325,650,650</rect>
+                <key>scale9Paddings</key>
+                <rect>325,325,650,650</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -489,6 +883,229 @@
                 <rect>50,50,100,100</rect>
                 <key>scale9Paddings</key>
                 <rect>50,50,100,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">neutral/stations/1-turret-cannon/0.png</key>
+            <key type="filename">neutral/stations/1-turret-cannon/1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>57,60,113,119</rect>
+                <key>scale9Paddings</key>
+                <rect>57,60,113,119</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">neutral/stations/1-turret-ground/0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>57,59,113,117</rect>
+                <key>scale9Paddings</key>
+                <rect>57,59,113,117</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">neutral/stations/2-arrow/0.png</key>
+            <key type="filename">neutral/stations/2-arrow/1.png</key>
+            <key type="filename">neutral/stations/2-arrow/2.png</key>
+            <key type="filename">neutral/stations/2-arrow/3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>46,64,91,129</rect>
+                <key>scale9Paddings</key>
+                <rect>46,64,91,129</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">neutral/stations/2-fly-by-parts/0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>48,61,95,122</rect>
+                <key>scale9Paddings</key>
+                <rect>48,61,95,122</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">neutral/stations/2-fly-by-parts/1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>113,83,226,165</rect>
+                <key>scale9Paddings</key>
+                <rect>113,83,226,165</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">neutral/stations/2-fly-by-parts/2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>44,19,89,38</rect>
+                <key>scale9Paddings</key>
+                <rect>44,19,89,38</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">neutral/stations/3-fly-by-parts/0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>113,1529,225,3057</rect>
+                <key>scale9Paddings</key>
+                <rect>113,1529,225,3057</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ship/death/0.png</key>
+            <key type="filename">ship/death/11.png</key>
+            <key type="filename">ship/death/2.png</key>
+            <key type="filename">ship/death/6.png</key>
+            <key type="filename">ship/death/9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>125,125,249,250</rect>
+                <key>scale9Paddings</key>
+                <rect>125,125,249,250</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ship/death/1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>125,125,249,249</rect>
+                <key>scale9Paddings</key>
+                <rect>125,125,249,249</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ship/death/10.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>126,125,252,250</rect>
+                <key>scale9Paddings</key>
+                <rect>126,125,252,250</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ship/death/12.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>126,124,251,249</rect>
+                <key>scale9Paddings</key>
+                <rect>126,124,251,249</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ship/death/3.png</key>
+            <key type="filename">ship/death/7.png</key>
+            <key type="filename">ship/death/8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>125,125,250,250</rect>
+                <key>scale9Paddings</key>
+                <rect>125,125,250,250</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ship/death/4.png</key>
+            <key type="filename">ship/death/5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>126,125,251,250</rect>
+                <key>scale9Paddings</key>
+                <rect>126,125,251,250</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ship/fly/0.png</key>
+            <key type="filename">ship/fly/1.png</key>
+            <key type="filename">ship/fly/2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,23,39,45</rect>
+                <key>scale9Paddings</key>
+                <rect>20,23,39,45</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ship/thrust-fast/0.png</key>
+            <key type="filename">ship/thrust-fast/1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>29,76,57,153</rect>
+                <key>scale9Paddings</key>
+                <rect>29,76,57,153</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ship/thrust-slow/0.png</key>
+            <key type="filename">ship/thrust-slow/1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>21,34,43,67</rect>
+                <key>scale9Paddings</key>
+                <rect>21,34,43,67</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -623,15 +1240,122 @@
                 <false/>
             </struct>
             <key type="filename">vermin-wipeout-atlas0.png</key>
+            <key type="filename">vermin-wipeout-atlas3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>450,256,901,512</rect>
+                <rect>512,512,1023,1024</rect>
                 <key>scale9Paddings</key>
-                <rect>450,256,901,512</rect>
+                <rect>512,512,1023,1024</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">vermin-wipeout-atlas1.png</key>
+            <key type="filename">vermin-wipeout-atlas7.png</key>
+            <key type="filename">vermin-wipeout-atlas8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>512,512,1024,1024</rect>
+                <key>scale9Paddings</key>
+                <rect>512,512,1024,1024</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">vermin-wipeout-atlas10.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>509,511,1017,1023</rect>
+                <key>scale9Paddings</key>
+                <rect>509,511,1017,1023</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">vermin-wipeout-atlas11.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>398,510,795,1020</rect>
+                <key>scale9Paddings</key>
+                <rect>398,510,795,1020</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">vermin-wipeout-atlas2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>512,512,1024,1023</rect>
+                <key>scale9Paddings</key>
+                <rect>512,512,1024,1023</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">vermin-wipeout-atlas4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>511,512,1023,1023</rect>
+                <key>scale9Paddings</key>
+                <rect>511,512,1023,1023</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">vermin-wipeout-atlas5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>488,480,976,959</rect>
+                <key>scale9Paddings</key>
+                <rect>488,480,976,959</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">vermin-wipeout-atlas6.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>488,479,975,959</rect>
+                <key>scale9Paddings</key>
+                <rect>488,479,975,959</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">vermin-wipeout-atlas9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>512,511,1023,1023</rect>
+                <key>scale9Paddings</key>
+                <rect>512,511,1023,1023</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -3,7 +3,7 @@
 function Barrier1(game) {
   var ownedSprites = game.add.group();
 
-  var barrier = game.add.sprite(0, -250, game.findAtlas('barriers/0/0.png'), 'barriers/0/0.png');
+  var barrier = game.add.sprite(0, -250, 'verminBasics', 'barriers/0/0.png');
   ownedSprites.add(barrier);
   game.physics.enable(barrier, window.Phaser.Physics.ARCADE);
 
@@ -14,7 +14,7 @@ function Barrier1(game) {
     return 2;
   };
 
-  var blood = game.add.sprite(0, 0, game.findAtlas('blood/blood-0.png'), 'blood/blood-0.png');
+  var blood = game.add.sprite(0, 0, 'verminBasics', 'blood/blood-0.png');
   ownedSprites.add(blood);
   blood.visible = false;
 

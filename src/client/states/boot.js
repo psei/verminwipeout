@@ -56,20 +56,8 @@ module.exports = function (game) {
       game.load.audio('wiper', '/audio/fx/wiper.mp3');
       game.load.audio('alien-death-0', '/audio/fx/alien-death.wav');
       game.load.audio('alien-death-1', '/audio/fx/alien-death1.wav');
-      for (var i = 0; i <= 5; i++) {
-        game.load.atlasJSONHash(`verminAtlas${i}`, `images/TexturePacker-SmartFolder/verminAtlas${i}.png`, `images/TexturePacker-SmartFolder/verminAtlas${i}.json`);
-      }
-
-      game.findAtlas = function(frameName) {
-        for (var i = 0; i <= 5; i++) {
-          const atlas = `verminAtlas${i}`;
-          if (game﻿﻿﻿﻿.cache._cache.image﻿[atlas].frameData﻿._frameNames.hasOwnProperty﻿(frameName)) {
-            return atlas;
-          }
-        }
-
-        return '';
-      };
+      game.load.atlasJSONHash('verminBasics', 'images/TexturePacker-SmartFolder/verminAtlas0.png', 'images/TexturePacker-SmartFolder/verminAtlas0.json');
+      game.load.atlasJSONHash('verminEnemies', 'images/TexturePacker-SmartFolder-Enemies/verminAtlas0.png', 'images/TexturePacker-SmartFolder-Enemies/verminAtlas0.json');
 
       game.load.image('btn-mute', 'images/interface/btn-mute.png');
       game.load.image('btn-pause', 'images/interface/btn-pause.png');

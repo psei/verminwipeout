@@ -100,7 +100,7 @@ function Splatter(game, player) {
     const selectedImage = Phaser.ArrayUtils.getRandomItem(splatterImagePool);
     const x = game.random.between(-200, game.world.width - 100);
     const y = game.random.between(-200, game.world.height - 100);
-    const splatter = game.add.image(x, y, game.findAtlas(selectedImage, game), selectedImage);
+    const splatter = game.add.image(x, y, 'verminBasics', selectedImage);
     splatter.angle = game.random.between(0, 180);
     ownedSprites.add(splatter);
   }

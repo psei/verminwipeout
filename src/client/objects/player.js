@@ -214,7 +214,7 @@ function Player(game, lifeCounter) {
   }
 
   function playDeathAnimation() {
-    var shipDeath = game.add.sprite(0, 0, game.findAtlas('ship/death/0.png'), 'ship/death/0.png');
+    var shipDeath = game.add.sprite(0, 0, 'verminBasics', 'ship/death/0.png');
     ownedSprites.add(shipDeath);
 
     shipDeath.x = player.x;

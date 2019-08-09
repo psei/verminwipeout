@@ -29,7 +29,7 @@ function Enemy(game, config, spawnInfo) {
   var paths = { x: spawnInfo.x, y: spawnInfo.y };
   var spawnTime = game.time.physicsElapsedTotalMS;
 
-  var blood = game.add.sprite(0, 0, game.findAtlas('blood/blood-0.png'), 'blood/blood-0.png');
+  var blood = game.add.sprite(0, 0, 'verminBasics', 'blood/blood-0.png');
   ownedSprites.add(blood);
   blood.visible = false;
 

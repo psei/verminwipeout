@@ -16,6 +16,8 @@ function Barrier1(game) {
 
   var blood = game.add.sprite(0, 0, 'verminBasics', 'blood/blood-0.png');
   ownedSprites.add(blood);
+  blood.scale.setTo(0.5, 0.5);
+  blood.anchor.setTo(0.5, 0.5);
   blood.visible = false;
 
   function firstBlood(bullet) {
@@ -26,8 +28,6 @@ function Barrier1(game) {
     blood.visible = true;
     blood.x = bullet.x;
     blood.y = bullet.y;
-    blood.scale.setTo(2, 2);
-    blood.anchor.setTo(0.5, 0.5);
 
     const frames = Phaser.Animation.generateFrameNames('blood/blood-', 0, 2, '.png');
     blood.animations.add('enemyBloodAni', frames, 5, false);

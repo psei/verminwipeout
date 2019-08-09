@@ -32,6 +32,7 @@ function Boss1(game) {
     ownedSprites.add(blood);
     const frames = Phaser.Animation.generateFrameNames('enemies/bosses/0-crank/firstblood/', 0, 13, '.png', 2);
     blood.animations.add('crankFirstBlood', frames, 15, false);
+    blood.scale.setTo(0.5, 0.5);
     blood.anchor.setTo(0.5, 0.5);
     blood.visible = false;
 

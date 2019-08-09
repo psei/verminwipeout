@@ -110,21 +110,11 @@ module.exports = function (game) {
 
       game.input.touch.addTouchLockCallback(onTouch, this);
 
-      var pauseBtn = game.add.button(10, 10, 'btn-pause', togglePause, this);
-      pauseBtn.hitArea = new Phaser.Polygon([
-        new Phaser.Point(-10, -10),
-        new Phaser.Point(60, -10),
-        new Phaser.Point(60, 60),
-        new Phaser.Point(-10, 60),
-      ]);
+      var pauseBtn = game.add.button(10, 10, 'verminBasics', togglePause, this, 'interface/buttons/pause.png', 'interface/buttons/pause.png', 'interface/buttons/pause.png', 'interface/buttons/pause.png');
+      pauseBtn.scale.setTo(0.5, 0.5);
 
-      var muteBtn = game.add.button(80, 10, 'btn-mute', toggleSounds, this);
-      muteBtn.hitArea = new Phaser.Polygon([
-        new Phaser.Point(-5, -10),
-        new Phaser.Point(60, -10),
-        new Phaser.Point(60, 60),
-        new Phaser.Point(-5, 60),
-      ]);
+      var muteBtn = game.add.button(75, 10, 'verminBasics', toggleSounds, this, 'interface/buttons/sound.png', 'interface/buttons/sound.png', 'interface/buttons/sound.png', 'interface/buttons/sound.png');
+      muteBtn.scale.setTo(0.5, 0.5);
 
       game.time.physicsElapsedTotalMS = 0;
     },

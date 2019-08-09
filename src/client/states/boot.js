@@ -58,9 +58,6 @@ module.exports = function (game) {
       game.load.audio('alien-death-1', '/audio/fx/alien-death1.wav');
       game.load.atlasJSONHash('verminBasics', 'images/TexturePacker-SmartFolder/verminAtlas0.png', 'images/TexturePacker-SmartFolder/verminAtlas0.json');
       game.load.atlasJSONHash('verminEnemies', 'images/TexturePacker-SmartFolder-Enemies/verminAtlas0.png', 'images/TexturePacker-SmartFolder-Enemies/verminAtlas0.json');
-
-      game.load.image('btn-mute', 'images/interface/btn-mute.png');
-      game.load.image('btn-pause', 'images/interface/btn-pause.png');
     },
     create: function () {
       game.stage.backgroundColor = '#F0F0F0';

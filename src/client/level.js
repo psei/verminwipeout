@@ -1,10 +1,10 @@
 'use strict';
 
 var Debris = require('./objects/debris');
-var Enemy = require('./objects/enemy');
+var Enemy = require('./objects/enemies/enemy');
 var PlainImage = require('./objects/plainImage');
-const Boss1 = require('./objects/boss1');
-const Barrier1 = require('./objects/barrier1');
+const Boss1 = require('./objects/enemies/boss1');
+const Barrier1 = require('./objects/enemies/barrier1');
 
 function createEnemiesFromWave(game, wave) {
   return wave.objects.map(function (waveObj) {
@@ -12,6 +12,8 @@ function createEnemiesFromWave(game, wave) {
       'plainImage': PlainImage,
       'cutterfly': Enemy,
       'jizzler': Enemy,
+      'sawjaw': Enemy,
+      'ghumbo': Enemy,
       'boss1': Boss1,
       'barrier1': Barrier1,
     };

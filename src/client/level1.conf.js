@@ -151,25 +151,25 @@ module.exports = config({
         }),
 
         createEnemyWave({
-            type: 'cutterfly',
+            type: 'ghumbo',
             spawnTime: 5500,
-            durationToReachNextWayPoint: 800,
+            durationToReachNextWayPoint: 2000,
             formation: formations.vertical(50, 150),
             creatureCount: 5,
             wayPoints: wayPoints.straight(6)
         }),
 
         createEnemyWave({
-            type: 'cutterfly',
+            type: 'jizzler',
             spawnTime: 5501,
-            durationToReachNextWayPoint: 800,
+            durationToReachNextWayPoint: 2000,
             formation: formations.vertical(200, 150),
             creatureCount: 5,
             wayPoints: wayPoints.straight(6)
         }),
 
         createEnemyWave({
-            type: 'cutterfly',
+            type: 'sawjaw',
             spawnTime: 6200,
             durationToReachNextWayPoint: 800,
             formation: formations.vertical(350, 150),

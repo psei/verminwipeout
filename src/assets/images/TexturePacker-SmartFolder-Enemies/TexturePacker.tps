@@ -377,10 +377,10 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">input/enemies/level1/0-cutterfly/attack/0.png</key>
-            <key type="filename">input/enemies/level1/0-cutterfly/attack/1.png</key>
-            <key type="filename">input/enemies/level1/0-cutterfly/fly/0.png</key>
-            <key type="filename">input/enemies/level1/0-cutterfly/fly/1.png</key>
+            <key type="filename">input/enemies/level1/0-cutterfly/attack/00.png</key>
+            <key type="filename">input/enemies/level1/0-cutterfly/attack/01.png</key>
+            <key type="filename">input/enemies/level1/0-cutterfly/fly/00.png</key>
+            <key type="filename">input/enemies/level1/0-cutterfly/fly/01.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -417,16 +417,16 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">input/enemies/level1/1-ghumbo/death/0.png</key>
-            <key type="filename">input/enemies/level1/1-ghumbo/death/1.png</key>
-            <key type="filename">input/enemies/level1/1-ghumbo/death/2.png</key>
-            <key type="filename">input/enemies/level1/1-ghumbo/death/3.png</key>
-            <key type="filename">input/enemies/level1/1-ghumbo/death/4.png</key>
-            <key type="filename">input/enemies/level1/1-ghumbo/death/5.png</key>
-            <key type="filename">input/enemies/level1/1-ghumbo/death/6.png</key>
-            <key type="filename">input/enemies/level1/1-ghumbo/death/7.png</key>
-            <key type="filename">input/enemies/level1/1-ghumbo/death/8.png</key>
-            <key type="filename">input/enemies/level1/1-ghumbo/death/9.png</key>
+            <key type="filename">input/enemies/level1/1-ghumbo/death/00.png</key>
+            <key type="filename">input/enemies/level1/1-ghumbo/death/01.png</key>
+            <key type="filename">input/enemies/level1/1-ghumbo/death/02.png</key>
+            <key type="filename">input/enemies/level1/1-ghumbo/death/03.png</key>
+            <key type="filename">input/enemies/level1/1-ghumbo/death/04.png</key>
+            <key type="filename">input/enemies/level1/1-ghumbo/death/05.png</key>
+            <key type="filename">input/enemies/level1/1-ghumbo/death/06.png</key>
+            <key type="filename">input/enemies/level1/1-ghumbo/death/07.png</key>
+            <key type="filename">input/enemies/level1/1-ghumbo/death/08.png</key>
+            <key type="filename">input/enemies/level1/1-ghumbo/death/09.png</key>
             <key type="filename">input/enemies/level1/2-jizzler/attack/00.png</key>
             <key type="filename">input/enemies/level1/2-jizzler/attack/01.png</key>
             <key type="filename">input/enemies/level1/2-jizzler/attack/02.png</key>
@@ -454,29 +454,29 @@
             <key type="filename">input/enemies/level1/2-jizzler/death/07.png</key>
             <key type="filename">input/enemies/level1/2-jizzler/death/08.png</key>
             <key type="filename">input/enemies/level1/2-jizzler/death/09.png</key>
-            <key type="filename">input/enemies/level1/2-jizzler/fly/0.png</key>
-            <key type="filename">input/enemies/level1/2-jizzler/fly/1.png</key>
-            <key type="filename">input/enemies/level1/2-jizzler/fly/2.png</key>
-            <key type="filename">input/enemies/level1/2-jizzler/fly/3.png</key>
-            <key type="filename">input/enemies/level1/3-sawjaw/death/0.png</key>
-            <key type="filename">input/enemies/level1/3-sawjaw/death/1.png</key>
-            <key type="filename">input/enemies/level1/3-sawjaw/death/2.png</key>
-            <key type="filename">input/enemies/level1/3-sawjaw/death/3.png</key>
-            <key type="filename">input/enemies/level1/3-sawjaw/death/4.png</key>
-            <key type="filename">input/enemies/level1/3-sawjaw/death/5.png</key>
-            <key type="filename">input/enemies/level1/3-sawjaw/death/6.png</key>
-            <key type="filename">input/enemies/level1/3-sawjaw/death/7.png</key>
-            <key type="filename">input/enemies/level1/3-sawjaw/fly/0.png</key>
-            <key type="filename">input/enemies/level1/4-ghumbo2/death/0.png</key>
-            <key type="filename">input/enemies/level1/4-ghumbo2/death/1.png</key>
-            <key type="filename">input/enemies/level1/4-ghumbo2/death/2.png</key>
-            <key type="filename">input/enemies/level1/4-ghumbo2/death/3.png</key>
-            <key type="filename">input/enemies/level1/4-ghumbo2/death/4.png</key>
-            <key type="filename">input/enemies/level1/4-ghumbo2/death/5.png</key>
-            <key type="filename">input/enemies/level1/4-ghumbo2/death/6.png</key>
-            <key type="filename">input/enemies/level1/4-ghumbo2/death/7.png</key>
-            <key type="filename">input/enemies/level1/4-ghumbo2/death/8.png</key>
-            <key type="filename">input/enemies/level1/4-ghumbo2/death/9.png</key>
+            <key type="filename">input/enemies/level1/2-jizzler/fly/00.png</key>
+            <key type="filename">input/enemies/level1/2-jizzler/fly/01.png</key>
+            <key type="filename">input/enemies/level1/2-jizzler/fly/02.png</key>
+            <key type="filename">input/enemies/level1/2-jizzler/fly/03.png</key>
+            <key type="filename">input/enemies/level1/3-sawjaw/death/00.png</key>
+            <key type="filename">input/enemies/level1/3-sawjaw/death/01.png</key>
+            <key type="filename">input/enemies/level1/3-sawjaw/death/02.png</key>
+            <key type="filename">input/enemies/level1/3-sawjaw/death/03.png</key>
+            <key type="filename">input/enemies/level1/3-sawjaw/death/04.png</key>
+            <key type="filename">input/enemies/level1/3-sawjaw/death/05.png</key>
+            <key type="filename">input/enemies/level1/3-sawjaw/death/06.png</key>
+            <key type="filename">input/enemies/level1/3-sawjaw/death/07.png</key>
+            <key type="filename">input/enemies/level1/3-sawjaw/fly/00.png</key>
+            <key type="filename">input/enemies/level1/4-ghumbo2/death/00.png</key>
+            <key type="filename">input/enemies/level1/4-ghumbo2/death/01.png</key>
+            <key type="filename">input/enemies/level1/4-ghumbo2/death/02.png</key>
+            <key type="filename">input/enemies/level1/4-ghumbo2/death/03.png</key>
+            <key type="filename">input/enemies/level1/4-ghumbo2/death/04.png</key>
+            <key type="filename">input/enemies/level1/4-ghumbo2/death/05.png</key>
+            <key type="filename">input/enemies/level1/4-ghumbo2/death/06.png</key>
+            <key type="filename">input/enemies/level1/4-ghumbo2/death/07.png</key>
+            <key type="filename">input/enemies/level1/4-ghumbo2/death/08.png</key>
+            <key type="filename">input/enemies/level1/4-ghumbo2/death/09.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -489,7 +489,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">input/enemies/level1/1-ghumbo/fly/0.png</key>
+            <key type="filename">input/enemies/level1/1-ghumbo/fly/00.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -514,7 +514,7 @@
             <key type="filename">input/enemies/level1/4-ghumbo2/attack/09.png</key>
             <key type="filename">input/enemies/level1/4-ghumbo2/attack/10.png</key>
             <key type="filename">input/enemies/level1/4-ghumbo2/attack/11.png</key>
-            <key type="filename">input/enemies/level1/4-ghumbo2/fly/0.png</key>
+            <key type="filename">input/enemies/level1/4-ghumbo2/fly/00.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

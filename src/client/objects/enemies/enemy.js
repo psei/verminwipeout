@@ -2,28 +2,34 @@
 
 var configsByType = {
   cutterfly: require('./cutterfly.conf'),
+  ghumbo: require('./ghumbo.conf'),
   jizzler: require('./jizzler.conf'),
+  sawjaw: require('./sawjaw.conf'),
   boss1: require('./boss1.conf'),
   barrier1: require('./barrier1.conf'),
 };
 
-var Weapon = require('./weapon');
+var Weapon = require('../weapon');
 
 function Enemy(game, config, spawnInfo) {
   var ownedSprites = game.add.group();
-  var flySpriteConfig = config.sprites.enemy;
   var isCurrentlyFiring = false;
-  var enemy = game.add.sprite(spawnInfo.x[0], spawnInfo.y[0], flySpriteConfig.animationName);
+  var enemy = game.add.sprite(spawnInfo.x[0], spawnInfo.y[0], config.spriteName, config.spriteFolder + '/fly/00.png');
   ownedSprites.add(enemy);
   game.physics.enable(enemy, window.Phaser.Physics.ARCADE);
   enemy.anchor.setTo(0.5, 0.5);
+  enemy.scale.setTo(config.scaleFactor, config.scaleFactor);
 
-  enemy.weapon = Weapon.create(game, enemy, require('./weapon1.conf'));
+  const flyFrames = Phaser.Animation.generateFrameNames(config.spriteFolder + '/fly/', 0, config.frameInfo.fly.count, '.png', 2);
+  enemy.animations.add('fly', flyFrames, config.frameInfo.fly.rate, false);
+
+  const attackFrames = Phaser.Animation.generateFrameNames(config.spriteFolder + '/attack/', 0, config.frameInfo.attack.count, '.png', 2);
+  enemy.animations.add('attack', attackFrames, config.frameInfo.attack.rate, false);
+
+  enemy.weapon = Weapon.create(game, enemy, require('../weapon1.conf'));
   enemy.weapon.fireAngle = 90;
   enemy.givesSplatter = config.givesSplatter;
   enemy.health = config.health;
-
-  enemy.animations.add(flySpriteConfig.animationName);
 
   var timeToFlyMotionPath = spawnInfo.time;
   var paths = { x: spawnInfo.x, y: spawnInfo.y };
@@ -74,8 +80,6 @@ function Enemy(game, config, spawnInfo) {
     var newY = game.math.catmullRomInterpolation(paths.y, step);
     enemy.x = newX;
     enemy.y = newY;
-    attackSprite.x = newX;
-    attackSprite.y = newY;
   }
 
   enemy.update = function () {
@@ -87,28 +91,17 @@ function Enemy(game, config, spawnInfo) {
     }
   };
 
-  var attackConfig = config.sprites.attack;
-  var attackSprite = game.add.sprite(enemy.body.x, enemy.body.y, attackConfig.animationName);
-  ownedSprites.add(attackSprite);
-  attackSprite.anchor.setTo(0.5, 0.5);
-  attackSprite.visible = false;
-  enemy.animations.add(attackConfig.animationName);
-
   enemy.getCausedDamagePoints = function() {
     return config.causesDamagePoints;
   };
 
   enemy.attack = function () {
-    attackSprite.frame = 1;
-    attackSprite.visible = true;
     isCurrentlyFiring = true;
-    enemy.animations.play(attackConfig.animationName, attackConfig.frameRate);
+    enemy.animations.play('attack');
     enemy.animations.currentAnim.onComplete.add(function () {
-      attackSprite.visible = false;
       isCurrentlyFiring = false;
       enemy.weapon.fire();
-      enemy.frame = 1;
-      enemy.animations.play(flySpriteConfig.animationName, flySpriteConfig.frameRate, true);
+      enemy.animations.play('fly', config.frameInfo.fly.rate, true);
     }, this);
   };
 
@@ -118,25 +111,22 @@ function Enemy(game, config, spawnInfo) {
   };
 
   function playDeathAnimation() {
-    var deathConfig = config.sprites.death;
-    var death = game.add.sprite(enemy.body.x, enemy.body.y, deathConfig.animationName);
+    var death = game.add.sprite(enemy.x, enemy.y, config.spriteName, config.spriteFolder + '/death/00.png');
     ownedSprites.add(death);
     death.anchor.setTo(0.5, 0.5);
-    death.animations.add(deathConfig.animationName);
-    death.frame = 1;
-    death.animations.play(deathConfig.animationName,
-      deathConfig.frameRate,
-      false,
-      true);
-    attackSprite.destroy();
-    enemy.animations.currentAnim.onComplete.add(function () {
+    death.scale.setTo(config.scaleFactor, config.scaleFactor);
+    enemy.visible = false;
+    const frames = Phaser.Animation.generateFrameNames(config.spriteFolder + '/death/', 0, config.frameInfo.death.count, '.png', 2);
+    death.animations.add('death', frames, config.frameInfo.death.rate, false);
+    death.animations.play('death');
+    death.animations.currentAnim.onComplete.add(function () {
       enemy.destroy();
     }, this);
   }
 
   enemy.events.onKilled.add(playDeathAnimation, this);
 
-  enemy.animations.play(flySpriteConfig.animationName, flySpriteConfig.frameRate, true);
+  enemy.animations.play('fly', config.frameInfo.fly.rate, true);
   return enemy;
 }
 

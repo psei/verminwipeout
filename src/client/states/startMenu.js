@@ -19,6 +19,16 @@ module.exports = function (game) {
       bg.scale.y *= 1024 / 1080;
       bgMove = -1;
 
+      const title = game.add.image(70, 20, 'verminBasics', 'interface/startscreen/title.png');
+      title.scale.setTo(0.5, 0.5);
+
+      const slime = game.add.sprite(70,20, 'verminBasics', 'interface/startscreen/slime/000.png');
+      slime.scale.setTo(0.5, 0.5);
+      const frames = Phaser.Animation.generateFrameNames('interface/startscreen/slime/', 0, 189, '.png', 3);
+      slime.animations.add('slimeAni', frames, 15, true);
+      slime.animations.play('slimeAni');
+
+
       game.add.text(190, 910, 'Touch to start', { fill: '#f5af00', fontSize: 50, font: 'Forward' });
       game.input.touch.touchStartCallback = startGame;
       game.input.keyboard.onDownCallback = startGame;

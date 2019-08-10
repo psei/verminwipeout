@@ -32,8 +32,8 @@ module.exports = function (game) {
       game.stage.backgroundColor = '#340101';
       game.add.text(32, 32, 'VERMIN WIPEOUT', { fill: '#f5af00', fontSize: 65, font: 'Forward' });
 
-      subTitle = game.add.text(110, 150, 'generating ships', { fill: '#f5af00', fontSize: 32, font: 'Forward' });
-      subTitle.anchorX = 0.5;
+      subTitle = game.add.text(game.world.width / 2, 150, 'generating ships', { fill: '#f5af00', fontSize: 32, font: 'Forward' });
+      subTitle.anchor.setTo(0.5, 0);
 
       preloadShip = game.add.sprite(game.world.width / 2, game.world.height / 2, 'preload-ship');
       preloadShip.anchor.setTo(0.5, 0.5);

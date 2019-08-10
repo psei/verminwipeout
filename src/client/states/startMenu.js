@@ -6,12 +6,13 @@ module.exports = function (game) {
   var introBg;
 
   function startGame() {
+    game.input.keyboard.onDownCallback = null;
     game.state.start('play');
   }
 
   function startIntro() {
     game.input.touch.touchStartCallback = null;
-    game.input.keyboard.onDownCallback = null;
+    game.input.keyboard.onDownCallback = startGame;
 
     introBg = game.add.sprite(0, 0, 'verminBasics', 'interface/cinematics/intro/0.png');
     introBg.scale.setTo(1.1, 1.1);

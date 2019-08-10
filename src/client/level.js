@@ -73,6 +73,15 @@ Level.prototype.spawnEnemies = function (game) {
   return enemiesToSpawn;
 };
 
+Level.prototype.spawnFinalStation = function(game) {
+  return PlainImage.create(game, 'station2', {
+    imageKey: 'station2',
+    speed: 3,
+    offsetX: 0,
+    offsetY: -1000,
+  });
+};
+
 module.exports = {
   init: function (game, currentLevel) {
     return new Level(game, currentLevel - 1);

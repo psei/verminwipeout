@@ -32,6 +32,7 @@ module.exports = function (game) {
     bullet.kill();
     if (enemy.isBoss && enemy.alive !== true) {
       level.startBackground();
+      level.spawnFinalStation(game);
     }
   }
 

@@ -123,6 +123,7 @@ module.exports = config({
             spawnTime: 0,
             speed: 7,
             offsetX: 0,
+            offsetY: 0,
         }),
 
         createSingleObject({
@@ -132,6 +133,7 @@ module.exports = config({
             spawnTime: 0,
             speed: 2,
             offsetX: 200,
+            offsetY: 0,
         }),
 
         createSingleObject({

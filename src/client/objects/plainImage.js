@@ -10,7 +10,7 @@ function PlainImage(game, data) {
   const imageKey = data.imageAtlas ? data.imageAtlas : cfg.images[data.imageKey];
   const imageFrame = data.imageFrame ? data.imageFrame : null;
 
-  const plainImage = game.add.sprite(data.offsetX, cfg.posY, imageKey, imageFrame);
+  const plainImage = game.add.sprite(data.offsetX, data.offsetY, imageKey, imageFrame);
   plainImage.anchor.setTo(cfg.anchorX, cfg.anchorY);
 
   function move() {

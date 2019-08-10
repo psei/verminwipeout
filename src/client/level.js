@@ -45,6 +45,10 @@ Level.prototype.stopBackground = function() {
   this.isBgMoving = false;
 };
 
+Level.prototype.startBackground = function() {
+  this.isBgMoving = true;
+};
+
 Level.prototype.destroy = function () {
   this.background.destroy();
   lastWaveSpawnTime = 0;

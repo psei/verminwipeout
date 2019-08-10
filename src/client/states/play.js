@@ -30,6 +30,9 @@ module.exports = function (game) {
     player.handleBulletHitEnemy(bullet, enemy);
     enemy.takeBulletHit(bullet);
     bullet.kill();
+    if (enemy.isBoss && enemy.alive !== true) {
+      level.startBackground();
+    }
   }
 
   function checkCollisions() {
@@ -122,7 +125,7 @@ module.exports = function (game) {
       game.time.physicsElapsedTotalMS += game.time.physicsElapsedMS;
       level.update();
       const newEnemies = level.spawnEnemies(game);
-      const isBoss = newEnemies.filter((enemy) => enemy.visible === false).length === 1;
+      const isBoss = newEnemies.filter((enemy) => enemy.isBoss).length > 0;
       if (isBoss) {
         level.stopBackground();
       }

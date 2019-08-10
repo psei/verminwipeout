@@ -13,6 +13,7 @@ function Boss1(game) {
   var boss = game.add.sprite(game.world.width / 2 - 70, 270, 'verminEnemies', 'enemies/bosses/0-crank/body.png');
   ownedSprites.add(boss);
   boss.visible = false;
+  boss.isBoss = true;
 
   setTimeout(() => {
     bossName.destroy();

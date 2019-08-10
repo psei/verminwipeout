@@ -21,6 +21,9 @@ module.exports = function (game) {
 
   return {
     preload: function () {
+      const enemyMapInit = game.add.sprite(0, 0, 'verminEnemies', 'enemies/level1/0-cutterfly/attack/00.png');
+      enemyMapInit.scale.setTo(0.01, 0.01);
+
       game.load.image('startMenuBg', 'images/interface/startscreen.png');
     },
     create: function () {

@@ -41,7 +41,6 @@ module.exports = function (game) {
       slime.animations.add('slimeAni', frames, 15, true);
       slime.animations.play('slimeAni');
 
-
       game.add.text(190, 910, 'Touch to start', { fill: '#f5af00', fontSize: 50, font: 'Forward' });
       game.input.touch.touchStartCallback = startIntro;
       game.input.keyboard.onDownCallback = startIntro;

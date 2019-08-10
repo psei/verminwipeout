@@ -1,12 +1,18 @@
 'use strict';
 
 var config = require('./boss1.conf');
+const STATE_IDLE = 'idle';
+const STATE_SPEAR_ATTACK_PREPARE = 'spearPrepare';
+const STATE_SPEAR_ATTACK_RUN = 'spearRun';
+const STATE_ACID_BALLS_PREPARE = 'acidPrepare';
+const STATE_ACID_BALLS_SHOOT = 'acidShoot';
+const STATE_SNAP_EAT_PREPARE = 'snapPrepare';
+const STATE_SNAP_EAT_RUN = 'snapRun';
 
 function Boss1(game) {
   var ownedSprites = game.add.group();
   ownedSprites.x = game.world.width / 2;
   ownedSprites.y = 270;
-  var isCurrentlyFiring = false;
 
   var bossName = game.add.image(200, 350, 'verminBasics', 'interface/boss-names/00.png');
 
@@ -14,6 +20,10 @@ function Boss1(game) {
   ownedSprites.add(boss);
   boss.visible = false;
   boss.isBoss = true;
+
+  var bossState;
+  var bossNextState = STATE_SNAP_EAT_PREPARE;
+  var stateStartTime;
 
   setTimeout(() => {
     bossName.destroy();
@@ -62,10 +72,178 @@ function Boss1(game) {
       return 250;
     };
 
+    function setState(newState) {
+      bossState = newState;
+      stateStartTime = game.time.physicsElapsedTotalMS;
+
+      switch (newState) {
+        case STATE_IDLE:
+          targetAngle = 0;
+          break;
+        case STATE_ACID_BALLS_PREPARE:
+          targetAngle = game.random.between(-20, 20);
+          break;
+        case STATE_ACID_BALLS_SHOOT:
+          launchAcidBall();
+          bossNextState = STATE_SPEAR_ATTACK_PREPARE;
+          break;
+        case STATE_SNAP_EAT_PREPARE:
+          targetY = boss.y - 40;
+          break;
+        case STATE_SNAP_EAT_RUN:
+          targetY = game.world.width - 1;
+          bossNextState = STATE_ACID_BALLS_PREPARE;
+          break;
+        case STATE_SPEAR_ATTACK_PREPARE:
+          targetY = boss.y - 40;
+          break;
+        case STATE_SPEAR_ATTACK_RUN:
+          targetY = game.world.width - 1;
+          bossNextState = STATE_SNAP_EAT_PREPARE;
+          break;
+      }
+    }
+
+    var moveSpeedX;
+    var moveSpeedY;
+    var angleSpeed;
+    var targetAngle;
+    var targetY;
+    setState(STATE_IDLE);
+
+    function moveIdle() {
+      if (boss.x < 50) {
+        moveSpeedX = 2;
+      } else if (boss.x > game.world.width - 150) {
+        moveSpeedX = -2;
+      }
+
+      if (boss.y > 350) {
+        moveSpeedY = -1;
+      } else  if (boss.y < 200) {
+        moveSpeedY = 1;
+      }
+
+      if (boss.angle > targetAngle) {
+        angleSpeed = -1;
+      } else if (boss.angle < targetAngle) {
+        angleSpeed = 1;
+      } else {
+        angleSpeed = 0;
+      }
+
+      boss.x += moveSpeedX;
+      boss.y += moveSpeedY;
+      boss.angle += angleSpeed;
+
+      ownedSprites.x += moveSpeedX;
+      ownedSprites.y += moveSpeedY;
+      ownedSprites.angle += angleSpeed;
+
+      const idleTime = game.time.physicsElapsedTotalMS - stateStartTime;
+      const isNearCenter = Math.abs(boss.x - game.world.width / 2) < 10;
+      if (bossNextState === STATE_ACID_BALLS_PREPARE && idleTime > 1000 && isNearCenter) {
+        setState(STATE_ACID_BALLS_PREPARE);
+      }
+
+      if (bossNextState === STATE_SNAP_EAT_PREPARE && idleTime > 1000) {
+        setState(STATE_SNAP_EAT_PREPARE);
+      }
+
+      if (bossNextState === STATE_SPEAR_ATTACK_PREPARE && idleTime > 1000) {
+        setState(STATE_SPEAR_ATTACK_PREPARE);
+      }
+    }
+
+    function prepareSpearAttack() {
+      if (boss.y > targetY) {
+        boss.y -= 0.5;
+      } else {
+        boss.y = ownedSprites.y;
+        setState(STATE_SPEAR_ATTACK_RUN);
+      }
+    }
+
+    function moveSpearAttack() {
+      if (boss.y < targetY) {
+        moveSpeedY = 15;
+      }
+      if (boss.y > game.world.width - 10) {
+        moveSpeedY = -2;
+        targetY = 190;
+      }
+
+      if (boss.y < 200) {
+        setState(STATE_IDLE);
+      }
+
+      boss.y += moveSpeedY;
+      ownedSprites.y += moveSpeedY;
+    }
+
+    function prepareSnapEat() {
+      if (boss.y > targetY) {
+        boss.y -= 0.5;
+      } else {
+        boss.y = ownedSprites.y;
+        setState(STATE_SNAP_EAT_RUN);
+      }
+    }
+
+    function moveSnapEat() {
+      if (boss.y < targetY) {
+        moveSpeedY = 7;
+      }
+      if (boss.y > game.world.width - 10) {
+        moveSpeedY = -2;
+        targetY = 190;
+      }
+
+      if (boss.y < 200) {
+        setState(STATE_IDLE);
+      }
+
+      boss.y += moveSpeedY;
+      ownedSprites.y += moveSpeedY;
+    }
+
+    function moveAcidBalls() {
+      if (Math.abs(boss.angle - targetAngle) < 1) {
+        angleSpeed = 0;
+        setState(STATE_ACID_BALLS_SHOOT);
+      }
+
+      if (boss.angle < targetAngle) {
+        angleSpeed = 0.1;
+      } else {
+        angleSpeed = -0.1;
+      }
+
+      boss.angle += angleSpeed;
+      ownedSprites.angle += angleSpeed;
+    }
+
     boss.update = function () {
       if (boss.alive) {
-        if (!isCurrentlyFiring && game.random.rollForChancePerSecond(config.chanceToShootPerSecondInPercent)) {
-          boss.attack();
+        switch (bossState) {
+          case STATE_IDLE:
+            moveIdle();
+            break;
+          case STATE_ACID_BALLS_PREPARE:
+            moveAcidBalls();
+            break;
+          case STATE_SNAP_EAT_RUN:
+            moveSnapEat();
+            break;
+          case STATE_SNAP_EAT_PREPARE:
+            prepareSnapEat();
+            break;
+          case STATE_SPEAR_ATTACK_RUN:
+            moveSpearAttack();
+            break;
+          case STATE_SPEAR_ATTACK_PREPARE:
+            prepareSpearAttack();
+            break;
         }
       }
     };
@@ -87,27 +265,18 @@ function Boss1(game) {
       bullets: []
     };
 
-    boss.attack = function () {
-      const attackAngle = game.random.between(-20, 20);
-      boss.angle = attackAngle;
-      ownedSprites.angle = attackAngle;
-      isCurrentlyFiring = true;
-
-      setTimeout(() => {
-        boss.hasHitPlayerOnce = false;
-        boss.weapon.bullets.push(attackSprite);
-        attackSprite.body.setSize(60, 600, 140, 0);
-        attackSprite.visible = true;
-        attackSprite.animations.play('crankAttack1');
-        attackSprite.animations.currentAnim.onComplete.add(() => {
-          attackSprite.visible = false;
-          isCurrentlyFiring = false;
-          boss.weapon.bullets = [];
-          ownedSprites.angle = 0;
-          boss.angle = 0;
-          ownedSprites.angle = 0;
-        })}, 500);
-    };
+    function launchAcidBall() {
+      boss.hasHitPlayerOnce = false;
+      boss.weapon.bullets.push(attackSprite);
+      attackSprite.body.setSize(60, 600, 140, 0);
+      attackSprite.visible = true;
+      attackSprite.animations.play('crankAttack1');
+      attackSprite.animations.currentAnim.onComplete.add(() => {
+        attackSprite.visible = false;
+        setState(STATE_IDLE);
+        boss.weapon.bullets = [];
+      });
+    }
 
     boss.destroy = function() {
       ownedSprites.removeAll(true, true);

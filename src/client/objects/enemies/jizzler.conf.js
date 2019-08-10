@@ -20,6 +20,12 @@ module.exports = config({
       rate: 12,
     },
   },
+  body: {
+    offsetX: 500,
+    offsetY: 400,
+    width: 150,
+    height: 340,
+  },
   scaleFactor: 0.3,
   chanceToShootPerSecondInPercent: 0,
   causesDamagePoints: 15,

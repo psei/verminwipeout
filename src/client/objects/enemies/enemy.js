@@ -19,6 +19,7 @@ function Enemy(game, config, spawnInfo) {
   game.physics.enable(enemy, window.Phaser.Physics.ARCADE);
   enemy.anchor.setTo(0.5, 0.5);
   enemy.scale.setTo(config.scaleFactor, config.scaleFactor);
+  enemy.body.setSize(config.body.width, config.body.height, config.body.offsetX, config.body.offsetY);
 
   const flyFrames = Phaser.Animation.generateFrameNames(config.spriteFolder + '/fly/', 0, config.frameInfo.fly.count, '.png', 2);
   enemy.animations.add('fly', flyFrames, config.frameInfo.fly.rate, false);

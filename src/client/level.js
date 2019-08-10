@@ -2,14 +2,14 @@
 
 var Debris = require('./objects/debris');
 var Enemy = require('./objects/enemy');
-var Station = require('./objects/station');
+var PlainImage = require('./objects/plainImage');
 const Boss1 = require('./objects/boss1');
 const Barrier1 = require('./objects/barrier1');
 
 function createEnemiesFromWave(game, wave) {
   return wave.objects.map(function (waveObj) {
     var ClassNames = {
-      'station1': Station,
+      'plainImage': PlainImage,
       'cutterfly': Enemy,
       'jizzler': Enemy,
       'boss1': Boss1,

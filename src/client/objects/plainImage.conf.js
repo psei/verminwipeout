@@ -4,7 +4,7 @@ var config = require('../baseConfig');
 
 module.exports = config({
   images: {
-    base: '/images/stations/station-1.png',
+    station1: '/images/stations/station-1.png',
   },
   posX: 0,
   posY: 0,

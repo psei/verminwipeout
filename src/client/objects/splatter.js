@@ -53,6 +53,11 @@ function Splatter(game, player) {
       return;
     }
 
+    if (tutorial && tutorial.alive && tutorial.visible) {
+      tutorial.kill();
+      tutorial.destroy();
+    }
+
     wiper.angle = -10;
     wiper.visible = true;
     if (ownedSprites.countLiving() > 0) {
@@ -85,8 +90,16 @@ function Splatter(game, player) {
 
   var alienDeath0 = game.add.audio('alien-death-0');
   var alienDeath1 = game.add.audio('alien-death-1');
+  const tutorial = game.add.image(game.world.width / 2, game.world.height / 2, 'verminBasics', 'interface/tutorials/wipe-screen.png');
+  tutorial.anchor.setTo(0.5, 0.5);
+  tutorial.visible = false;
 
   function addSplatter() {
+    if (tutorial.alive) {
+      tutorial.visible = true;
+      game.world.bringToTop(tutorial);
+    }
+
     if (ownedSprites.countLiving() > 9000) {
       return;
     }
@@ -107,6 +120,9 @@ function Splatter(game, player) {
 
   wiper.destroy = function() {
     ownedSprites.removeAll(true, true);
+    if (tutorial) {
+      tutorial.destroy();
+    }
   };
 
   return wiper;

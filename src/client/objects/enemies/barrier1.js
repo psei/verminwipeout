@@ -46,6 +46,10 @@ function Barrier1(game) {
     }
   };
 
+  barrier.getScorePointsOnHit = function() {
+    return 100;
+  };
+
   function move() {
     barrier.y += 1;
 

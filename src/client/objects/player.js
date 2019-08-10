@@ -31,6 +31,11 @@ function addWeaponSwitchKeyBindings(game, player) {
 
 function Player(game, lifeCounter) {
   var ownedSprites = game.add.group();
+  var score = 0;
+
+  var scoreText = game.add.text(game.world.width / 2, game.world.height, '0c', { fill: '#ffffff', fontSize: 45, font: 'Forward' });
+  scoreText.anchor.setTo(0.5, 1);
+  ownedSprites.add(scoreText);
 
   var player = game.add.sprite(game.world.width / 2, game.world.height - config.height, config.images.ship);
   ownedSprites.add(player);
@@ -77,7 +82,13 @@ function Player(game, lifeCounter) {
     forwardFrame: 1,
   };
 
+  function addScore(points){
+    score += points;
+    scoreText.setText(score + 'c');
+  }
+
   player.handleBulletHitEnemy = function(bullet, enemy) {
+    addScore(enemy.getScorePointsOnHit());
     splatter.handleBulletHitEnemy(bullet, enemy);
   };
 
@@ -259,6 +270,7 @@ function Player(game, lifeCounter) {
       shield.playShieldAnimation();
       if (enemy.destroysItselfOnHit) {
         enemy.kill();
+        addScore(enemy.getScorePointsOnHit());
       }
       if (enemy.getCausedDamagePoints() > 0 && enemy.hasHitPlayerOnce !== true) {
         const isGodMode = window.location.hash === '#godmode';

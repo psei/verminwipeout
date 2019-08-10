@@ -58,6 +58,10 @@ function Boss1(game) {
       }
     };
 
+    boss.getScorePointsOnHit = function() {
+      return 250;
+    };
+
     boss.update = function () {
       if (boss.alive) {
         if (!isCurrentlyFiring && game.random.rollForChancePerSecond(config.chanceToShootPerSecondInPercent)) {

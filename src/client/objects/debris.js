@@ -33,6 +33,10 @@ function Debris(game, pos) {
     debris.kill();
   };
 
+  debris.getScorePointsOnHit = function() {
+    return 10;
+  };
+
   function move() {
     debris.y += speed;
 

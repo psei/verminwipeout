@@ -27,9 +27,9 @@ module.exports = function (game) {
   }
 
   function hitEnemy(bullet, enemy) {
-    player.handleBulletHitEnemy(bullet, enemy);
     enemy.takeBulletHit(bullet);
     bullet.kill();
+    player.handleBulletHitEnemy(bullet, enemy);
     if (enemy.isBoss && enemy.alive !== true) {
       level.startBackground();
       level.spawnFinalStation(game);

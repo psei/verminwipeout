@@ -68,6 +68,10 @@ function Enemy(game, config, spawnInfo) {
     }
   };
 
+  enemy.getScorePointsOnHit = function() {
+    return 100;
+  };
+
   function move() {
     var timePassed = game.time.physicsElapsedTotalMS - spawnTime;
     var step = 0;

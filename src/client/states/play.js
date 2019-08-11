@@ -10,6 +10,7 @@ module.exports = function (game) {
   var level;
   var player;
   var enemies;
+  var finalStation;
   var lifeCounter = 3;
 
   function toggleSounds() {
@@ -32,7 +33,8 @@ module.exports = function (game) {
     player.handleBulletHitEnemy(bullet, enemy);
     if (enemy.isBoss && enemy.alive !== true) {
       level.startBackground();
-      level.spawnFinalStation(game);
+      finalStation = level.spawnFinalStation(game);
+      enemies.add(finalStation);
     }
   }
 
@@ -130,10 +132,16 @@ module.exports = function (game) {
       if (isBoss) {
         level.stopBackground();
       }
+      if (finalStation && finalStation.y >= game.world.height / 2) {
+        game.state.start('trader', true, false, player.getScore());
+      }
       enemies.addMultiple(newEnemies);
       player.update();
       enemies.callAll('update');
       checkCollisions();
+    },
+    init: function() {
+      finalStation = null;
     }
   };
 };

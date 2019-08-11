@@ -87,6 +87,10 @@ function Player(game, lifeCounter) {
     scoreText.setText(score + 'c');
   }
 
+  player.getScore = function() {
+    return score;
+  };
+
   player.handleBulletHitEnemy = function(bullet, enemy) {
     addScore(enemy.getScorePointsOnHit());
     splatter.handleBulletHitEnemy(bullet, enemy);

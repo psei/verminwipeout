@@ -71,6 +71,7 @@ module.exports = function (game) {
       game.state.add('boot', require('./boot.js')(game));
       game.state.add('play', require('./play.js')(game));
       game.state.add('startMenu', require('./startMenu.js')(game));
+      game.state.add('trader', require('./trader.js')(game));
       game.state.start('boot');
     }
   };

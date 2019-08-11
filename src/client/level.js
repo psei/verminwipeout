@@ -80,7 +80,7 @@ Level.prototype.spawnFinalStation = function(game) {
     imageKey: 'station2',
     speed: 3,
     offsetX: 0,
-    offsetY: -1000,
+    offsetY: -1500,
   });
 };
 

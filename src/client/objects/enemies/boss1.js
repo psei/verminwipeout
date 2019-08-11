@@ -21,26 +21,26 @@ function Boss1(game) {
 
   var boss = game.add.sprite(game.world.width / 2 - 70, 270, 'verminEnemies', 'enemies/bosses/0-crank/body.png');
   ownedSprites.add(boss);
+  game.physics.enable(boss, window.Phaser.Physics.ARCADE);
   boss.isBoss = true;
   boss.y -= 500;
-  ownedSprites.y -= 500;
-
-  ownedSprites.create(-160, 40, 'verminEnemies', 'enemies/bosses/0-crank/arm0.png');
-  ownedSprites.create(20, 40, 'verminEnemies', 'enemies/bosses/0-crank/arm1.png');
-  ownedSprites.create(40, 95, 'verminEnemies', 'enemies/bosses/0-crank/arm2a.png');
-  ownedSprites.create(90, 95 + 60, 'verminEnemies', 'enemies/bosses/0-crank/arm3b.png');
-  ownedSprites.create(-100, 95, 'verminEnemies', 'enemies/bosses/0-crank/arm3a.png');
-  ownedSprites.create(-130, 95 + 60, 'verminEnemies', 'enemies/bosses/0-crank/arm2b.png');
-
-  game.physics.enable(boss, window.Phaser.Physics.ARCADE);
   boss.givesSplatter = config.givesSplatter;
   boss.health = config.health;
+  boss.scale.setTo(1.7, 1.7);
+  ownedSprites.y -= 500;
 
-  const blood = game.add.sprite(0, 90, 'verminEnemies', 'enemies/bosses/0-crank/firstblood/00.png');
+  ownedSprites.create(-160, 60, 'verminEnemies', 'enemies/bosses/0-crank/arm0.png');
+  ownedSprites.create(130, 60, 'verminEnemies', 'enemies/bosses/0-crank/arm1.png');
+  ownedSprites.create(130, 165, 'verminEnemies', 'enemies/bosses/0-crank/arm2a.png');
+  ownedSprites.create(180, 165 + 60, 'verminEnemies', 'enemies/bosses/0-crank/arm3b.png');
+  ownedSprites.create(-90, 165, 'verminEnemies', 'enemies/bosses/0-crank/arm3a.png');
+  ownedSprites.create(-120, 165 + 60, 'verminEnemies', 'enemies/bosses/0-crank/arm2b.png');
+
+  const blood = game.add.sprite(40, 140, 'verminEnemies', 'enemies/bosses/0-crank/firstblood/00.png');
   ownedSprites.add(blood);
   const frames = Phaser.Animation.generateFrameNames('enemies/bosses/0-crank/firstblood/', 0, 13, '.png', 2);
   blood.animations.add('crankFirstBlood', frames, 15, false);
-  blood.scale.setTo(0.5, 0.5);
+  blood.scale.setTo(1.5, 1.5);
   blood.anchor.setTo(0.5, 0.5);
   blood.visible = false;
 

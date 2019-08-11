@@ -32,7 +32,7 @@ function Boss1(game) {
   ownedSprites.create(-160, 60, 'verminEnemies', 'enemies/bosses/0-crank/arm0.png');
   ownedSprites.create(130, 60, 'verminEnemies', 'enemies/bosses/0-crank/arm1.png');
   ownedSprites.create(130, 165, 'verminEnemies', 'enemies/bosses/0-crank/arm2a.png');
-  ownedSprites.create(180, 165 + 60, 'verminEnemies', 'enemies/bosses/0-crank/arm3b.png');
+  const arm3b = ownedSprites.create(180, 165 + 60, 'verminEnemies', 'enemies/bosses/0-crank/arm3b.png');
   ownedSprites.create(-90, 165, 'verminEnemies', 'enemies/bosses/0-crank/arm3a.png');
   ownedSprites.create(-120, 165 + 60, 'verminEnemies', 'enemies/bosses/0-crank/arm2b.png');
 
@@ -70,7 +70,7 @@ function Boss1(game) {
   };
 
   var bossState;
-  var bossNextState = STATE_SNAP_EAT_PREPARE;
+  var bossNextState = STATE_SPEAR_ATTACK_PREPARE;
   var stateStartTime;
   var moveSpeedX = 2;
   var moveSpeedY = 1;
@@ -191,6 +191,8 @@ function Boss1(game) {
       boss.y = ownedSprites.y;
       setState(STATE_SPEAR_ATTACK_RUN);
     }
+
+    arm3b.angle += 1;
   }
 
   function moveSpearAttack() {
@@ -200,6 +202,10 @@ function Boss1(game) {
     if (boss.y > game.world.width - 10) {
       moveSpeedY = -2;
       targetY = 190;
+    }
+
+    if (boss.y < game.world.width - 200 && arm3b.angle > 0) {
+      arm3b.angle -= 1;
     }
 
     if (boss.y < 200) {
@@ -263,20 +269,20 @@ function Boss1(game) {
           prepareAcidBalls();
           break;
 
-        case STATE_SNAP_EAT_RUN:
-          moveSnapEat();
-          break;
-
         case STATE_SNAP_EAT_PREPARE:
           prepareSnapEat();
           break;
 
-        case STATE_SPEAR_ATTACK_RUN:
-          moveSpearAttack();
+        case STATE_SNAP_EAT_RUN:
+          moveSnapEat();
           break;
 
         case STATE_SPEAR_ATTACK_PREPARE:
           prepareSpearAttack();
+          break;
+
+        case STATE_SPEAR_ATTACK_RUN:
+          moveSpearAttack();
           break;
 
       }

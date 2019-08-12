@@ -211,6 +211,24 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">input/buttons/share-facebook.png</key>
+            <key type="filename">input/buttons/share-google.png</key>
+            <key type="filename">input/buttons/share-link.png</key>
+            <key type="filename">input/buttons/share-twitter.png</key>
+            <key type="filename">input/buttons/share-whatsapp.png</key>
+            <key type="filename">input/buttons/vermin-wipeout-2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>91,90,181,181</rect>
+                <key>scale9Paddings</key>
+                <rect>91,90,181,181</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">input/ship/0.png</key>
             <key type="filename">input/ship/1.png</key>
             <key type="filename">input/ship/2.png</key>

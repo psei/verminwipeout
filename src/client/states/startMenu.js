@@ -3,6 +3,9 @@
 module.exports = function (game) {
   var bg;
   var introBg;
+  var goBtnFlySpeed;
+  var goBtnLeft;
+  var goBtnRight;
 
   function startGame() {
     game.input.keyboard.onDownCallback = null;
@@ -10,13 +13,16 @@ module.exports = function (game) {
   }
 
   function startIntro() {
-    game.input.touch.touchStartCallback = null;
     game.input.keyboard.onDownCallback = startGame;
 
     introBg = game.add.sprite(0, 0, 'verminBasics', 'interface/cinematics/intro/0.png');
     introBg.scale.setTo(1.1, 1.1);
     var skipBtn = game.add.button(game.world.width - 60, game.world.height - 60, 'verminBasics', startGame, this, 'interface/buttons/skip.png', 'interface/buttons/skip.png', 'interface/buttons/skip.png', 'interface/buttons/skip.png');
     skipBtn.scale.setTo(0.5, 0.5);
+  }
+
+  function prepareGo() {
+    goBtnFlySpeed = 1;
   }
 
   function chooseLanguage() {
@@ -70,16 +76,22 @@ module.exports = function (game) {
       ship.animations.add('shipRotation', shipFrames, 2, true);
       ship.animations.play('shipRotation');
 
-      const goLeftBtn = game.add.sprite(game.world.width / 2 - 95, 680, 'verminStartscreen', 'buttons/go-left.png');
-      goLeftBtn.anchor.setTo(0.5, 0);
-      goLeftBtn.scale.setTo(0.5, 0.5);
+      goBtnLeft = game.add.sprite(game.world.width / 2 - 95, 680, 'verminStartscreen', 'buttons/go-left.png');
+      goBtnLeft.anchor.setTo(0.5, 0);
+      goBtnLeft.scale.setTo(0.5, 0.5);
+      goBtnLeft.inputEnabled = true;
+      goBtnLeft.events.onInputDown.add(prepareGo, this);
 
       const goText = game.add.text(game.world.width / 2, 658, 'GO', { fill: '#f5af00', fontSize: 61, font: 'Forward' });
       goText.anchor.setTo(0.5, 0);
+      goText.inputEnabled = true;
+      goText.events.onInputDown.add(prepareGo, this);
 
-      const goRightBtn = game.add.sprite(game.world.width / 2 + 90, 680, 'verminStartscreen', 'buttons/go-right.png');
-      goRightBtn.anchor.setTo(0.5, 0);
-      goRightBtn.scale.setTo(0.5, 0.5);
+      goBtnRight = game.add.sprite(game.world.width / 2 + 90, 680, 'verminStartscreen', 'buttons/go-right.png');
+      goBtnRight.anchor.setTo(0.5, 0);
+      goBtnRight.scale.setTo(0.5, 0.5);
+      goBtnRight.inputEnabled = true;
+      goBtnRight.events.onInputDown.add(prepareGo, this);
 
       const languageBtn = game.add.button(65, 800, 'verminBasics', chooseLanguage, this, 'flags/english.png', 'flags/english.png', 'flags/english.png');
       languageBtn.scale.setTo(0.5, 0.5);
@@ -103,11 +115,18 @@ module.exports = function (game) {
       const lowText2 = game.add.text(game.world.width / 2, 970, 'by Norman von Rechenberg & David Edler', { fill: '#f5af00', fontSize: 18, font: 'Forward' });
       lowText1.anchor.setTo(0.5, 0);
       lowText2.anchor.setTo(0.5, 0);
-
-      game.input.touch.touchStartCallback = startIntro;
-      game.input.keyboard.onDownCallback = startIntro;
     },
     update: function() {
+      if (goBtnFlySpeed > 0) {
+        goBtnLeft.x -= goBtnFlySpeed;
+        goBtnRight.x += goBtnFlySpeed;
+        goBtnFlySpeed *= 1.1;
+        if (goBtnLeft.x <= 4) {
+          goBtnFlySpeed = 0;
+          startIntro();
+        }
+      }
+
       if (introBg) {
         introBg.x -= 1;
 

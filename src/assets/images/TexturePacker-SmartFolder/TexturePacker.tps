@@ -209,6 +209,24 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">input/flags/dutch.png</key>
+            <key type="filename">input/flags/english.png</key>
+            <key type="filename">input/flags/german.png</key>
+            <key type="filename">input/flags/japan.png</key>
+            <key type="filename">input/flags/russia.png</key>
+            <key type="filename">input/flags/spain.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>53,50,105,100</rect>
+                <key>scale9Paddings</key>
+                <rect>53,50,105,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">input/interface/boss-names/00.png</key>
             <key type="filename">input/interface/boss-names/01.png</key>
             <key type="filename">input/interface/boss-names/02.png</key>

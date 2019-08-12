@@ -34,6 +34,7 @@ function Level(game, levelIndex) {
   this.waves = this.config.waves;
 
   this.background = game.add.tileSprite(0, 0, world.width, world.height, this.config.images.background);
+  this.background.scale.setTo(1.6, 1.6)
   world.sendToBack(this.background);
 }
 

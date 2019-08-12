@@ -39,10 +39,10 @@ module.exports = function (game) {
   function chooseLanguage(lang, img) {
     selectedLanguage = lang;
     selectedLanguageBtn.setFrames(img, img, img, img);
-    if (languageSelectGroup.alpha > 0) {
+    if (languageSelectGroup.visible) {
       hideLanguageAnimation = true;
     } else {
-      languageSelectGroup.visible = false;
+      languageSelectGroup.visible = true;
     }
   };
 

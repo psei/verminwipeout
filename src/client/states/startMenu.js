@@ -42,7 +42,7 @@ module.exports = function (game) {
     if (languageSelectGroup.alpha > 0) {
       hideLanguageAnimation = true;
     } else {
-      languageSelectGroup.alpha = 1;
+      languageSelectGroup.visible = false;
     }
   };
 
@@ -161,6 +161,8 @@ module.exports = function (game) {
         languageSelectGroup.alpha = languageSelectGroup.alpha - 0.05;
         if (languageSelectGroup.alpha <= 0) {
           hideLanguageAnimation = false;
+          languageSelectGroup.visible = false;
+          languageSelectGroup.alpha = 1;
         }
       }
 

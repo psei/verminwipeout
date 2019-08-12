@@ -181,6 +181,19 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">input/collectables/dna.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>25,26,50,52</rect>
+                <key>scale9Paddings</key>
+                <rect>25,26,50,52</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">input/enemies/bosses/0-crank/arm0.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

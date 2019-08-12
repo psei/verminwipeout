@@ -100,10 +100,7 @@ function createSingleObject(config) {
     var wave = {};
     wave.type = config.type;
     wave.spawnTime = config.spawnTime;
-    wave.objects = [{
-        type: config.type,
-            ...config
-    }];
+    wave.objects = [config];
 
     return wave;
 }

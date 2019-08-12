@@ -29,6 +29,6 @@ module.exports = config({
   scaleFactor: 0.3,
   chanceToShootPerSecondInPercent: 0,
   causesDamagePoints: 20,
-  health: 10,
+  health: 8,
   givesSplatter: true,
 });

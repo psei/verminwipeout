@@ -1,11 +1,22 @@
 'use strict';
 
+const LANG_DUTCH = 'dutch';
+const LANG_ENGLISH = 'english';
+const LANG_GERMAN = 'german';
+const LANG_JAPANESE = 'japanese';
+const LANG_RUSSIAN = 'russia';
+const LANG_SPANISH = 'spanish';
+
 module.exports = function (game) {
   var bg;
   var introBg;
   var goBtnFlySpeed;
   var goBtnLeft;
   var goBtnRight;
+  var selectedLanguageBtn;
+  var languageSelectGroup;
+  var selectedLanguage;
+  var hideLanguageAnimation;
 
   function startGame() {
     game.input.keyboard.onDownCallback = null;
@@ -25,9 +36,15 @@ module.exports = function (game) {
     goBtnFlySpeed = 1;
   }
 
-  function chooseLanguage() {
-
-  }
+  function chooseLanguage(lang, img) {
+    selectedLanguage = lang;
+    selectedLanguageBtn.setFrames(img, img, img, img);
+    if (languageSelectGroup.alpha > 0) {
+      hideLanguageAnimation = true;
+    } else {
+      languageSelectGroup.alpha = 1;
+    }
+  };
 
   function showCredits() {
 
@@ -57,6 +74,27 @@ module.exports = function (game) {
       game.load.image('startMenuBg', 'images/interface/startscreen.png');
     },
     create: function () {
+      languageSelectGroup = game.add.group();
+      var bmd = game.add.bitmapData(game.world.width, game.world.height);
+      bmd.ctx.beginPath();
+      bmd.ctx.rect(0, 0, game.world.width, game.world.height);
+      bmd.ctx.fillStyle = '#340101';
+      bmd.ctx.fill();
+      languageSelectGroup.create(0, 0, bmd);
+      languageSelectGroup.createLanguageBtn = function (offsetY, img, language) {
+        const btn = game.add.button(game.world.width / 2, offsetY, 'verminBasics', () => chooseLanguage(language, img), this, img, img, img);
+        btn.anchor.setTo(0.5, 0);
+        btn.scale.setTo(0.5, 0.5);
+
+        return btn;
+      };
+      languageSelectGroup.add(languageSelectGroup.createLanguageBtn(80, 'flags/dutch.png', LANG_DUTCH));
+      languageSelectGroup.add(languageSelectGroup.createLanguageBtn(230, 'flags/english.png', LANG_ENGLISH));
+      languageSelectGroup.add(languageSelectGroup.createLanguageBtn(380, 'flags/german.png', LANG_GERMAN));
+      languageSelectGroup.add(languageSelectGroup.createLanguageBtn(530, 'flags/japan.png', LANG_JAPANESE));
+      languageSelectGroup.add(languageSelectGroup.createLanguageBtn(680, 'flags/russia.png', LANG_RUSSIAN));
+      languageSelectGroup.add(languageSelectGroup.createLanguageBtn(830, 'flags/spain.png', LANG_SPANISH));
+
       bg = game.add.sprite(0, 0, 'startMenuBg');
       bg.scale.x *= 800 / 1440;
       bg.scale.y *= 800 / 1440;
@@ -93,8 +131,8 @@ module.exports = function (game) {
       goBtnRight.inputEnabled = true;
       goBtnRight.events.onInputDown.add(prepareGo, this);
 
-      const languageBtn = game.add.button(65, 800, 'verminBasics', chooseLanguage, this, 'flags/english.png', 'flags/english.png', 'flags/english.png');
-      languageBtn.scale.setTo(0.5, 0.5);
+      selectedLanguageBtn = game.add.button(65, 800, 'verminBasics', chooseLanguage, this, 'flags/english.png', 'flags/english.png', 'flags/english.png');
+      selectedLanguageBtn.scale.setTo(0.5, 0.5);
 
       const creditsBtn = game.add.sprite(255, 800, 'verminStartscreen', 'buttons/btn-blank.png');
       creditsBtn.scale.setTo(0.5, 0.5);
@@ -115,8 +153,17 @@ module.exports = function (game) {
       const lowText2 = game.add.text(game.world.width / 2, 970, 'by Norman von Rechenberg & David Edler', { fill: '#f5af00', fontSize: 18, font: 'Forward' });
       lowText1.anchor.setTo(0.5, 0);
       lowText2.anchor.setTo(0.5, 0);
+
+      game.world.bringToTop(languageSelectGroup);
     },
     update: function() {
+      if (hideLanguageAnimation) {
+        languageSelectGroup.alpha = languageSelectGroup.alpha - 0.05;
+        if (languageSelectGroup.alpha <= 0) {
+          hideLanguageAnimation = false;
+        }
+      }
+
       if (goBtnFlySpeed > 0) {
         goBtnLeft.x -= goBtnFlySpeed;
         goBtnRight.x += goBtnFlySpeed;

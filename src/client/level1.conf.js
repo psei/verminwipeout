@@ -111,7 +111,7 @@ module.exports = config({
         background: '/images/backgrounds/background.jpg',
     },
     backgroundSpeed: 2,
-    debrisSpawnRatio: 500,
+    debrisSpawnRatio: 200,
 
     waves: [
         createSingleObject({

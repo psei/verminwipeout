@@ -38,7 +38,126 @@ var wayPoints = {
                 y: yWayPoints(count)(startPosition)
             };
         };
-    }
+    },
+    lurkInFromTopAndOut: function (count) {
+        return function (startPosition) {
+            return {
+                x: times(count, function () {
+                    return startPosition.x;
+                }),
+                y: times(count, function (i) {
+                    if (i === count - 1) {
+                        return gameConfig.height + 500 + startPosition.y;
+                    }
+                    return i % 3 === 0 ? startPosition.y - 200 : startPosition.y + 200;
+                })
+            };
+        };
+    },
+    topRightToBottomLeft: function (count) {
+        return function (startPosition) {
+            return {
+                x: times(count, function (i) {
+                    return 400 + startPosition.x - gameConfig.width / count * i - startPosition.y;
+                }),
+                y: yWayPoints(count)(startPosition).map(function(i) { return i - 400; })
+            };
+        };
+    },
+    parableInAndDown: function (count) {
+        return function (startPosition) {
+            return {
+                x: times(count, function (i) {
+                    return startPosition.x - gameConfig.width / count * (i + 1);
+                }),
+                y: times(count, function (i) {
+                    if (i === count - 1) {
+                        return gameConfig.height + 500 + startPosition.y;
+                    }
+
+                    const t = count / 2 - i;
+                    const scale = gameConfig.height / (count * count / 4);
+                    return gameConfig.height - t * t * scale - 100;
+                })
+            };
+        };
+    },
+    enterFromRightSideWaysAndStayAWhile: function (count) {
+        return function (startPosition) {
+            return {
+                x: times(count, function(i) {
+                    if (i === 0) {
+                        return gameConfig.width + 200;
+                    }
+
+                    return gameConfig.width - 100;
+                }),
+                y: times(count, function (i) {
+                    if (i === count - 1) {
+                        return gameConfig.height + 500 + startPosition.y;
+                    }
+
+                    return gameConfig.height / 2 - 400 + startPosition.y;
+                })
+            };
+        };
+    },
+    fastInSlowDown: function (count) {
+        return function (startPosition) {
+            return {
+                x: times(count, function () {
+                    return startPosition.x;
+                }),
+                y: times(count, function(i) {
+                    if (i === 0) {
+                        return -500 + startPosition.y;
+                    }
+
+                    if (i < 3) {
+                        return startPosition.y;
+                    }
+
+                    return startPosition.y + gameConfig.height / count * i;
+                })
+            };
+        };
+    },
+    cube: function (count) {
+        return function (startPosition) {
+            return {
+                x: times(count, function (i) {
+                    switch (i % 4) {
+                        case 0:
+                        case 1:
+                            return 600;
+                        case 2:
+                        case 3:
+                            return 200;
+                    }
+                }),
+                y: times(count, function(i) {
+                    if (i === 0) {
+                        return startPosition.y - 400;
+                    }
+
+                    if (count - 1 === i) {
+                        return startPosition.y + gameConfig.height / count * i;
+                    }
+
+                    switch (i % 4) {
+                        case 0:
+                        case 3:
+                            return startPosition.y + 200;
+                        case 1:
+                        case 2:
+                            return startPosition.y + 400;
+                    }
+
+
+                })
+            };
+        };
+    },
 };
 
 var formations = {
@@ -210,9 +329,63 @@ module.exports = config({
             wayPoints: wayPoints.straight(6)
         }),
 
+        createEnemyWave({
+            type: 'cutterfly',
+            spawnTime: 8600,
+            durationToReachNextWayPoint: 800,
+            formation: formations.horizontal(100, 500),
+            creatureCount: 2,
+            wayPoints: wayPoints.lurkInFromTopAndOut(10)
+        }),
+
+        createEnemyWave({
+            type: 'cutterfly',
+            spawnTime: 8900,
+            durationToReachNextWayPoint: 800,
+            formation: formations.vertical(800, 200),
+            creatureCount: 4,
+            wayPoints: wayPoints.topRightToBottomLeft(10)
+        }),
+
+        createEnemyWave({
+            type: 'cutterfly',
+            spawnTime: 9200,
+            durationToReachNextWayPoint: 800,
+            formation: formations.vertical(800, 200),
+            creatureCount: 1,
+            wayPoints: wayPoints.parableInAndDown(10)
+        }),
+
+        createEnemyWave({
+            type: 'cutterfly',
+            spawnTime: 9500,
+            durationToReachNextWayPoint: 800,
+            formation: formations.vertical(800, 200),
+            creatureCount: 3,
+            wayPoints: wayPoints.enterFromRightSideWaysAndStayAWhile(10)
+        }),
+
+        createEnemyWave({
+            type: 'cutterfly',
+            spawnTime: 9800,
+            durationToReachNextWayPoint: 800,
+            formation: formations.vertical(400, 150),
+            creatureCount: 3,
+            wayPoints: wayPoints.fastInSlowDown(10)
+        }),
+
+        createEnemyWave({
+            type: 'cutterfly',
+            spawnTime: 10100,
+            durationToReachNextWayPoint: 800,
+            formation: formations.vertical(400, 150),
+            creatureCount: 3,
+            wayPoints: wayPoints.cube(10)
+        }),
+
         createSingleObject({
             type: 'boss1',
-            spawnTime: 8600,
+            spawnTime: 10400,
         }),
     ]
 });

@@ -82,7 +82,7 @@ function Player(game, lifeCounter) {
     forwardFrame: 1,
   };
 
-  function addScore(points){
+  function addScore(points) {
     score += points;
     scoreText.setText(score + 'c');
   }
@@ -96,8 +96,8 @@ function Player(game, lifeCounter) {
     splatter.handleBulletHitEnemy(bullet, enemy);
   };
 
-  function moveLeft() {
-    player.x -= config.speed;
+  function moveLeft(speed = config.speed) {
+    player.x -= speed;
     previousDirection.right = false;
     if (!previousDirection.left) {
       previousDirection.left = true;
@@ -111,8 +111,8 @@ function Player(game, lifeCounter) {
     }
   }
 
-  function moveRight() {
-    player.x += config.speed;
+  function moveRight(speed = config.speed) {
+    player.x += speed;
     previousDirection.left = false;
     if (!previousDirection.right) {
       previousDirection.right = true;
@@ -139,8 +139,8 @@ function Player(game, lifeCounter) {
     }
   }
 
-  function moveUp() {
-    player.y -= config.speed;
+  function moveUp(speed = config.speed) {
+    player.y -= speed;
     previousDirection.backward = false;
     previousDirection.forward = true;
 
@@ -153,8 +153,8 @@ function Player(game, lifeCounter) {
     }
   }
 
-  function moveDown() {
-    player.y += config.speed;
+  function moveDown(speed = config.speed) {
+    player.y += speed;
     previousDirection.forward = false;
     previousDirection.backward = true;
 
@@ -204,16 +204,19 @@ function Player(game, lifeCounter) {
       const touchX = touchPointer1.position.x;
       const touchY = touchPointer1.position.y;
 
+      const speedX = Math.abs(touchX - player.x) / 8;
+      const speedY = Math.abs(touchY - player.y) / 8;
+
       if (player.x > touchX) {
-        moveLeft();
+        moveLeft(speedX);
       } else {
-        moveRight();
+        moveRight(speedX);
       }
 
       if (player.y > touchY) {
-        moveUp();
+        moveUp(speedY);
       } else {
-        moveDown();
+        moveDown(speedY);
       }
     }
   }

@@ -30,6 +30,7 @@ function Enemy(game, config, spawnInfo) {
   enemy.weapon = Weapon.create(game, enemy, require('../weapon1.conf'));
   enemy.weapon.fireAngle = 90;
   enemy.givesSplatter = config.givesSplatter;
+  enemy.givesDna = config.givesDna;
   enemy.health = config.health;
 
   var timeToFlyMotionPath = spawnInfo.time;

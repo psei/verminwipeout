@@ -5,6 +5,7 @@ var isEqual = require('lodash/isEqual');
 var config = require('./player.conf');
 var Weapon = require('./weapon');
 var Splatter = require('./splatter');
+var Dna = require('./dna');
 var Shield = require('./shield');
 var ShipThrust = require('./shipThrust');
 var HealthBar = require('./healthBar');
@@ -60,6 +61,9 @@ function Player(game, lifeCounter) {
   var splatter = Splatter.create(game, player);
   ownedSprites.add(splatter);
 
+  var dna = Dna.create(game, player);
+  ownedSprites.add(dna);
+
   var shield = Shield.create(game, player);
   var shipThrust = ShipThrust.create(game, player);
   var healthBar = HealthBar.create(game, player);
@@ -82,18 +86,18 @@ function Player(game, lifeCounter) {
     forwardFrame: 1,
   };
 
-  function addScore(points) {
+  player.addScore = function(points) {
     score += points;
     scoreText.setText(score + 'c');
-  }
+  };
 
   player.getScore = function() {
     return score;
   };
 
   player.handleBulletHitEnemy = function(bullet, enemy) {
-    addScore(enemy.getScorePointsOnHit());
     splatter.handleBulletHitEnemy(bullet, enemy);
+    dna.handleBulletHitEnemy(enemy);
   };
 
   function moveLeft(speed = config.speed) {
@@ -260,6 +264,7 @@ function Player(game, lifeCounter) {
     move();
     fireWeapon();
     checkStillAlive();
+    dna.checkCollisions();
     healthBar.update();
     shield.update();
     shipThrust.update();
@@ -277,7 +282,6 @@ function Player(game, lifeCounter) {
       shield.playShieldAnimation();
       if (enemy.destroysItselfOnHit) {
         enemy.kill();
-        addScore(enemy.getScorePointsOnHit());
       }
       if (enemy.getCausedDamagePoints() > 0 && enemy.hasHitPlayerOnce !== true) {
         const isGodMode = window.location.hash === '#godmode';

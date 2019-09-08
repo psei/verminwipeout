@@ -31,4 +31,5 @@ module.exports = config({
   causesDamagePoints: 20,
   health: 8,
   givesSplatter: true,
+  givesDna: true,
 });

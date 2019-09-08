@@ -275,6 +275,16 @@ module.exports = config({
             wayPoints: wayPoints.straight(6)
         }),
 
+        createSingleObject({
+            type: 'plainImage',
+            imageAtlas: 'verminBasics',
+            imageFrame: 'interface/tutorials/dna.png',
+            spawnTime: 0,
+            speed: 2,
+            offsetX: 200,
+            offsetY: 0,
+        }),
+
         createEnemyWave({
             type: 'jizzler',
             spawnTime: 5501,

@@ -83,8 +83,13 @@ function Enemy(game, config, spawnInfo) {
     }
     var newX = game.math.catmullRomInterpolation(paths.x, step);
     var newY = game.math.catmullRomInterpolation(paths.y, step);
+    const newAngle = Phaser.Point.angle({ x: newX, y: newY}, { x: enemy.x, y: enemy.y }) / Math.PI * 180;
+
     enemy.x = newX;
     enemy.y = newY;
+    if (newAngle !== 0) {
+      enemy.angle = newAngle - 90;
+    }
   }
 
   enemy.update = function () {

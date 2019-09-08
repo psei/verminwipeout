@@ -13,6 +13,12 @@ function Dna(game, player) {
       var enemyDna = game.add.sprite(enemy.x, enemy.y, 'verminEnemies', 'collectables/dna.png');
       game.physics.enable(enemyDna, window.Phaser.Physics.ARCADE);
       ownedSprites.add(enemyDna);
+      enemyDna.speedX = game.random.between(-100, 100) / 400;
+      enemyDna.speedY = game.random.between(0, 100) / 200;
+      enemyDna.update = function() {
+        enemyDna.x += enemyDna.speedX;
+        enemyDna.y += enemyDna.speedY;
+      };
     }
   };
 
@@ -22,8 +28,20 @@ function Dna(game, player) {
     player.addScore(150);
   }
 
-  dna.checkCollisions = function() {
+  function checkCollisions() {
     game.physics.arcade.overlap(player, ownedSprites, collectItem, function() {}, this);
+  }
+
+  dna.update = function () {
+    checkCollisions();
+    ownedSprites.callAll('update');
+    ownedSprites.forEach(function (sprite) {
+      const isOutX = sprite.x < -100 || sprite.x > game.world.width + 100;
+      const isOutY = sprite.y > game.world.height;
+      if (isOutX || isOutY) {
+        ownedSprites.remove(sprite);
+      }
+    });
   };
 
   return dna;

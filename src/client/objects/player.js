@@ -264,7 +264,7 @@ function Player(game, lifeCounter) {
     move();
     fireWeapon();
     checkStillAlive();
-    dna.checkCollisions();
+    dna.update();
     healthBar.update();
     shield.update();
     shipThrust.update();

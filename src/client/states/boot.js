@@ -29,7 +29,7 @@ module.exports = function (game) {
       game.stage.backgroundColor = '#340101';
       game.add.text(32, 32, 'VERMIN WIPEOUT', { fill: '#f5af00', fontSize: 65, font: 'Forward' });
 
-      subTitle = game.add.text(game.world.width / 2, 150, 'generating ships', { fill: '#f5af00', fontSize: 32, font: 'Forward' });
+      subTitle = game.add.text(game.world.width / 2, 150, 'exterminatrix matrix.exe', { fill: '#f5af00', fontSize: 20, font: 'Forward' });
       subTitle.anchor.setTo(0.5, 0);
 
       preloadShip = game.add.sprite(game.world.width / 2, game.world.height / 2, 'preload-ship');
@@ -67,26 +67,42 @@ module.exports = function (game) {
         rectangle.height = Math.floor(preloadShip.height * (1 - game.load.progress﻿ / 100));
         rectangle.y = preloadShip.y - (preloadShip.height - rectangle.height) / 2;
 
-        if (game.load.progress﻿ > 90) {
-          subTitle.setText('slime up');
+        if (game.load.progress﻿ > 95) {
+          subTitle.setText('kthxbye');
+        } else if (game.load.progress > 90) {
+          subTitle.setText('done');
+        } else if (game.load.progress > 85) {
+          subTitle.setText('checking checksum summary');
         } else if (game.load.progress > 80) {
-          subTitle.setText('add more alien blood');
+          subTitle.setText('updating meta data calculator');
+        } else if (game.load.progress > 75) {
+          subTitle.setText('downloading D3FNT1YN0V1RV5F3R5UR3L01FU');
         } else if (game.load.progress > 70) {
-          subTitle.setText('gather blaster info');
-        } else if (game.load.progress > 60) {
-          subTitle.setText('load lasers and asteroids');
-        } else if (game.load.progress > 50) {
-          subTitle.setText('boot thruster sequence');
+          subTitle.setText('purging plutonium redundancy manifold');
+        } else if (game.load.progress > 65) {
+          subTitle.setText('feeding the droid');
+        } else if (game.load.progress > 55) {
+          subTitle.setText('generating reconsolidating semi-certainty');
+        } else if (game.load.progress > 45) {
+          subTitle.setText('modulating atomic transducer thingy');
         } else if (game.load.progress > 40) {
-          subTitle.setText('loading trader rumors');
+          subTitle.setText('loading screens');
+        } else if (game.load.progress > 35) {
+          subTitle.setText('calibrating joystick sphereset unit');
         } else if (game.load.progress > 30) {
-          subTitle.setText('rendering some critters');
+          subTitle.setText('supercharging hyperdrivers');
+        } else if (game.load.progress > 25) {
+          subTitle.setText('running stratocubical routines');
         } else if (game.load.progress > 20) {
-          subTitle.setText('building splashes');
+          subTitle.setText('powering nanocarbon chromite capacitors');
+        } else if (game.load.progress > 15) {
+          subTitle.setText('gyrating gravitic globules');
         } else if (game.load.progress > 10) {
-          subTitle.setText('creating splatter');
+          subTitle.setText('pre-heating insecticiders');
+        } else if (game.load.progress > 5) {
+          subTitle.setText('booting audiosexual onboard AI');
         } else {
-          subTitle.setText('generating ships');
+          subTitle.setText('exterminatrix matrix.exe');
         }
     }
   };

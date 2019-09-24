@@ -386,7 +386,7 @@ module.exports = config({
 
         createEnemyWave({
             type: 'cutterfly',
-            spawnTime: 10100,
+            spawnTime: 9900,
             durationToReachNextWayPoint: 800,
             formation: formations.vertical(400, 150),
             creatureCount: 3,
@@ -395,7 +395,7 @@ module.exports = config({
 
         createSingleObject({
             type: 'boss1',
-            spawnTime: 10400,
+            spawnTime: 11000,
         }),
     ]
 });

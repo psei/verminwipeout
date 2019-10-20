@@ -26,16 +26,6 @@ function addWeaponSwitchKeyBindings(game, player) {
     var key = game.input.keyboard.addKey(keyCode);
     key.onDown.add(() => player.switchWeapon(i), player, 1);
   });
-
-  // on double tap
-  game.input.touch.touchStartCallback = function(event) {
-    if (event.timeStamp - player.lastTouchTime < 400) {
-      var nextWeaponIndex = (player.currentWeaponConfigId + 1) % weaponConfigs.length;
-      player.switchWeapon(nextWeaponIndex);
-    }
-
-    player.lastTouchTime = event.timeStamp;
-  };
 }
 
 function Player(game, lifeCounter) {
@@ -299,6 +289,7 @@ function Player(game, lifeCounter) {
       return;
     }
 
+    index = index % weaponConfigs.length;
     player.currentWeaponConfigId = index;
     const weaponConfig = weaponConfigs[index];
     player.weapon = Weapon.create(game, player, weaponConfig);
@@ -313,6 +304,12 @@ function Player(game, lifeCounter) {
   game.input.mouse.capture = true;
 
   addWeaponSwitchKeyBindings(game, player);
+  player.onTab = function(event) { // double tab: switch weapon
+    if (event.timeStamp - player.lastTouchTime < 400) {
+      player.switchWeapon(player.currentWeaponConfigId + 1);
+    }
+    player.lastTouchTime = event.timeStamp;
+  };
 
   return player;
 }

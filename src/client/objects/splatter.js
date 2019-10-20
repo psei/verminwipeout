@@ -24,6 +24,7 @@ function Splatter(game, player) {
   game.input.touch.touchStartCallback = function(event) {
     touchStartX = event.changedTouches[0].pageX;
     touchStartTime = event.timeStamp;
+    player.onTab(event);
   };
   game.input.touch.touchEndCallback = function(event) {
     const deltaX = event.changedTouches[0].pageX - touchStartX;

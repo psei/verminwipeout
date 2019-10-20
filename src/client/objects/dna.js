@@ -15,9 +15,11 @@ function Dna(game, player) {
       ownedSprites.add(enemyDna);
       enemyDna.speedX = game.random.between(-100, 100) / 400;
       enemyDna.speedY = game.random.between(0, 100) / 200;
+      enemyDna.anchor.setTo(0.5, 0.5);
       enemyDna.update = function() {
         enemyDna.x += enemyDna.speedX;
         enemyDna.y += enemyDna.speedY;
+        enemyDna.angle += 0.25;
       };
     }
   };

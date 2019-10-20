@@ -1,7 +1,5 @@
 'use strict';
 
-var isEqual = require('lodash/isEqual');
-
 var config = require('./player.conf');
 var Weapon = require('./weapon');
 var Splatter = require('./splatter');

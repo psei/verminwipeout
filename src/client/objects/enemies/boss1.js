@@ -28,12 +28,18 @@ function Boss1(game) {
   boss.scale.setTo(1.7, 1.7);
   ownedSprites.y -= 500;
 
-  ownedSprites.create(-160, 60, 'verminEnemies', 'enemies/bosses/0-crank/arm0.png');
+  ownedSprites.create(-260, 60, 'verminEnemies', 'enemies/bosses/0-crank/arm0.png');
+  ownedSprites.getAt(1).scale.setTo(1.7, 1.7);
   ownedSprites.create(130, 60, 'verminEnemies', 'enemies/bosses/0-crank/arm1.png');
+  ownedSprites.getAt(2).scale.setTo(1.7, 1.7);
   ownedSprites.create(130, 165, 'verminEnemies', 'enemies/bosses/0-crank/arm2a.png');
-  const arm3b = ownedSprites.create(180, 165 + 60, 'verminEnemies', 'enemies/bosses/0-crank/arm3b.png');
-  ownedSprites.create(-90, 165, 'verminEnemies', 'enemies/bosses/0-crank/arm3a.png');
-  ownedSprites.create(-120, 165 + 60, 'verminEnemies', 'enemies/bosses/0-crank/arm2b.png');
+  ownedSprites.getAt(3).scale.setTo(1.7, 1.7);
+  const arm3b = ownedSprites.create(210, 165 + 80, 'verminEnemies', 'enemies/bosses/0-crank/arm3b.png');
+  ownedSprites.getAt(4).scale.setTo(1.7, 1.7);
+  ownedSprites.create(-140, 165, 'verminEnemies', 'enemies/bosses/0-crank/arm3a.png');
+  ownedSprites.getAt(5).scale.setTo(1.7, 1.7);
+  ownedSprites.create(-170, 165 + 60, 'verminEnemies', 'enemies/bosses/0-crank/arm2b.png');
+  ownedSprites.getAt(6).scale.setTo(1.7, 1.7);
 
   const blood = game.add.sprite(40, 140, 'verminEnemies', 'enemies/bosses/0-crank/firstblood/00.png');
   ownedSprites.add(blood);

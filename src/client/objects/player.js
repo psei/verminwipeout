@@ -26,8 +26,18 @@ function addWeaponSwitchKeyBindings(game, player) {
 
   keyCodes.map(function (keyCode, i) {
     var key = game.input.keyboard.addKey(keyCode);
-    key.onDown.add(player.switchWeapon(i), player);
+    key.onDown.add(() => player.switchWeapon(i), player, 1);
   });
+
+  // on double tap
+  game.input.touch.touchStartCallback = function(event) {
+    if (event.timeStamp - player.lastTouchTime < 400) {
+      var nextWeaponIndex = (player.currentWeaponConfigId + 1) % weaponConfigs.length;
+      player.switchWeapon(nextWeaponIndex);
+    }
+
+    player.lastTouchTime = event.timeStamp;
+  };
 }
 
 function Player(game, lifeCounter) {
@@ -68,15 +78,6 @@ function Player(game, lifeCounter) {
   var shipThrust = ShipThrust.create(game, player);
   var healthBar = HealthBar.create(game, player);
   var gameOver = GameOver.create(game, player, lifeCounter);
-
-  function setWeapon(weaponConfig) {
-    if (isEqual(weaponConfig, player.currentWeaponConfig)) {
-      return;
-    }
-    player.currentWeaponConfig = weaponConfig;
-    player.weapon = Weapon.create(game, player, weaponConfig);
-  }
-  setWeapon(weaponConfigs[0]);
 
   var previousDirection = {
     forward: false,
@@ -296,10 +297,15 @@ function Player(game, lifeCounter) {
   };
 
   player.switchWeapon = function (index) {
-    return function () {
-      setWeapon(weaponConfigs[index]);
-    };
+    if (index === player.currentWeaponConfigId) {
+      return;
+    }
+
+    player.currentWeaponConfigId = index;
+    const weaponConfig = weaponConfigs[index];
+    player.weapon = Weapon.create(game, player, weaponConfig);
   };
+  player.switchWeapon(0);
 
   const touchPointer1 = game.input.pointer1;
   var isPermanentFire = false;

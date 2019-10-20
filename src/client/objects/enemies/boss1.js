@@ -2,8 +2,7 @@
 
 var config = require('./boss1.conf');
 const STATE_IDLE = 'idle';
-const STATE_SPEAR_ATTACK_PREPARE = 'spearPrepare';
-const STATE_SPEAR_ATTACK_RUN = 'spearRun';
+const STATE_SPEAR_ATTACK = 'spearAttack';
 const STATE_ACID_BALLS_PREPARE = 'acidPrepare';
 const STATE_ACID_BALLS_SHOOT = 'acidShoot';
 const STATE_SNAP_EAT_PREPARE = 'snapPrepare';
@@ -70,13 +69,14 @@ function Boss1(game) {
   };
 
   var bossState;
-  var bossNextState = STATE_SPEAR_ATTACK_PREPARE;
+  var bossNextState = STATE_SPEAR_ATTACK;
   var stateStartTime;
   var moveSpeedX = 2;
   var moveSpeedY = 1;
   var angleSpeed = 0;
   var targetAngle;
   var targetY;
+  var attackState;
   var nextAttackIdle = 1000;
   setState(STATE_IDLE);
 
@@ -96,7 +96,7 @@ function Boss1(game) {
 
       case STATE_ACID_BALLS_SHOOT:
         launchAcidBall();
-        bossNextState = STATE_SPEAR_ATTACK_PREPARE;
+        bossNextState = STATE_SPEAR_ATTACK;
         break;
 
       case STATE_SNAP_EAT_PREPARE:
@@ -109,18 +109,14 @@ function Boss1(game) {
         bossNextState = STATE_ACID_BALLS_PREPARE;
         break;
 
-      case STATE_SPEAR_ATTACK_PREPARE:
+      case STATE_SPEAR_ATTACK:
         nextAttackIdle = game.random.between(1000, 2000);
         targetY = boss.y - 40;
-        break;
-
-      case STATE_SPEAR_ATTACK_RUN:
-        targetY = game.world.width - 1;
-        bossNextState = STATE_SNAP_EAT_PREPARE;
+        bossNextState = STATE_ACID_BALLS_PREPARE;
+        attackState = 1;
         break;
     }
   }
-
 
   function moveIdle() {
     if (boss.x < 50) {
@@ -129,9 +125,9 @@ function Boss1(game) {
       moveSpeedX = -2;
     }
 
-    if (boss.y > 350) {
+    if (boss.y > 150) {
       moveSpeedY = -1;
-    } else if (boss.y < 200) {
+    } else if (boss.y < 0) {
       moveSpeedY = 1;
     }
 
@@ -157,7 +153,7 @@ function Boss1(game) {
   function rollForAttack() {
     const idleTime = game.time.physicsElapsedTotalMS - stateStartTime;
     const isNearCenter = Math.abs(boss.x - game.world.width / 2) < 10;
-    const isIncoming = boss.y < 200;
+    const isIncoming = boss.y < 0;
 
     if (isIncoming) {
       return;
@@ -178,37 +174,38 @@ function Boss1(game) {
         setState(STATE_SNAP_EAT_PREPARE);
         break;
 
-      case STATE_SPEAR_ATTACK_PREPARE:
-        setState(STATE_SPEAR_ATTACK_PREPARE);
+      case STATE_SPEAR_ATTACK:
+        setState(STATE_SPEAR_ATTACK);
         break;
     }
   }
 
-  function prepareSpearAttack() {
-    if (boss.y > targetY) {
-      boss.y -= 0.5;
-    } else {
-      boss.y = ownedSprites.y;
-      setState(STATE_SPEAR_ATTACK_RUN);
-    }
-
-    arm3b.angle += 1;
-  }
-
   function moveSpearAttack() {
-    if (boss.y < targetY) {
-      moveSpeedY = 15;
-    }
-    if (boss.y > game.world.width - 10) {
-      moveSpeedY = -2;
-      targetY = 190;
+    if (attackState === 1) {
+      moveSpeedY = 0;
+      if (boss.y > targetY) {
+        boss.y -= 0.5;
+      } else {
+        boss.y = ownedSprites.y;
+        targetY = game.world.height - boss.height - 100;
+        moveSpeedY = 15;
+        attackState = 2;
+      }
+
+      arm3b.angle += 1;
     }
 
-    if (boss.y < game.world.width - 200 && arm3b.angle > 0) {
+    if (attackState === 2 && boss.y > targetY) {
+      moveSpeedY = -2;
+      targetY = targetY + 15;
+      attackState = 3;
+    }
+
+    if (boss.y < game.world.height && arm3b.angle > 0) {
       arm3b.angle -= 1;
     }
 
-    if (boss.y < 200) {
+    if (attackState === 3 && boss.y < 1) {
       setState(STATE_IDLE);
     }
 
@@ -234,7 +231,7 @@ function Boss1(game) {
       targetY = 190;
     }
 
-    if (boss.y < 200) {
+    if (boss.y < 1) {
       setState(STATE_IDLE);
     }
 
@@ -277,11 +274,7 @@ function Boss1(game) {
           moveSnapEat();
           break;
 
-        case STATE_SPEAR_ATTACK_PREPARE:
-          prepareSpearAttack();
-          break;
-
-        case STATE_SPEAR_ATTACK_RUN:
+        case STATE_SPEAR_ATTACK:
           moveSpearAttack();
           break;
 
